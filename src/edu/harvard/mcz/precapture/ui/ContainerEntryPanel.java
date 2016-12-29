@@ -174,8 +174,9 @@ public class ContainerEntryPanel extends JPanel {
 		comboBoxTaxonPicker.setPreferredSize(new Dimension(300,comboBoxTaxonPicker.getPreferredSize().height));
 		comboBoxTaxonPicker.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				log.debug(e.getActionCommand());
+				log.debug(e.getActionCommand()); 
 				comboBoxTaxonPicker.getSelectedIndex();
+				//the errors happen here - for some reason the data does not end up in the utl object!!!! it happens during the selection.
 				UnitTrayLabel utl = ((UnitTrayLabelComboBoxModel)comboBoxTaxonPicker.getModel()).getSelectedContainerLabel();
 				extractData(utl);
 				if (textNumberToPrint.getText().isEmpty()) { 

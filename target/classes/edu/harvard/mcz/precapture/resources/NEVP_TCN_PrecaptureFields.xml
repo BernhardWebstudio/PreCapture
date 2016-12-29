@@ -69,12 +69,12 @@
     <tns:NewLine>false</tns:NewLine>
     <tns:FontSize>12</tns:FontSize>
     <tns:DefaultValue></tns:DefaultValue>
-  </tns:FieldInList>
+  </tns:FieldInList>  
   <tns:FieldInList>
-    <tns:Label>Infra Specific Rank</tns:Label>
-    <tns:Code>r</tns:Code>
+    <tns:Label>Infra Specific Epithet</tns:Label>
+    <tns:Code>i</tns:Code>
     <tns:Type>String</tns:Type>
-    <tns:VocabularyTerm>dwc:infraSpecificRank</tns:VocabularyTerm>
+    <tns:VocabularyTerm>dwc:infraspecificEpithet</tns:VocabularyTerm>
     <tns:Optional>false</tns:Optional>
     <tns:UseItalic>false</tns:UseItalic>
     <tns:NewLine>false</tns:NewLine>
@@ -82,10 +82,10 @@
     <tns:DefaultValue></tns:DefaultValue>
   </tns:FieldInList>  
   <tns:FieldInList>
-    <tns:Label>Infra Specific Epithet</tns:Label>
-    <tns:Code>i</tns:Code>
+    <tns:Label>Infra Specific Rank</tns:Label>
+    <tns:Code>r</tns:Code>
     <tns:Type>String</tns:Type>
-    <tns:VocabularyTerm>dwc:infraSpecificEpithet</tns:VocabularyTerm>
+    <tns:VocabularyTerm>dwc:infraspecificRank</tns:VocabularyTerm>
     <tns:Optional>false</tns:Optional>
     <tns:UseItalic>true</tns:UseItalic>
     <tns:NewLine>false</tns:NewLine>

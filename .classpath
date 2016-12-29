@@ -11,9 +11,6 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/altheaparker/Desktop/core-2.3.0.jar"/>
-	<classpathentry kind="lib" path="/Users/altheaparker/Desktop/Entomology Project/PreCaptureApp/commons-lang-2.5.jar"/>
-	<classpathentry kind="lib" path="/Users/altheaparker/Desktop/Entomology Project/PreCaptureApp/commons-logging-1.1.1.jar"/>
 	<classpathentry kind="lib" path="jar-in-jar-loader.zip"/>
 	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
 		<attributes>

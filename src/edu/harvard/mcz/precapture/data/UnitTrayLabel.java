@@ -174,7 +174,8 @@ public class UnitTrayLabel implements TaxonNameReturner {
 	 * @param identifiedBy
 	 */
 	public UnitTrayLabel(String drawerNumber, String family, String subfamily,
-			String tribe, String genus, String specificEpithet,	String authorship, String collection, String identifiedBy) {
+			String tribe, String genus, String specificEpithet,	String subspecificEpithet, String infraspecificEpithet, String infraspecificRank,
+			String authorship, String collection, String identifiedBy) {
 		super();
 		this.drawerNumber = drawerNumber;
 		this.family = family;
@@ -182,9 +183,9 @@ public class UnitTrayLabel implements TaxonNameReturner {
 		this.tribe = tribe;
 		this.genus = genus;
 		this.specificEpithet = specificEpithet;
-		this.subspecificEpithet = "";
-		this.infraspecificEpithet = "";
-		this.infraspecificRank = "";
+		this.subspecificEpithet = subspecificEpithet;
+		this.infraspecificEpithet = infraspecificEpithet;
+		this.infraspecificRank = infraspecificRank;
 		this.authorship = authorship;
 		this.collection = collection;
 		this.identifiedBy = identifiedBy;
@@ -202,9 +203,9 @@ public class UnitTrayLabel implements TaxonNameReturner {
 	 * @param authorship
 	 * @param collection
 	 */
-	public UnitTrayLabel(String drawerNumber, String family, String subfamily,
+	/*public UnitTrayLabel(String drawerNumber, String family, String subfamily,
 			String tribe, String genus, 
-			String specificEpithet, String subspecificEpithet,
+			String specificEpithet, String subspecificEpithet, String infraspecificEpithet, String infraspecificRank,
 			String authorship, String collection, String identifiedBy) {
 		super();
 		this.drawerNumber = drawerNumber;
@@ -214,12 +215,12 @@ public class UnitTrayLabel implements TaxonNameReturner {
 		this.genus = genus;
 		this.specificEpithet = specificEpithet;
 		this.subspecificEpithet = subspecificEpithet;
-		this.infraspecificEpithet = "";
-		this.infraspecificRank = "";
+		this.infraspecificEpithet = infraspecificEpithet;
+		this.infraspecificRank = infraspecificRank;
 		this.authorship = authorship;
 		this.collection = collection;
 		this.identifiedBy = identifiedBy;
-	}
+	}*/
 
 	
 	/**

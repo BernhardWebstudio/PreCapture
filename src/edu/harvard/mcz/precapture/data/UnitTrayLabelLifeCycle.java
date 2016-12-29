@@ -94,38 +94,12 @@ private static final Log log = LogFactory.getLog(UnitTrayLabelLifeCycle.class);
     		if (unitTrayLabel.getInfraspecificEpithet()!=null && unitTrayLabel.getInfraspecificEpithet().length()>0) {    	
     			result.append(unitTrayLabel.getInfraspecificEpithet()).append(" ");
     		}
-    		/*String authorship = unitTrayLabel.getAuthorship();
-    		byte[] authorshipBytes = authorship.getBytes( Charset.forName("UTF-8" ));
-    		String authorshipEncoded = new String( authorshipBytes, Charset.forName("UTF-8") );
-    		result.append(authorshipEncoded);*/
-    		//System.out.println("authorship is " + unitTrayLabel.getAuthorship());
-    		//result.append( unitTrayLabel.getAuthorship() + "ä try 2 \u00e4"); //this displays the special char
     		
     		String authorship = unitTrayLabel.getAuthorship();
-    		/*if(authorship.indexOf("u00e4") != -1){
-    			authorship = authorship.replaceAll("u00e4", "ä");
-    		}
-    		//if(authorship.indexOf("u00fc") != -1){
-    		//	authorship = authorship.replaceAll("u00fc", "ü");
-    		//}
-    		if(authorship.indexOf("u00e9") != -1){
-    			authorship = authorship.replaceAll("u00e9", "é");
-    		}
-    		if(authorship.indexOf("u00f6") != -1){
-    			authorship = authorship.replaceAll("u00f6", "ö");
-    		}
-    		if(authorship.indexOf("u00e8") != -1){
-    			authorship = authorship.replaceAll("u00e8", "è");
-    		}    			   		
-    		if(authorship.indexOf("u00e1") != -1){
-    			authorship = authorship.replaceAll("u00e1", "á");
-    		}     		
-    		if(authorship.indexOf("u00ed") != -1){
-    			authorship = authorship.replaceAll("u00ed", "í");
-    		} */    		
+    		
     		result.append(authorship);
     	}
-    	//return result.toString().trim();
+
     	return StringEscapeUtils.unescapeJava(result.toString().trim());
 	}
 	
@@ -148,8 +122,7 @@ private static final Log log = LogFactory.getLog(UnitTrayLabelLifeCycle.class);
     	
     	if (taxonProgressBar!=null) { 
     		CsvReader readerTest = new CsvReader(filename,',',Charset.forName("UTF-8"));
-    		//CsvReader readerTest = new CsvReader(inputstream,',',Charset.forName("UTF-8"));
-    		//CsvReader readerTest = new CsvReader(newfilename,',',Charset.forName("UTF-8"));
+
     		while (readerTest.readRecord()) { 
     			totalLines++;
     		}
@@ -162,9 +135,7 @@ private static final Log log = LogFactory.getLog(UnitTrayLabelLifeCycle.class);
     		});
     	}
     	CsvReader reader = new CsvReader(filename,',',Charset.forName("UTF-8"));
-    	//CsvReader reader = new CsvReader(inputstream,',',Charset.forName("UTF-8"));
-    	//CsvReader reader = new CsvReader(newfilename,',',Charset.forName("UTF-8"));
-    	//CsvReader reader = new CsvReader(filename);
+
 
     	log.debug("Reading: " + filename);
     	reader.readHeaders();
@@ -197,7 +168,7 @@ private static final Log log = LogFactory.getLog(UnitTrayLabelLifeCycle.class);
     		unitTrayLabel.setInfraspecificEpithet(reader.get("InfraspecificEpithet"));
     		unitTrayLabel.setInfraspecificRank(reader.get("InfraspecificRank"));
     		unitTrayLabel.setAuthorship(reader.get("Authorship"));
-    		System.out.println("reader read authorship " + reader.get("Authorship"));
+
     		try {
 				uls.persist(unitTrayLabel);
 				if (unitTrayLabel.getSpecificEpithet()!=null) { 

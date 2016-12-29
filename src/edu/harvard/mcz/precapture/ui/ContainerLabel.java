@@ -55,7 +55,7 @@ public class ContainerLabel {
 	private FontFamily fontFamily = Font.FontFamily.HELVETICA;
 	//private final int fontIncrement = -1; //traditional value
 	//private final int fontIncrement = 1; //latest value
-	private final int fontIncrement = -1; //font minus 2
+	private final int fontIncrement = -1; //font minus 2 THIS ONE ROD LIKES!!!
 	//private final int fontIncrement = 0; //font minus 1
 
 	private final int lineSpacing = 2;
@@ -272,8 +272,8 @@ public class ContainerLabel {
 		   if(!text.equals("") 
 				   && !fields.get(i).getField().getVocabularyTerm().equals("dwc:specificEpithet")
 				   && !fields.get(i).getField().getVocabularyTerm().equals("dwc:subspecificEpithet")
-				   && !fields.get(i).getField().getVocabularyTerm().equals("dwc:infraSpecificRank")
-				   && !fields.get(i).getField().getVocabularyTerm().equals("dwc:infraSpecificEpithet")){
+				   && !fields.get(i).getField().getVocabularyTerm().equals("dwc:infraspecificRank")
+				   && !fields.get(i).getField().getVocabularyTerm().equals("dwc:infraspecificEpithet")){
 			   	   		text = StringUtils.capitalise(text);
 		   }
 		   if((fields.get(i).getField().getVocabularyTerm().equals("dwc:family") || fields.get(i).getField().getVocabularyTerm().equals("dwc:subfamily")) 
