@@ -142,7 +142,7 @@ private static final Log log = LogFactory.getLog(UnitTrayLabelLifeCycle.class);
     	boolean hasTribe = false;
     	boolean hasSubfamily = false;
     	String[] headers = reader.getHeaders();
-    	log.debug("ExpectedHeaders: Family, Genus, SpecificEpithet, SubspecificEpithet, InfraspecificEpithet, InfraspecificRank, Authorship");
+    	log.debug("ExpectedHeaders: Family, Genus, SpecificEpithet, SubspecificEpithet, InfraspecificRank, InfraspecificEpithet, Authorship");
     	log.debug("OptionalHeaders: Subfamily, Tribe");
     	for (int i=0; i<headers.length; i++) { 
     		log.debug("Contains Header: "+ headers[i]);
@@ -165,8 +165,8 @@ private static final Log log = LogFactory.getLog(UnitTrayLabelLifeCycle.class);
     		unitTrayLabel.setGenus(reader.get("Genus"));
     		unitTrayLabel.setSpecificEpithet(reader.get("SpecificEpithet"));
     		unitTrayLabel.setSubspecificEpithet(reader.get("SubspecificEpithet"));
-    		unitTrayLabel.setInfraspecificEpithet(reader.get("InfraspecificEpithet"));
     		unitTrayLabel.setInfraspecificRank(reader.get("InfraspecificRank"));
+    		unitTrayLabel.setInfraspecificEpithet(reader.get("InfraspecificEpithet"));
     		unitTrayLabel.setAuthorship(reader.get("Authorship"));
 
     		try {
@@ -196,7 +196,7 @@ private static final Log log = LogFactory.getLog(UnitTrayLabelLifeCycle.class);
     public static int exportToCSV(String filename) throws IOException {
     	int numberWritten = 0;
     	CsvWriter writer = new CsvWriter(filename);
-    	String[] header = {"Family","Genus","SpecificEpithet","SubspecificEpithet","InfraspecificEpithet","InfraspecificRank","Authorship"};
+    	String[] header = {"Family","Genus","SpecificEpithet","SubspecificEpithet","InfraspecificRank","InfraspecificEpithet","Authorship"};
     	writer.writeRecord(header,false);
     	UnitTrayLabelLifeCycle uls = new UnitTrayLabelLifeCycle();
     	List<UnitTrayLabel> list = uls.findAll();
@@ -209,8 +209,8 @@ private static final Log log = LogFactory.getLog(UnitTrayLabelLifeCycle.class);
     		row.add(unitTrayLabel.getGenus());
     		row.add(unitTrayLabel.getSpecificEpithet());
     		row.add(unitTrayLabel.getSubspecificEpithet());
-    		row.add(unitTrayLabel.getInfraspecificEpithet());
     		row.add(unitTrayLabel.getInfraspecificRank());
+    		row.add(unitTrayLabel.getInfraspecificEpithet());
     		row.add(unitTrayLabel.getAuthorship());
     		writer.writeRecord(row.toArray(new String[row.size()]), true);
     		numberWritten++;

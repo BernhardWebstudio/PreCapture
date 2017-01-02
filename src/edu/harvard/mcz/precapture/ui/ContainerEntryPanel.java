@@ -340,10 +340,10 @@ public class ContainerEntryPanel extends JPanel {
 				if (field.getField().getVocabularyTerm().equalsIgnoreCase("dwc:subspecificEpithet")) { 
 					field.getTextField().setText(utl.getSubspecificEpithet());
 				}
-				if (field.getField().getVocabularyTerm().equalsIgnoreCase("dwc:infraSpecificRank")) { 
+				if (field.getField().getVocabularyTerm().equalsIgnoreCase("dwc:infraspecificRank")) { 
 					field.getTextField().setText(utl.getInfraspecificRank());
 				}
-				if (field.getField().getVocabularyTerm().equalsIgnoreCase("dwc:infraSpecificEpithet")) { 
+				if (field.getField().getVocabularyTerm().equalsIgnoreCase("dwc:infraspecificEpithet")) { 
 					field.getTextField().setText(utl.getInfraspecificEpithet());
 				}
 				/*if (field.getField().getVocabularyTerm().equalsIgnoreCase("dwc:collectionName")) { 
@@ -355,33 +355,10 @@ public class ContainerEntryPanel extends JPanel {
 
 				if (field.getField().getVocabularyTerm().equalsIgnoreCase("dwc:authorship")) { 
 					String authorship = utl.getAuthorship();
-		    		/*if(authorship.indexOf("u00e4") != -1){
-		    			authorship = authorship.replaceAll("u00e4", "ä");
-		    		}
-		    		//if(authorship.indexOf("u00fc") != -1){
-		    		//	authorship = authorship.replaceAll("u00fc", "ü");
-		    		//}
-		    		//"u00e9" "é"
-		    		if(authorship.indexOf("u00e9") != -1){
-		    			authorship = authorship.replaceAll("u00e9", "é");
-		    		}
-		    		//"u00f6" "ö"
-		    		if(authorship.indexOf("u00f6") != -1){
-		    			authorship = authorship.replaceAll("u00f6", "ö");
-		    		}
-		    		if(authorship.indexOf("u00e8") != -1){
-		    			authorship = authorship.replaceAll("u00e8", "è");
-		    		}    			   		
-		    		if(authorship.indexOf("u00e1") != -1){
-		    			authorship = authorship.replaceAll("u00e1", "á");
-		    		}     		
-		    		if(authorship.indexOf("u00ed") != -1){
-		    			authorship = authorship.replaceAll("u00ed", "í");
-		    		}*/
 					authorship = StringEscapeUtils.unescapeJava(authorship);
 					field.getTextField().setText(authorship);
 				}				
-				if (useQuadranomials) { 
+				/*if (useQuadranomials) { 
 					// put subspecies into subspecies concept, put infraspecific name and rank into infra fields.
 					if (field.getField().getVocabularyTerm().equalsIgnoreCase("abcd:SubspeciesEpithet")) { 
 						field.getTextField().setText(utl.getSubspecificEpithet());
@@ -397,7 +374,7 @@ public class ContainerEntryPanel extends JPanel {
 					// Assemble a trinomial.
 					// if there is an infraspecific name, don't include the subspecies.
 					// if there isnt't an infraspecific name, put subspecies into the infra fields.
-					/*String rank = utl.getInfraspecificRank();
+					String rank = utl.getInfraspecificRank();
 					String epithet = utl.getInfraspecificEpithet();
 					if (utl.getSubspecificEpithet()!=null && utl.getSubspecificEpithet().length()>0 && (utl.getInfraspecificEpithet()==null || utl.getInfraspecificEpithet().length()==0)) { 
 						rank = PreCaptureSingleton.getInstance().getProperties().getProperties().getProperty(PreCaptureProperties.KEY_TRINOMIAL_SUBSP_RANK);
@@ -414,17 +391,17 @@ public class ContainerEntryPanel extends JPanel {
 					}
 					if (field.getField().getVocabularyTerm().equalsIgnoreCase("dwc:infraspecificRank")) { 
 						field.getTextField().setText(rank);
-					}*/
-					
-					//allie - replaced with this code
-					if (field.getField().getVocabularyTerm().equalsIgnoreCase("dwc:infraspecificEpithet")) { 
-						field.getTextField().setText(utl.getInfraspecificRank());
-					}
-					if (field.getField().getVocabularyTerm().equalsIgnoreCase("dwc:infraspecificRank")) { 
-						field.getTextField().setText(utl.getInfraspecificEpithet());
-					}
-					
+					}					
+				}*/
+				
+				//allie - replaced the above if/else statement with this code
+				if (field.getField().getVocabularyTerm().equalsIgnoreCase("dwc:infraspecificEpithet")) { 
+					field.getTextField().setText(utl.getInfraspecificEpithet());
 				}
+				if (field.getField().getVocabularyTerm().equalsIgnoreCase("dwc:infraspecificRank")) { 
+					field.getTextField().setText(utl.getInfraspecificRank());
+				}
+				
 				if (field.getField().getVocabularyTerm().equalsIgnoreCase("dwc:scientificNameAuthorship")) { 
 					field.getTextField().setText(utl.getAuthorship());
 				}
