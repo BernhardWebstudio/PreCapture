@@ -205,7 +205,7 @@ public class PreCaptureProperties extends AbstractTableModel {
 		}		
 		if (!properties.containsKey(KEY_SELECTED_PRINT_DEFINITION)) {
 			// name of selected print layout definition
-			properties.setProperty(KEY_SELECTED_PRINT_DEFINITION, "Two Half Sheets on 8.5x11");
+			properties.setProperty(KEY_SELECTED_PRINT_DEFINITION, "Multiple 1.5x3 slips on 8.5x11 Larger"); 
 		}
 		if (!properties.containsKey(KEY_MAINFRAME)) {
 			// name of selected UI main frame 
