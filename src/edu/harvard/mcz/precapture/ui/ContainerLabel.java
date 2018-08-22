@@ -282,13 +282,20 @@ public class ContainerLabel {
 				   && !fields.get(i+1).getTextField().getText().trim().equals("")){
 			   text = text +  ":"; 
 		   }
+
+
+		   
 		   //end allie
 		   Chunk chunk = new Chunk(text); 
-		   if (fields.get(i).getField().isUseItalic()) {
+		   if((fields.get(i).getField().getVocabularyTerm().equals("dwc:specificEpithet") && text.equals("sp."))){
+			   chunk.setFont(new Font(fontFamily, 
+		    		   fields.get(i).getField().getFontSize()  + printDefinition.getFontDelta() + fontIncrement, 
+		    		   Font.NORMAL));
+		   }else if (fields.get(i).getField().isUseItalic()) {
 		       chunk.setFont(new Font(fontFamily, 
 		    		   fields.get(i).getField().getFontSize() + printDefinition.getFontDelta() + fontIncrement, 
 		    		   Font.ITALIC));
-		   } else { 
+		   }else { 
 		       chunk.setFont(new Font(fontFamily, 
 		    		   fields.get(i).getField().getFontSize()  + printDefinition.getFontDelta() + fontIncrement, 
 		    		   Font.NORMAL));
