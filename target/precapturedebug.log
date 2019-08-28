@@ -3374,3 +3374,368 @@ select count(*) as col_0_0_ from PUBLIC.INVENTORY inventory0_ [42102-167]
 16:36:16,845  INFO SessionFactoryImpl:805 - closing
 16:36:16,845  INFO DriverManagerConnectionProvider:170 - cleaning up connection pool: jdbc:h2:PRECAPTURE2;INIT=create schema IF NOT EXISTS precapture
 16:36:16,857 DEBUG PreCaptureApp:332 - Exiting.
+12:24:47,135 DEBUG PreCaptureProperties:96 - Opening properties file: /Users/altheaparker/Documents/workspace-datashot-2/v1.0.9/target/PreCapture.properties
+12:24:47,229 DEBUG PreCaptureApp:120 - Loaded field mappings: ETHZ Entomology 1.0
+12:24:47,255 DEBUG PreCaptureApp:154 - Available print format definitions:
+12:24:47,255 DEBUG PreCaptureApp:162 - Full Sheet 8.5x11
+12:24:47,255 DEBUG PreCaptureApp:162 - Two Half Sheets on 8.5x11
+12:24:47,255 DEBUG PreCaptureApp:162 - Half Sheet 4.25x11 Custom
+12:24:47,255 DEBUG PreCaptureApp:162 - Multiple 2.5x4 slips on 8.5x11
+12:24:47,256 DEBUG PreCaptureApp:162 - Multiple 1.5x3 slips on 8.5x11
+12:24:47,256 DEBUG PreCaptureApp:160 - Multiple 1.5x3 slips on 8.5x11 Larger *
+12:24:47,256 DEBUG PreCaptureApp:162 - 2.3x4" Dymo LabelWriter
+12:24:47,256 DEBUG PreCaptureApp:162 - 4x2.3"Label
+12:24:47,281 DEBUG PreCaptureApp:189 - Apache Derby 10.9.1.0
+12:24:47,298  INFO Environment:543 - Hibernate 3.3.1.GA
+12:24:47,300  INFO Environment:576 - hibernate.properties not found
+12:24:47,303  INFO Environment:709 - Bytecode provider name : javassist
+12:24:47,306  INFO Environment:627 - using JDK 1.4 java.sql.Timestamp handling
+12:24:47,345  INFO Configuration:1460 - configuring from resource: /hibernate.cfg.xml
+12:24:47,345  INFO Configuration:1437 - Configuration resource: /hibernate.cfg.xml
+12:24:47,385  INFO Configuration:586 - Reading mappings from resource : edu/harvard/mcz/precapture/data/Inventory.hbm.xml
+12:24:47,425  INFO HbmBinder:322 - Mapping class: edu.harvard.mcz.precapture.data.Inventory -> INVENTORY
+12:24:47,432  INFO Configuration:586 - Reading mappings from resource : edu/harvard/mcz/precapture/data/UnitTrayLabel.hbm.xml
+12:24:47,445  INFO HbmBinder:322 - Mapping class: edu.harvard.mcz.precapture.data.UnitTrayLabel -> UNIT_TRAY_LABEL
+12:24:47,446  INFO Configuration:1575 - Configured SessionFactory: null
+12:24:47,479  INFO DriverManagerConnectionProvider:64 - Using Hibernate built-in connection pool (not for production use!)
+12:24:47,479  INFO DriverManagerConnectionProvider:65 - Hibernate connection pool size: 1
+12:24:47,479  INFO DriverManagerConnectionProvider:68 - autocommit mode: false
+12:24:47,497  INFO DriverManagerConnectionProvider:103 - using driver: org.h2.Driver at URL: jdbc:h2:PRECAPTURE2;INIT=create schema IF NOT EXISTS precapture
+12:24:47,497  INFO DriverManagerConnectionProvider:109 - connection properties: {user=sa, password=****}
+12:24:47,745  INFO SettingsFactory:116 - RDBMS: H2, version: 1.3.167 (2012-05-23)
+12:24:47,745  INFO SettingsFactory:117 - JDBC driver: H2 JDBC Driver, version: 1.3.167 (2012-05-23)
+12:24:47,758  INFO Dialect:175 - Using dialect: org.hibernate.dialect.H2Dialect
+12:24:47,761  INFO TransactionFactoryFactory:59 - Using default transaction strategy (direct JDBC transactions)
+12:24:47,762  INFO TransactionManagerLookupFactory:80 - No TransactionManagerLookup configured (in JTA environment, use of read-write or transactional second-level cache is not recommended)
+12:24:47,762  INFO SettingsFactory:170 - Automatic flush during beforeCompletion(): disabled
+12:24:47,762  INFO SettingsFactory:174 - Automatic session close at end of transaction: disabled
+12:24:47,762  INFO SettingsFactory:181 - JDBC batch size: 15
+12:24:47,762  INFO SettingsFactory:184 - JDBC batch updates for versioned data: disabled
+12:24:47,763  INFO SettingsFactory:189 - Scrollable result sets: enabled
+12:24:47,763  INFO SettingsFactory:197 - JDBC3 getGeneratedKeys(): enabled
+12:24:47,763  INFO SettingsFactory:205 - Connection release mode: auto
+12:24:47,764  INFO SettingsFactory:223 - Default schema: PUBLIC
+12:24:47,764  INFO SettingsFactory:232 - Default batch fetch size: 1
+12:24:47,764  INFO SettingsFactory:236 - Generate SQL with comments: disabled
+12:24:47,764  INFO SettingsFactory:240 - Order SQL updates by primary key: disabled
+12:24:47,764  INFO SettingsFactory:244 - Order SQL inserts for batching: disabled
+12:24:47,764  INFO SettingsFactory:420 - Query translator: org.hibernate.hql.ast.ASTQueryTranslatorFactory
+12:24:47,765  INFO ASTQueryTranslatorFactory:47 - Using ASTQueryTranslatorFactory
+12:24:47,765  INFO SettingsFactory:252 - Query language substitutions: {}
+12:24:47,766  INFO SettingsFactory:257 - JPA-QL strict compliance: disabled
+12:24:47,766  INFO SettingsFactory:262 - Second-level cache: enabled
+12:24:47,766  INFO SettingsFactory:266 - Query cache: disabled
+12:24:47,766  INFO SettingsFactory:405 - Cache region factory : org.hibernate.cache.impl.NoCachingRegionFactory
+12:24:47,766  INFO SettingsFactory:276 - Optimize cache for minimal puts: disabled
+12:24:47,766  INFO SettingsFactory:285 - Structured second-level cache entries: disabled
+12:24:47,768  INFO SettingsFactory:305 - Echoing all SQL to stdout
+12:24:47,768  INFO SettingsFactory:314 - Statistics: disabled
+12:24:47,768  INFO SettingsFactory:318 - Deleted entity synthetic identifier rollback: disabled
+12:24:47,768  INFO SettingsFactory:333 - Default entity-mode: pojo
+12:24:47,768  INFO SettingsFactory:337 - Named query checking : enabled
+12:24:47,802  INFO SessionFactoryImpl:187 - building session factory
+12:24:47,940  INFO SessionFactoryObjectFactory:105 - Not binding factory to JNDI, no JNDI name configured
+12:24:47,985 DEBUG InventoryLifeCycle:274 - counting Inventory records
+12:24:48,077 DEBUG InventoryLifeCycle:281 - count successful, count= 0
+12:24:48,077 DEBUG PreCaptureApp:199 - Inventory Records: 0
+12:24:48,079 DEBUG UnitTrayLabelLifeCycle:510 - counting UnitTrayLabel records
+12:24:48,084 DEBUG UnitTrayLabelLifeCycle:517 - find all successful, count= 0
+12:24:48,084 DEBUG PreCaptureApp:202 - Unit Tray Label Records: 0
+12:24:48,116 DEBUG MainMenu:158 - jar:file:/Users/altheaparker/Documents/workspace-datashot-2/v1.0.9/target/PreCaptureApp-1.1.1-jar-with-dependencies.jar!/edu/harvard/mcz/precapture/resources/help/helpset.hs
+12:24:48,193 DEBUG UnitTrayLabelLifeCycle:542 - finding distinct families in UnitTrayLabel
+12:24:48,199 DEBUG UnitTrayLabelLifeCycle:549 - find distinct families successful, result size: 1
+12:24:48,210 DEBUG UnitTrayLabelLifeCycle:572 - finding distinct genera in UnitTrayLabel
+12:24:48,213 DEBUG UnitTrayLabelLifeCycle:579 - find distinct families successful, result size: 1
+12:24:48,218 DEBUG UnitTrayLabelComboBoxModel:51 - invoked UnitTrayLabelComboBoxModel()
+12:24:48,222 DEBUG ContainerEntryPanel:167 - About to create model for taxon picker
+12:24:48,222 DEBUG UnitTrayLabelLifeCycle:391 - finding all UnitTrayLabel start Mon Jul 09 12:24:48 CEST 2018
+12:24:48,226 DEBUG UnitTrayLabelLifeCycle:399 - find all successful, result size: 0
+12:24:48,226 DEBUG UnitTrayLabelLifeCycle:406 - finding all UnitTrayLabel end Mon Jul 09 12:24:48 CEST 2018
+12:24:48,226 DEBUG UnitTrayLabelComboBoxModel:78 - invoked UnitTrayLabelComboBoxModel(list unit tray label
+12:24:48,227 DEBUG ContainerEntryPanel:169 - Created model for taxon picker
+12:24:48,233 DEBUG ContainerEntryPanel:189 - Iterating through field list
+12:24:48,254 DEBUG InventoryLifeCycle:214 - finding all Inventory records
+12:24:48,257 DEBUG InventoryLifeCycle:222 - find all successful, result size: 0
+12:25:01,019 DEBUG FilteringJComboBox:182 - java.awt.FocusEvent[FOCUS_LOST,permanent,opposite=javax.swing.JTextField[,144,58,488x19,layout=javax.swing.plaf.basic.BasicTextUI$UpdateHandler,alignmentX=0.0,alignmentY=0.0,border=javax.swing.plaf.BorderUIResource$CompoundBorderUIResource@20dbd1b1,flags=424,maximumSize=,minimumSize=,preferredSize=,caretColor=sun.swing.PrintColorUIResource[r=51,g=51,b=51],disabledTextColor=javax.swing.plaf.ColorUIResource[r=184,g=207,b=229],editable=true,margin=javax.swing.plaf.InsetsUIResource[top=0,left=0,bottom=0,right=0],selectedTextColor=sun.swing.PrintColorUIResource[r=51,g=51,b=51],selectionColor=javax.swing.plaf.ColorUIResource[r=184,g=207,b=229],columns=10,columnWidth=11,command=,horizontalAlignment=LEADING],cause=UNKNOWN] on javax.swing.plaf.metal.MetalComboBoxEditor$1[,0,0,468x24,layout=javax.swing.plaf.basic.BasicTextUI$UpdateHandler,alignmentX=0.0,alignmentY=0.0,border=javax.swing.plaf.metal.MetalComboBoxEditor$EditorBorder@69f3df9d,flags=8388904,maximumSize=,minimumSize=,preferredSize=,caretColor=sun.swing.PrintColorUIResource[r=51,g=51,b=51],disabledTextColor=javax.swing.plaf.ColorUIResource[r=184,g=207,b=229],editable=true,margin=javax.swing.plaf.InsetsUIResource[top=0,left=0,bottom=0,right=0],selectedTextColor=sun.swing.PrintColorUIResource[r=51,g=51,b=51],selectionColor=javax.swing.plaf.ColorUIResource[r=184,g=207,b=229],columns=9,columnWidth=12,command=,horizontalAlignment=LEADING]
+12:25:22,825 DEBUG LabelEncoder:173 - Invoked printList 
+12:25:22,825 DEBUG LabelEncoder:195 - Multiple 1.5x3 slips on 8.5x11 Larger
+12:25:22,825 DEBUG LabelEncoder:196 - HORIZONTAL
+12:25:22,956 DEBUG LabelEncoder:215 - relWidthTextCell = 2.96
+12:25:22,956 DEBUG LabelEncoder:216 - relWidthBarcodeCell = 2.0
+12:25:22,970 DEBUG LabelEncoder:418 - Table Width Percent = 85.62092
+12:25:22,970 DEBUG LabelEncoder:433 - Width:524.0
+12:25:22,971 DEBUG LabelEncoder:279 - Width of barcode cell in points: 87.0
+12:25:22,971 DEBUG LabelEncoder:288 - Labels per column = 6
+12:25:22,971 DEBUG LabelEncoder:289 - Cells per page = 24
+12:25:22,971 DEBUG LabelEncoder:302 - the family the subfamily the tribe the genus sp. the sub 
+12:25:22,971 DEBUG LabelEncoder:303 - Label: 0 the family the subfamily the tribe the genus sp. the sub 
+12:25:22,971 DEBUG LabelEncoder:308 - Copy 1 of 1
+12:25:22,974 DEBUG ContainerLabel:254 - 0
+12:25:22,974 DEBUG ContainerLabel:269 - the family
+12:25:22,979 DEBUG ContainerLabel:301 - null
+12:25:22,979 DEBUG ContainerLabel:254 - 1
+12:25:22,979 DEBUG ContainerLabel:269 - the subfamily
+12:25:22,980 DEBUG ContainerLabel:301 - null
+12:25:22,980 DEBUG ContainerLabel:254 - 2
+12:25:22,980 DEBUG ContainerLabel:269 - the tribe
+12:25:22,981 DEBUG ContainerLabel:301 - null
+12:25:22,981 DEBUG ContainerLabel:254 - 3
+12:25:22,981 DEBUG ContainerLabel:257 - The family: The subfamily: The tribe 
+12:25:22,982 DEBUG ContainerLabel:269 - the genus
+12:25:22,982 DEBUG ContainerLabel:301 - null
+12:25:22,982 DEBUG ContainerLabel:254 - 4
+12:25:22,982 DEBUG ContainerLabel:269 - sp.
+12:25:22,982 DEBUG ContainerLabel:301 - null
+12:25:22,982 DEBUG ContainerLabel:254 - 5
+12:25:22,983 DEBUG ContainerLabel:269 - the sub
+12:25:22,983 DEBUG ContainerLabel:301 - null
+12:25:22,983 DEBUG ContainerLabel:254 - 6
+12:25:22,983 DEBUG ContainerLabel:269 - 
+12:25:22,983 DEBUG ContainerLabel:254 - 7
+12:25:22,983 DEBUG ContainerLabel:269 - 
+12:25:22,984 DEBUG ContainerLabel:254 - 8
+12:25:22,984 DEBUG ContainerLabel:257 - The genus sp. the sub 
+12:25:22,984 DEBUG ContainerLabel:269 - 
+12:25:22,984 DEBUG ContainerLabel:254 - 9
+12:25:22,985 DEBUG ContainerLabel:269 - 
+12:25:22,985 DEBUG ContainerLabel:254 - 10
+12:25:22,985 DEBUG ContainerLabel:269 - 
+12:25:22,985 DEBUG ContainerLabel:312 - 
+12:25:22,999 DEBUG LabelEncoder:339 - Cells 2 of 24 cells per page.
+12:25:22,999 DEBUG LabelEncoder:361 - Adding remaining cells in partial page
+12:25:23,052 DEBUG LabelEncoder:369 - Table has 4 columns and 6 rows 
+12:25:23,208 DEBUG PrintingUtility:120 - Number of matching printing services =  4
+12:25:23,209 DEBUG PrintingUtility:140 - Available printing services 4
+12:25:23,213 DEBUG PrintingUtility:142 - HP LaserJet 1018
+12:25:23,215 DEBUG PrintingUtility:142 - 129.132.77.112
+12:25:23,218 DEBUG PrintingUtility:142 - HP LaserJet 200 color M251nw (3785FA)
+12:25:23,221 DEBUG PrintingUtility:142 - PDFwriter
+12:25:26,515 DEBUG PrintingUtility:150 - Printing to PDFwriter
+12:25:26,548 DEBUG LabelEncoder:401 - printList Done. Success = true
+12:30:11,547 DEBUG InventoryLifeCycle:244 - counting Inventory records
+12:30:11,549 DEBUG InventoryLifeCycle:251 - count successful, count= 0
+12:30:11,549 DEBUG UnitTrayLabelLifeCycle:481 - counting UnitTrayLabel records
+12:30:11,550 DEBUG UnitTrayLabelLifeCycle:488 - find all successful, count= 0
+12:30:11,551  INFO SessionFactoryImpl:805 - closing
+12:30:11,551  INFO DriverManagerConnectionProvider:170 - cleaning up connection pool: jdbc:h2:PRECAPTURE2;INIT=create schema IF NOT EXISTS precapture
+12:30:14,328 DEBUG InventoryLifeCycle:244 - counting Inventory records
+12:30:14,329  INFO Configuration:1460 - configuring from resource: /hibernate.cfg.xml
+12:30:14,329  INFO Configuration:1437 - Configuration resource: /hibernate.cfg.xml
+12:30:15,030 DEBUG InventoryLifeCycle:244 - counting Inventory records
+12:30:15,031  INFO Configuration:1460 - configuring from resource: /hibernate.cfg.xml
+12:30:15,031  INFO Configuration:1437 - Configuration resource: /hibernate.cfg.xml
+12:30:15,246 DEBUG InventoryLifeCycle:244 - counting Inventory records
+12:30:15,246  INFO Configuration:1460 - configuring from resource: /hibernate.cfg.xml
+12:30:15,246  INFO Configuration:1437 - Configuration resource: /hibernate.cfg.xml
+12:30:31,145 DEBUG PreCaptureProperties:96 - Opening properties file: /Users/altheaparker/Documents/workspace-datashot-2/v1.0.9/target/PreCapture.properties
+12:30:31,235 DEBUG PreCaptureApp:120 - Loaded field mappings: ETHZ Entomology 1.0
+12:30:31,261 DEBUG PreCaptureApp:154 - Available print format definitions:
+12:30:31,261 DEBUG PreCaptureApp:162 - Full Sheet 8.5x11
+12:30:31,262 DEBUG PreCaptureApp:162 - Two Half Sheets on 8.5x11
+12:30:31,262 DEBUG PreCaptureApp:162 - Half Sheet 4.25x11 Custom
+12:30:31,262 DEBUG PreCaptureApp:162 - Multiple 2.5x4 slips on 8.5x11
+12:30:31,262 DEBUG PreCaptureApp:162 - Multiple 1.5x3 slips on 8.5x11
+12:30:31,262 DEBUG PreCaptureApp:160 - Multiple 1.5x3 slips on 8.5x11 Larger *
+12:30:31,262 DEBUG PreCaptureApp:162 - 2.3x4" Dymo LabelWriter
+12:30:31,262 DEBUG PreCaptureApp:162 - 4x2.3"Label
+12:30:31,284 DEBUG PreCaptureApp:189 - Apache Derby 10.9.1.0
+12:30:31,295  INFO Environment:543 - Hibernate 3.3.1.GA
+12:30:31,297  INFO Environment:576 - hibernate.properties not found
+12:30:31,300  INFO Environment:709 - Bytecode provider name : javassist
+12:30:31,302  INFO Environment:627 - using JDK 1.4 java.sql.Timestamp handling
+12:30:31,327  INFO Configuration:1460 - configuring from resource: /hibernate.cfg.xml
+12:30:31,328  INFO Configuration:1437 - Configuration resource: /hibernate.cfg.xml
+12:30:31,361  INFO Configuration:586 - Reading mappings from resource : edu/harvard/mcz/precapture/data/Inventory.hbm.xml
+12:30:31,401  INFO HbmBinder:322 - Mapping class: edu.harvard.mcz.precapture.data.Inventory -> INVENTORY
+12:30:31,406  INFO Configuration:586 - Reading mappings from resource : edu/harvard/mcz/precapture/data/UnitTrayLabel.hbm.xml
+12:30:31,420  INFO HbmBinder:322 - Mapping class: edu.harvard.mcz.precapture.data.UnitTrayLabel -> UNIT_TRAY_LABEL
+12:30:31,421  INFO Configuration:1575 - Configured SessionFactory: null
+12:30:31,451  INFO DriverManagerConnectionProvider:64 - Using Hibernate built-in connection pool (not for production use!)
+12:30:31,451  INFO DriverManagerConnectionProvider:65 - Hibernate connection pool size: 1
+12:30:31,452  INFO DriverManagerConnectionProvider:68 - autocommit mode: false
+12:30:31,467  INFO DriverManagerConnectionProvider:103 - using driver: org.h2.Driver at URL: jdbc:h2:PRECAPTURE2;INIT=create schema IF NOT EXISTS precapture
+12:30:31,467  INFO DriverManagerConnectionProvider:109 - connection properties: {user=sa, password=****}
+12:30:33,702  INFO SettingsFactory:116 - RDBMS: H2, version: 1.3.167 (2012-05-23)
+12:30:33,702  INFO SettingsFactory:117 - JDBC driver: H2 JDBC Driver, version: 1.3.167 (2012-05-23)
+12:30:33,711  INFO Dialect:175 - Using dialect: org.hibernate.dialect.H2Dialect
+12:30:33,713  INFO TransactionFactoryFactory:59 - Using default transaction strategy (direct JDBC transactions)
+12:30:33,715  INFO TransactionManagerLookupFactory:80 - No TransactionManagerLookup configured (in JTA environment, use of read-write or transactional second-level cache is not recommended)
+12:30:33,716  INFO SettingsFactory:170 - Automatic flush during beforeCompletion(): disabled
+12:30:33,716  INFO SettingsFactory:174 - Automatic session close at end of transaction: disabled
+12:30:33,716  INFO SettingsFactory:181 - JDBC batch size: 15
+12:30:33,716  INFO SettingsFactory:184 - JDBC batch updates for versioned data: disabled
+12:30:33,716  INFO SettingsFactory:189 - Scrollable result sets: enabled
+12:30:33,716  INFO SettingsFactory:197 - JDBC3 getGeneratedKeys(): enabled
+12:30:33,717  INFO SettingsFactory:205 - Connection release mode: auto
+12:30:33,717  INFO SettingsFactory:223 - Default schema: PUBLIC
+12:30:33,717  INFO SettingsFactory:232 - Default batch fetch size: 1
+12:30:33,717  INFO SettingsFactory:236 - Generate SQL with comments: disabled
+12:30:33,717  INFO SettingsFactory:240 - Order SQL updates by primary key: disabled
+12:30:33,717  INFO SettingsFactory:244 - Order SQL inserts for batching: disabled
+12:30:33,717  INFO SettingsFactory:420 - Query translator: org.hibernate.hql.ast.ASTQueryTranslatorFactory
+12:30:33,718  INFO ASTQueryTranslatorFactory:47 - Using ASTQueryTranslatorFactory
+12:30:33,718  INFO SettingsFactory:252 - Query language substitutions: {}
+12:30:33,718  INFO SettingsFactory:257 - JPA-QL strict compliance: disabled
+12:30:33,718  INFO SettingsFactory:262 - Second-level cache: enabled
+12:30:33,718  INFO SettingsFactory:266 - Query cache: disabled
+12:30:33,718  INFO SettingsFactory:405 - Cache region factory : org.hibernate.cache.impl.NoCachingRegionFactory
+12:30:33,719  INFO SettingsFactory:276 - Optimize cache for minimal puts: disabled
+12:30:33,719  INFO SettingsFactory:285 - Structured second-level cache entries: disabled
+12:30:33,720  INFO SettingsFactory:305 - Echoing all SQL to stdout
+12:30:33,720  INFO SettingsFactory:314 - Statistics: disabled
+12:30:33,721  INFO SettingsFactory:318 - Deleted entity synthetic identifier rollback: disabled
+12:30:33,721  INFO SettingsFactory:333 - Default entity-mode: pojo
+12:30:33,721  INFO SettingsFactory:337 - Named query checking : enabled
+12:30:33,746  INFO SessionFactoryImpl:187 - building session factory
+12:30:33,840  INFO SessionFactoryObjectFactory:105 - Not binding factory to JNDI, no JNDI name configured
+12:30:33,891 DEBUG InventoryLifeCycle:274 - counting Inventory records
+12:30:33,964 DEBUG InventoryLifeCycle:281 - count successful, count= 0
+12:30:33,964 DEBUG PreCaptureApp:199 - Inventory Records: 0
+12:30:33,965 DEBUG UnitTrayLabelLifeCycle:510 - counting UnitTrayLabel records
+12:30:33,969 DEBUG UnitTrayLabelLifeCycle:517 - find all successful, count= 0
+12:30:33,969 DEBUG PreCaptureApp:202 - Unit Tray Label Records: 0
+12:30:33,996 DEBUG MainMenu:158 - jar:file:/Users/altheaparker/Documents/workspace-datashot-2/v1.0.9/target/PreCaptureApp-1.1.1-jar-with-dependencies.jar!/edu/harvard/mcz/precapture/resources/help/helpset.hs
+12:30:34,040 DEBUG UnitTrayLabelLifeCycle:542 - finding distinct families in UnitTrayLabel
+12:30:34,047 DEBUG UnitTrayLabelLifeCycle:549 - find distinct families successful, result size: 1
+12:30:34,058 DEBUG UnitTrayLabelLifeCycle:572 - finding distinct genera in UnitTrayLabel
+12:30:34,061 DEBUG UnitTrayLabelLifeCycle:579 - find distinct families successful, result size: 1
+12:30:34,067 DEBUG UnitTrayLabelComboBoxModel:51 - invoked UnitTrayLabelComboBoxModel()
+12:30:34,069 DEBUG ContainerEntryPanel:167 - About to create model for taxon picker
+12:30:34,069 DEBUG UnitTrayLabelLifeCycle:391 - finding all UnitTrayLabel start Mon Jul 09 12:30:34 CEST 2018
+12:30:34,073 DEBUG UnitTrayLabelLifeCycle:399 - find all successful, result size: 0
+12:30:34,073 DEBUG UnitTrayLabelLifeCycle:406 - finding all UnitTrayLabel end Mon Jul 09 12:30:34 CEST 2018
+12:30:34,074 DEBUG UnitTrayLabelComboBoxModel:78 - invoked UnitTrayLabelComboBoxModel(list unit tray label
+12:30:34,074 DEBUG ContainerEntryPanel:169 - Created model for taxon picker
+12:30:34,080 DEBUG ContainerEntryPanel:189 - Iterating through field list
+12:30:34,102 DEBUG InventoryLifeCycle:214 - finding all Inventory records
+12:30:34,105 DEBUG InventoryLifeCycle:222 - find all successful, result size: 0
+12:31:05,805 DEBUG ContainerEntryPanel:177 - comboBoxChanged
+12:31:05,805 DEBUG ContainerEntryPanel:318 - dwc:family
+12:31:05,805 DEBUG ContainerEntryPanel:318 - dwc:subfamily
+12:31:05,806 DEBUG ContainerEntryPanel:318 - dwc:tribe
+12:31:05,806 DEBUG ContainerEntryPanel:318 - dwc:genus
+12:31:05,806 DEBUG ContainerEntryPanel:318 - dwc:specificEpithet
+12:31:05,806 DEBUG ContainerEntryPanel:318 - dwc:subspecificEpithet
+12:31:05,807 DEBUG ContainerEntryPanel:318 - dwc:infraspecificRank
+12:31:05,807 DEBUG ContainerEntryPanel:318 - dwc:infraspecificEpithet
+12:31:05,807 DEBUG ContainerEntryPanel:318 - dwc:authorship
+12:31:05,807 DEBUG ContainerEntryPanel:318 - dwc:collectionName
+12:31:05,808 DEBUG ContainerEntryPanel:318 - dwc:identifiedBy
+12:31:06,269 DEBUG FilteringJComboBox:182 - java.awt.FocusEvent[FOCUS_LOST,permanent,opposite=javax.swing.JTextField[,144,34,488x19,layout=javax.swing.plaf.basic.BasicTextUI$UpdateHandler,alignmentX=0.0,alignmentY=0.0,border=javax.swing.plaf.BorderUIResource$CompoundBorderUIResource@4a87c86e,flags=424,maximumSize=,minimumSize=,preferredSize=,caretColor=sun.swing.PrintColorUIResource[r=51,g=51,b=51],disabledTextColor=javax.swing.plaf.ColorUIResource[r=184,g=207,b=229],editable=true,margin=javax.swing.plaf.InsetsUIResource[top=0,left=0,bottom=0,right=0],selectedTextColor=sun.swing.PrintColorUIResource[r=51,g=51,b=51],selectionColor=javax.swing.plaf.ColorUIResource[r=184,g=207,b=229],columns=10,columnWidth=11,command=,horizontalAlignment=LEADING],cause=UNKNOWN] on javax.swing.plaf.metal.MetalComboBoxEditor$1[,0,0,468x24,layout=javax.swing.plaf.basic.BasicTextUI$UpdateHandler,alignmentX=0.0,alignmentY=0.0,border=javax.swing.plaf.metal.MetalComboBoxEditor$EditorBorder@5301432a,flags=8388904,maximumSize=,minimumSize=,preferredSize=,caretColor=sun.swing.PrintColorUIResource[r=51,g=51,b=51],disabledTextColor=javax.swing.plaf.ColorUIResource[r=184,g=207,b=229],editable=true,margin=javax.swing.plaf.InsetsUIResource[top=0,left=0,bottom=0,right=0],selectedTextColor=sun.swing.PrintColorUIResource[r=51,g=51,b=51],selectionColor=javax.swing.plaf.ColorUIResource[r=184,g=207,b=229],columns=9,columnWidth=12,command=,horizontalAlignment=LEADING]
+12:31:19,017 DEBUG LabelEncoder:173 - Invoked printList 
+12:31:19,017 DEBUG LabelEncoder:195 - Multiple 1.5x3 slips on 8.5x11 Larger
+12:31:19,017 DEBUG LabelEncoder:196 - HORIZONTAL
+12:31:19,118 DEBUG LabelEncoder:215 - relWidthTextCell = 2.96
+12:31:19,119 DEBUG LabelEncoder:216 - relWidthBarcodeCell = 2.0
+12:31:19,128 DEBUG LabelEncoder:418 - Table Width Percent = 85.62092
+12:31:19,128 DEBUG LabelEncoder:433 - Width:524.0
+12:31:19,128 DEBUG LabelEncoder:279 - Width of barcode cell in points: 87.0
+12:31:19,129 DEBUG LabelEncoder:288 - Labels per column = 6
+12:31:19,129 DEBUG LabelEncoder:289 - Cells per page = 24
+12:31:19,129 DEBUG LabelEncoder:302 - the fam the subfam tribe genus sp. sub 
+12:31:19,129 DEBUG LabelEncoder:303 - Label: 0 the fam the subfam tribe genus sp. sub 
+12:31:19,129 DEBUG LabelEncoder:308 - Copy 1 of 1
+12:31:19,131 DEBUG ContainerLabel:254 - 0
+12:31:19,131 DEBUG ContainerLabel:269 - the fam
+12:31:19,135 DEBUG ContainerLabel:308 - null
+12:31:19,135 DEBUG ContainerLabel:254 - 1
+12:31:19,136 DEBUG ContainerLabel:269 - the subfam
+12:31:19,136 DEBUG ContainerLabel:308 - null
+12:31:19,136 DEBUG ContainerLabel:254 - 2
+12:31:19,136 DEBUG ContainerLabel:269 - tribe
+12:31:19,136 DEBUG ContainerLabel:308 - null
+12:31:19,136 DEBUG ContainerLabel:254 - 3
+12:31:19,137 DEBUG ContainerLabel:257 - The fam: The subfam: Tribe 
+12:31:19,137 DEBUG ContainerLabel:269 - genus
+12:31:19,137 DEBUG ContainerLabel:308 - null
+12:31:19,137 DEBUG ContainerLabel:254 - 4
+12:31:19,138 DEBUG ContainerLabel:269 - sp.
+12:31:19,138 DEBUG ContainerLabel:308 - null
+12:31:19,138 DEBUG ContainerLabel:254 - 5
+12:31:19,138 DEBUG ContainerLabel:269 - sub
+12:31:19,138 DEBUG ContainerLabel:308 - null
+12:31:19,138 DEBUG ContainerLabel:254 - 6
+12:31:19,139 DEBUG ContainerLabel:269 - 
+12:31:19,139 DEBUG ContainerLabel:254 - 7
+12:31:19,139 DEBUG ContainerLabel:269 - 
+12:31:19,139 DEBUG ContainerLabel:254 - 8
+12:31:19,139 DEBUG ContainerLabel:257 - Genus sp. sub 
+12:31:19,139 DEBUG ContainerLabel:269 - 
+12:31:19,140 DEBUG ContainerLabel:254 - 9
+12:31:19,140 DEBUG ContainerLabel:269 - 
+12:31:19,140 DEBUG ContainerLabel:254 - 10
+12:31:19,140 DEBUG ContainerLabel:269 - 
+12:31:19,140 DEBUG ContainerLabel:319 - 
+12:31:19,153 DEBUG LabelEncoder:339 - Cells 2 of 24 cells per page.
+12:31:19,154 DEBUG LabelEncoder:361 - Adding remaining cells in partial page
+12:31:19,198 DEBUG LabelEncoder:369 - Table has 4 columns and 6 rows 
+12:31:19,323 DEBUG PrintingUtility:120 - Number of matching printing services =  4
+12:31:19,323 DEBUG PrintingUtility:140 - Available printing services 4
+12:31:19,328 DEBUG PrintingUtility:142 - HP LaserJet 1018
+12:31:19,330 DEBUG PrintingUtility:142 - 129.132.77.112
+12:31:19,333 DEBUG PrintingUtility:142 - HP LaserJet 200 color M251nw (3785FA)
+12:31:19,336 DEBUG PrintingUtility:142 - PDFwriter
+12:31:23,275 DEBUG PrintingUtility:150 - Printing to PDFwriter
+12:31:23,306 DEBUG LabelEncoder:401 - printList Done. Success = true
+12:32:35,568 DEBUG LabelEncoder:173 - Invoked printList 
+12:32:35,568 DEBUG LabelEncoder:195 - Multiple 1.5x3 slips on 8.5x11 Larger
+12:32:35,568 DEBUG LabelEncoder:196 - HORIZONTAL
+12:32:35,577 DEBUG LabelEncoder:215 - relWidthTextCell = 2.96
+12:32:35,578 DEBUG LabelEncoder:216 - relWidthBarcodeCell = 2.0
+12:32:35,578 DEBUG LabelEncoder:418 - Table Width Percent = 85.62092
+12:32:35,578 DEBUG LabelEncoder:433 - Width:524.0
+12:32:35,578 DEBUG LabelEncoder:279 - Width of barcode cell in points: 87.0
+12:32:35,578 DEBUG LabelEncoder:288 - Labels per column = 6
+12:32:35,578 DEBUG LabelEncoder:289 - Cells per page = 24
+12:32:35,578 DEBUG LabelEncoder:302 - the fam the subfam tribe genus blah sub 
+12:32:35,579 DEBUG LabelEncoder:303 - Label: 0 the fam the subfam tribe genus blah sub 
+12:32:35,579 DEBUG LabelEncoder:308 - Copy 1 of 1
+12:32:35,579 DEBUG ContainerLabel:254 - 0
+12:32:35,579 DEBUG ContainerLabel:269 - the fam
+12:32:35,579 DEBUG ContainerLabel:308 - null
+12:32:35,579 DEBUG ContainerLabel:254 - 1
+12:32:35,579 DEBUG ContainerLabel:269 - the subfam
+12:32:35,579 DEBUG ContainerLabel:308 - null
+12:32:35,580 DEBUG ContainerLabel:254 - 2
+12:32:35,580 DEBUG ContainerLabel:269 - tribe
+12:32:35,580 DEBUG ContainerLabel:308 - null
+12:32:35,580 DEBUG ContainerLabel:254 - 3
+12:32:35,580 DEBUG ContainerLabel:257 - The fam: The subfam: Tribe 
+12:32:35,580 DEBUG ContainerLabel:269 - genus
+12:32:35,580 DEBUG ContainerLabel:308 - null
+12:32:35,581 DEBUG ContainerLabel:254 - 4
+12:32:35,581 DEBUG ContainerLabel:269 - blah
+12:32:35,581 DEBUG ContainerLabel:308 - null
+12:32:35,581 DEBUG ContainerLabel:254 - 5
+12:32:35,581 DEBUG ContainerLabel:269 - sub
+12:32:35,581 DEBUG ContainerLabel:308 - null
+12:32:35,581 DEBUG ContainerLabel:254 - 6
+12:32:35,581 DEBUG ContainerLabel:269 - 
+12:32:35,582 DEBUG ContainerLabel:254 - 7
+12:32:35,582 DEBUG ContainerLabel:269 - 
+12:32:35,582 DEBUG ContainerLabel:254 - 8
+12:32:35,582 DEBUG ContainerLabel:257 - Genus blah sub 
+12:32:35,582 DEBUG ContainerLabel:269 - 
+12:32:35,582 DEBUG ContainerLabel:254 - 9
+12:32:35,582 DEBUG ContainerLabel:269 - 
+12:32:35,582 DEBUG ContainerLabel:254 - 10
+12:32:35,583 DEBUG ContainerLabel:269 - 
+12:32:35,583 DEBUG ContainerLabel:319 - 
+12:32:35,588 DEBUG LabelEncoder:339 - Cells 2 of 24 cells per page.
+12:32:35,588 DEBUG LabelEncoder:361 - Adding remaining cells in partial page
+12:32:35,589 DEBUG LabelEncoder:369 - Table has 4 columns and 6 rows 
+12:32:35,592 DEBUG PrintingUtility:120 - Number of matching printing services =  4
+12:32:35,593 DEBUG PrintingUtility:140 - Available printing services 4
+12:32:35,597 DEBUG PrintingUtility:142 - HP LaserJet 1018
+12:32:35,600 DEBUG PrintingUtility:142 - 129.132.77.112
+12:32:35,602 DEBUG PrintingUtility:142 - HP LaserJet 200 color M251nw (3785FA)
+12:32:35,611 DEBUG PrintingUtility:142 - PDFwriter
+12:32:38,841 DEBUG PrintingUtility:150 - Printing to PDFwriter
+12:32:38,870 DEBUG LabelEncoder:401 - printList Done. Success = true
+15:48:03,503 DEBUG InventoryLifeCycle:244 - counting Inventory records
+15:48:03,507 DEBUG InventoryLifeCycle:251 - count successful, count= 0
+15:48:03,508 DEBUG UnitTrayLabelLifeCycle:481 - counting UnitTrayLabel records
+15:48:03,509 DEBUG UnitTrayLabelLifeCycle:488 - find all successful, count= 0
+15:48:03,509  INFO SessionFactoryImpl:805 - closing
+15:48:03,509  INFO DriverManagerConnectionProvider:170 - cleaning up connection pool: jdbc:h2:PRECAPTURE2;INIT=create schema IF NOT EXISTS precapture
+15:48:03,533 DEBUG PreCaptureApp:332 - Exiting.
