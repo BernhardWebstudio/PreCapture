@@ -1,6 +1,6 @@
-Family,Genus,SpecificEpithet,SubspecificEpithet,InfraspecificRank,InfraspecificEpithet,Authorship
-Psychidae,Dahlica,lichenella,fumosella,bisex. form,,"(Heinemann, 1879)"
-Psychidae,Dahlica,lichenella,fumosella,bisex.,,"(Heinemann, 1879)"
-Psychidae,Dahlica,lichenella,fumosella,bisex,,"(Heinemann, 1879)"
-Psychidae,Dahlica,lichenella,fumosella,form,bisex,"(Heinemann, 1879)"
-Psychidae,Dahlica,lichenella,lichenella,parth. form,,"(Linnaeus, 1761)"
+Family,Genus,SpecificEpithet,SubspecificEpithet,InfraspecificEpithet,InfraspecificRank,Authorship
+Psychidae,Dahlica,lichenella,fumosella,,bisex. form,"(Heinemann, 1879)"
+Psychidae,Dahlica,lichenella,fumosella,,bisex.,"(Heinemann, 1879)"
+Psychidae,Dahlica,lichenella,fumosella,,bisex,"(Heinemann, 1879)"
+Psychidae,Dahlica,lichenella,fumosella,bisex,form,"(Heinemann, 1879)"
+Psychidae,Dahlica,lichenella,lichenella,,parth. form,"(Linnaeus, 1761)"

@@ -2,8 +2,9 @@ package edu.harvard.mcz.precapture.data;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.hibernate.*;
-import org.hibernate.cfg.*;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
 
 // import edu.harvard.mcz.precapture.LoginDialog;
 // import edu.harvard.mcz.precapture.MainFrame;
@@ -11,47 +12,46 @@ import org.hibernate.cfg.*;
 
 /**
  * Singleton class to obtain access to Hibernate sessions, used in the *LifeCycle classes.
- *  
+ * <p>
  * Modified from the hibernate tutorial
  * http://www.hibernate.org/hib_docs/v3/reference/en-US/html/tutorial-firstapp.html
  * Changed singleton implementation to allow loading of credentials from config and dialog at runtime
  */
 public class HibernateUtil {
 
-	private static SessionFactory sessionFactory = null;
-	
-	private static final Log log = LogFactory.getLog(HibernateUtil.class);
-	
-	public static void terminateSessionFactory() {
-		try { 
-			sessionFactory.getCurrentSession().cancelQuery();
-			sessionFactory.getCurrentSession().clear();
-			sessionFactory.getCurrentSession().close();
-		} catch (Exception e) { 
-		} finally { 
-			try { 
-				sessionFactory.close();
-			} catch  (Exception e1) { 
-			} finally { 
-				sessionFactory = null;
-			} 
-		}
-	}
-	
+    private static final Log log = LogFactory.getLog(HibernateUtil.class);
+    private static SessionFactory sessionFactory = null;
 
-	/**
-	 *  Using the Hibernate configuration in Configuration from hibernate.cfg.xml
-	 *  create a Hibernate sessionFactory.  Method is private as the the session factory 
-	 *  should be a singleton, invoke getSessionFactory() to create or access a session.
-	 *  
-	 *  @see edu.harvard.mcz.precapture.data.HibernateUtil#getSessionFactory
-	 */
-	private static void createSessionFactory() {
-			Configuration config = new Configuration().configure();
-			sessionFactory = config.buildSessionFactory();
-			Session session = sessionFactory.getCurrentSession();
-			session.beginTransaction();
-			session.close();									
+    public static void terminateSessionFactory() {
+        try {
+            sessionFactory.getCurrentSession().cancelQuery();
+            sessionFactory.getCurrentSession().clear();
+            sessionFactory.getCurrentSession().close();
+        } catch (Exception e) {
+        } finally {
+            try {
+                sessionFactory.close();
+            } catch (Exception e1) {
+            } finally {
+                sessionFactory = null;
+            }
+        }
+    }
+
+
+    /**
+     * Using the Hibernate configuration in Configuration from hibernate.cfg.xml
+     * create a Hibernate sessionFactory.  Method is private as the the session factory
+     * should be a singleton, invoke getSessionFactory() to create or access a session.
+     *
+     * @see edu.harvard.mcz.precapture.data.HibernateUtil#getSessionFactory
+     */
+    private static void createSessionFactory() {
+        Configuration config = new Configuration().configure();
+        sessionFactory = config.buildSessionFactory();
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        session.close();
 /*			
 		try {
 			// Create the Configuration from hibernate.cfg.xml
@@ -166,52 +166,52 @@ public class HibernateUtil {
 			System.out.println("Cause" + ex.getCause().getMessage());
 			throw new ExceptionInInitializerError(ex);
 		}
-*/		
-	}
-	
-	
+*/
+    }
+
+
     /**
      * Call this method to obtain a Hibernate Session.
-     * <BR>  
+     * <BR>
      * Usage:
      * <pre>
-         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-	     session.beginTransaction();
-	   </pre>
-     * 
+     * Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+     * session.beginTransaction();
+     * </pre>
+     *
      * @return the Hibernate SessionFactory.
      */
-	public static SessionFactory getSessionFactory() {
-		if (sessionFactory==null) { 
-			createSessionFactory();
-		}
-		return sessionFactory;
-	}
+    public static SessionFactory getSessionFactory() {
+        if (sessionFactory == null) {
+            createSessionFactory();
+        }
+        return sessionFactory;
+    }
 
-	/**
-	 * Provide a display of the configured driver_class.  Intended to show, in 
-	 * the UI, the user the value of driver_class.
-	 * 
-	 * @return a string representing the connection.driver_class in the 
-	 * hibernate configuration file.
-	 */
-	public static String getDriverClassString() { 
-		Configuration config = new Configuration().configure();
-		return config.getProperties().getProperty("hibernate.connection.driver_class");
-	}
-	
-	/**
-	 * Provide a display of the configured database connection url.  Intended to
-	 * show the user the value of connection.url in the UI.
-	 * 
-	 * @return a string representing the connection.url in the hibernate
-	 * configuration file.
-	 */
-    public static String getConnectionURL() { 
-		Configuration config = new Configuration().configure();
-		return config.getProperties().getProperty("hibernate.connection.url");
-	}
-	
+    /**
+     * Provide a display of the configured driver_class.  Intended to show, in
+     * the UI, the user the value of driver_class.
+     *
+     * @return a string representing the connection.driver_class in the
+     * hibernate configuration file.
+     */
+    public static String getDriverClassString() {
+        Configuration config = new Configuration().configure();
+        return config.getProperties().getProperty("hibernate.connection.driver_class");
+    }
+
+    /**
+     * Provide a display of the configured database connection url.  Intended to
+     * show the user the value of connection.url in the UI.
+     *
+     * @return a string representing the connection.url in the hibernate
+     * configuration file.
+     */
+    public static String getConnectionURL() {
+        Configuration config = new Configuration().configure();
+        return config.getProperties().getProperty("hibernate.connection.url");
+    }
+
 }
 	
 

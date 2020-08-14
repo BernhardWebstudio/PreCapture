@@ -8,19 +8,19 @@
 
 package edu.harvard.mcz.precapture.xml;
 
-import java.util.ArrayList;
-import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
  * <p>Java class for Field complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="Field">
  *   &lt;complexContent>
@@ -41,21 +41,19 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Field", propOrder = {
-    "label",
-    "code",
-    "type",
-    "vocabularyTerm",
-    "optional",
-    "useItalic",
-    "newLine",
-    "fontSize",
-    "defaultValue",
-    "suffix"
+        "label",
+        "code",
+        "type",
+        "vocabularyTerm",
+        "optional",
+        "useItalic",
+        "newLine",
+        "fontSize",
+        "defaultValue",
+        "suffix"
 })
 public class Field {
 
@@ -82,11 +80,9 @@ public class Field {
 
     /**
      * Gets the value of the label property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getLabel() {
         return label;
@@ -94,11 +90,9 @@ public class Field {
 
     /**
      * Sets the value of the label property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setLabel(String value) {
         this.label = value;
@@ -106,11 +100,9 @@ public class Field {
 
     /**
      * Gets the value of the code property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getCode() {
         return code;
@@ -118,11 +110,9 @@ public class Field {
 
     /**
      * Sets the value of the code property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setCode(String value) {
         this.code = value;
@@ -130,11 +120,9 @@ public class Field {
 
     /**
      * Gets the value of the type property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getType() {
         return type;
@@ -142,11 +130,9 @@ public class Field {
 
     /**
      * Sets the value of the type property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setType(String value) {
         this.type = value;
@@ -154,11 +140,9 @@ public class Field {
 
     /**
      * Gets the value of the vocabularyTerm property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getVocabularyTerm() {
         return vocabularyTerm;
@@ -166,11 +150,9 @@ public class Field {
 
     /**
      * Sets the value of the vocabularyTerm property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setVocabularyTerm(String value) {
         this.vocabularyTerm = value;
@@ -178,7 +160,6 @@ public class Field {
 
     /**
      * Gets the value of the optional property.
-     * 
      */
     public boolean isOptional() {
         return optional;
@@ -186,7 +167,6 @@ public class Field {
 
     /**
      * Sets the value of the optional property.
-     * 
      */
     public void setOptional(boolean value) {
         this.optional = value;
@@ -194,7 +174,6 @@ public class Field {
 
     /**
      * Gets the value of the useItalic property.
-     * 
      */
     public boolean isUseItalic() {
         return useItalic;
@@ -202,7 +181,6 @@ public class Field {
 
     /**
      * Sets the value of the useItalic property.
-     * 
      */
     public void setUseItalic(boolean value) {
         this.useItalic = value;
@@ -210,7 +188,6 @@ public class Field {
 
     /**
      * Gets the value of the newLine property.
-     * 
      */
     public boolean isNewLine() {
         return newLine;
@@ -218,7 +195,6 @@ public class Field {
 
     /**
      * Sets the value of the newLine property.
-     * 
      */
     public void setNewLine(boolean value) {
         this.newLine = value;
@@ -226,7 +202,6 @@ public class Field {
 
     /**
      * Gets the value of the fontSize property.
-     * 
      */
     public int getFontSize() {
         return fontSize;
@@ -234,7 +209,6 @@ public class Field {
 
     /**
      * Sets the value of the fontSize property.
-     * 
      */
     public void setFontSize(int value) {
         this.fontSize = value;
@@ -242,25 +216,23 @@ public class Field {
 
     /**
      * Gets the value of the defaultValue property.
-     * 
+     *
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
      * This is why there is not a <CODE>set</CODE> method for the defaultValue property.
-     * 
+     *
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
      *    getDefaultValue().add(newItem);
      * </pre>
-     * 
-     * 
+     *
+     *
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link String }
-     * 
-     * 
      */
     public List<String> getDefaultValue() {
         if (defaultValue == null) {
@@ -269,18 +241,18 @@ public class Field {
         return this.defaultValue;
     }
 
-	/**
-	 * @return the suffix
-	 */
-	public String getSuffix() {
-		return suffix;
-	}
+    /**
+     * @return the suffix
+     */
+    public String getSuffix() {
+        return suffix;
+    }
 
-	/**
-	 * @param suffix the suffix to set
-	 */
-	public void setSuffix(String suffix) {
-		this.suffix = suffix;
-	}
+    /**
+     * @param suffix the suffix to set
+     */
+    public void setSuffix(String suffix) {
+        this.suffix = suffix;
+    }
 
 }

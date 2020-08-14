@@ -16,9 +16,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for LabelDefinitionType complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="LabelDefinitionType">
  *   &lt;complexContent>
@@ -39,23 +39,21 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "LabelDefinitionType", propOrder = {
-    "title",
-    "units",
-    "paperHeight",
-    "paperWidth",
-    "margins",
-    "columns",
-    "labelWidth",
-    "labelHeight",
-    "textOrentation",
-    "fontDelta",
-    "relWidthTextCell",
-    "relWidthBarcodeCell"
+        "title",
+        "units",
+        "paperHeight",
+        "paperWidth",
+        "margins",
+        "columns",
+        "labelWidth",
+        "labelHeight",
+        "textOrentation",
+        "fontDelta",
+        "relWidthTextCell",
+        "relWidthBarcodeCell"
 })
 public class LabelDefinitionType {
 
@@ -83,15 +81,13 @@ public class LabelDefinitionType {
     protected float relWidthTextCell = 3f;
     @XmlElement(name = "RelWidthBarcodeCell")
     protected float relWidthBarcodeCell = 2f;
-    
-    
+
+
     /**
      * Gets the value of the title property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getTitle() {
         return title;
@@ -99,11 +95,9 @@ public class LabelDefinitionType {
 
     /**
      * Sets the value of the title property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setTitle(String value) {
         this.title = value;
@@ -111,11 +105,9 @@ public class LabelDefinitionType {
 
     /**
      * Gets the value of the units property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link UnitsType }
-     *     
+     *
+     * @return possible object is
+     * {@link UnitsType }
      */
     public UnitsType getUnits() {
         return units;
@@ -123,11 +115,9 @@ public class LabelDefinitionType {
 
     /**
      * Sets the value of the units property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link UnitsType }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link UnitsType }
      */
     public void setUnits(UnitsType value) {
         this.units = value;
@@ -135,7 +125,6 @@ public class LabelDefinitionType {
 
     /**
      * Gets the value of the paperHeight property.
-     * 
      */
     public float getPaperHeight() {
         return paperHeight;
@@ -143,7 +132,6 @@ public class LabelDefinitionType {
 
     /**
      * Sets the value of the paperHeight property.
-     * 
      */
     public void setPaperHeight(float value) {
         this.paperHeight = value;
@@ -151,7 +139,6 @@ public class LabelDefinitionType {
 
     /**
      * Gets the value of the paperWidth property.
-     * 
      */
     public float getPaperWidth() {
         return paperWidth;
@@ -159,7 +146,6 @@ public class LabelDefinitionType {
 
     /**
      * Sets the value of the paperWidth property.
-     * 
      */
     public void setPaperWidth(float value) {
         this.paperWidth = value;
@@ -167,7 +153,6 @@ public class LabelDefinitionType {
 
     /**
      * Gets the value of the margins property.
-     * 
      */
     public float getMargins() {
         return margins;
@@ -175,7 +160,6 @@ public class LabelDefinitionType {
 
     /**
      * Sets the value of the margins property.
-     * 
      */
     public void setMargins(float value) {
         this.margins = value;
@@ -183,7 +167,6 @@ public class LabelDefinitionType {
 
     /**
      * Gets the value of the columns property.
-     * 
      */
     public int getColumns() {
         return columns;
@@ -191,7 +174,6 @@ public class LabelDefinitionType {
 
     /**
      * Sets the value of the columns property.
-     * 
      */
     public void setColumns(int value) {
         this.columns = value;
@@ -199,7 +181,6 @@ public class LabelDefinitionType {
 
     /**
      * Gets the value of the labelWidth property.
-     * 
      */
     public float getLabelWidth() {
         return labelWidth;
@@ -207,7 +188,6 @@ public class LabelDefinitionType {
 
     /**
      * Sets the value of the labelWidth property.
-     * 
      */
     public void setLabelWidth(float value) {
         this.labelWidth = value;
@@ -215,7 +195,6 @@ public class LabelDefinitionType {
 
     /**
      * Gets the value of the labelHeight property.
-     * 
      */
     public float getLabelHeight() {
         return labelHeight;
@@ -223,7 +202,6 @@ public class LabelDefinitionType {
 
     /**
      * Sets the value of the labelHeight property.
-     * 
      */
     public void setLabelHeight(float value) {
         this.labelHeight = value;
@@ -231,11 +209,9 @@ public class LabelDefinitionType {
 
     /**
      * Gets the value of the textOrentation property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link TextOrentationType }
-     *     
+     *
+     * @return possible object is
+     * {@link TextOrentationType }
      */
     public TextOrentationType getTextOrentation() {
         return textOrentation;
@@ -243,56 +219,54 @@ public class LabelDefinitionType {
 
     /**
      * Sets the value of the textOrentation property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link TextOrentationType }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link TextOrentationType }
      */
     public void setTextOrentation(TextOrentationType value) {
         this.textOrentation = value;
     }
 
-	/**
-	 * @return the fontDelta
-	 */
-	public float getFontDelta() {
-		return fontDelta;
-	}
+    /**
+     * @return the fontDelta
+     */
+    public float getFontDelta() {
+        return fontDelta;
+    }
 
-	/**
-	 * @param fontDelta the fontDelta to set
-	 */
-	public void setFontDelta(float fontDelta) {
-		this.fontDelta = fontDelta;
-	}
+    /**
+     * @param fontDelta the fontDelta to set
+     */
+    public void setFontDelta(float fontDelta) {
+        this.fontDelta = fontDelta;
+    }
 
-	/**
-	 * @return the relWidthTextCell
-	 */
-	public float getRelWidthTextCell() {
-		return relWidthTextCell;
-	}
+    /**
+     * @return the relWidthTextCell
+     */
+    public float getRelWidthTextCell() {
+        return relWidthTextCell;
+    }
 
-	/**
-	 * @param relWidthTextCell the relWidthTextCell to set
-	 */
-	public void setRelWidthTextCell(float relWidthTextCell) {
-		this.relWidthTextCell = relWidthTextCell;
-	}
+    /**
+     * @param relWidthTextCell the relWidthTextCell to set
+     */
+    public void setRelWidthTextCell(float relWidthTextCell) {
+        this.relWidthTextCell = relWidthTextCell;
+    }
 
-	/**
-	 * @return the relWidthBarcodeCell
-	 */
-	public float getRelWidthBarcodeCell() {
-		return relWidthBarcodeCell;
-	}
+    /**
+     * @return the relWidthBarcodeCell
+     */
+    public float getRelWidthBarcodeCell() {
+        return relWidthBarcodeCell;
+    }
 
-	/**
-	 * @param relWidthBarcodeCell the relWidthBarcodeCell to set
-	 */
-	public void setRelWidthBarcodeCell(float relWidthBarcodeCell) {
-		this.relWidthBarcodeCell = relWidthBarcodeCell;
-	}
+    /**
+     * @param relWidthBarcodeCell the relWidthBarcodeCell to set
+     */
+    public void setRelWidthBarcodeCell(float relWidthBarcodeCell) {
+        this.relWidthBarcodeCell = relWidthBarcodeCell;
+    }
 
 }

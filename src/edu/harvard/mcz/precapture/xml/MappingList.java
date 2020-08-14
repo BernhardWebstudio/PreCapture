@@ -8,20 +8,16 @@
 
 package edu.harvard.mcz.precapture.xml;
 
+import javax.xml.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
 
 
 /**
  * <p>Java class for MappingList complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="MappingList">
  *   &lt;complexContent>
@@ -35,15 +31,13 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
-@XmlRootElement(name="FieldMapping")
+@XmlRootElement(name = "FieldMapping")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "MappingList", propOrder = {
-    "fieldInList",
-    "supportedProject",
-    "version"
+        "fieldInList",
+        "supportedProject",
+        "version"
 })
 public class MappingList {
 
@@ -56,25 +50,23 @@ public class MappingList {
 
     /**
      * Gets the value of the fieldInList property.
-     * 
+     *
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
      * This is why there is not a <CODE>set</CODE> method for the fieldInList property.
-     * 
+     *
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
      *    getFieldInList().add(newItem);
      * </pre>
-     * 
-     * 
+     *
+     *
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link Field }
-     * 
-     * 
      */
     public List<Field> getFieldInList() {
         if (fieldInList == null) {
@@ -85,25 +77,23 @@ public class MappingList {
 
     /**
      * Gets the value of the supportedProject property.
-     * 
+     *
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
      * This is why there is not a <CODE>set</CODE> method for the supportedProject property.
-     * 
+     *
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
      *    getSupportedProject().add(newItem);
      * </pre>
-     * 
-     * 
+     *
+     *
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link String }
-     * 
-     * 
      */
     public List<String> getSupportedProject() {
         if (supportedProject == null) {
@@ -114,11 +104,9 @@ public class MappingList {
 
     /**
      * Gets the value of the version property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getVersion() {
         return version;
@@ -126,11 +114,9 @@ public class MappingList {
 
     /**
      * Sets the value of the version property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setVersion(String value) {
         this.version = value;
