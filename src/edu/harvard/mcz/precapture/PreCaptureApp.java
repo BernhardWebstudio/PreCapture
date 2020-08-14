@@ -61,18 +61,15 @@ import edu.harvard.mcz.precapture.xml.labels.LabelDefinitionType;
 
 /**
  * Launch the Pre-Capture Label generation Application.
- * 
- * @author mole
  *
- * $Id: PreCaptureApp.java 142 2016-09-16 15:26:27Z chicoreus $ 
  */
 public class PreCaptureApp {
 
 	public static final String NAME = "PreCaptureApp";
-	public static final String VERSION = "1.0.9";
-	public static final String SVN_ID = "$Id: PreCaptureApp.java 142 2016-09-16 15:26:27Z chicoreus $";
-	public static final String AUTHORS = "Paul J. Morris";
-	public static final String COPYRIGHT = "Copyright © 2012 President and Fellows of Harvard College";
+	public static final String VERSION = "1.1.0";
+	public static final String SVN_ID = "$Id: PreCaptureApp.java 145 2020-08-14 15:26:27Z chicoreus $";
+	public static final String AUTHORS = "Paul J. Morris, Tim Bernhard";
+	public static final String COPYRIGHT = "Copyright © 2012 President and Fellows of Harvard College, © 2020 Tim Bernhard and ETH Zurich ";
 	public static final String NARATIVE = "This code originates with the Museum of Compative Zoology's internally funded Lepidoptera project workflow and data capture application, DataShot.  It has been extended to this PreCapture application with support from the US National Science Foundation funded NE Vascular Plant TCN, NSF:DBI 1209149.";
 	public static final String LICENSE = "Version 2 of the GNU General Public License";
 	public static final String LIBRARIES = "Apache commons-collections, Apache derby, Hibernate, iText, javassist, javacsv, jgoodies, json-lib, pdf-renderer, pdfbox, zxing";
@@ -102,32 +99,18 @@ public class PreCaptureApp {
 			String resource = PreCaptureSingleton.getInstance().getProperties().getProperties().getProperty(PreCaptureProperties.KEY_FIELDMAPPING);
 			InputStream stream = PreCaptureApp.class.getResourceAsStream(resource);
 			if (stream!=null) {
-				JAXBContext jc;
 				try {
-
-					jc = JAXBContext.newInstance( edu.harvard.mcz.precapture.xml.MappingList.class );
-					Unmarshaller u = jc.createUnmarshaller();
-					MappingList mappingList = null;
-					mappingList = (MappingList)u.unmarshal(stream);
-					PreCaptureSingleton.getInstance().setMappingList(mappingList);
-
-					StringBuffer projects = new StringBuffer();
-					List<String> lp = mappingList.getSupportedProject();
-					Iterator<String> i = lp.iterator();
-					while (i.hasNext()) { 
-						projects.append(i.next()).append(" ");
-					}
-					log.debug("Loaded field mappings: " + projects.toString() + mappingList.getVersion());
-
+					loadFieldMappings(stream, log);
 				} catch (JAXBException e) {
-					String message = "Unable to load field mappings.  JAXBException. \nYou may be missing @XmlRootElement(name=FieldMapping) from MappingList.java. \nThe xml document you selected might not be valid.";
-					
+					String message = "Unable to load field mappings. JAXBException: " + e.getMessage();
+					// You may be missing @XmlRootElement(name=FieldMapping) from MappingList.java.
+					// The xml document you selected might not be valid.
 					// You will need to add the annotation: @XmlRootElement(name="FieldMapping") to MappingList.java
 					// if you have regenerated the imagecapture.xml classes from the schema.
 					
 					// Invalid xml documents also end up here.
 					log.error(message);
-					log.error(e.getMessage());
+					log.error(e);
 					throw new StartupFailedException(message);
 				}
 			} else { 
@@ -142,11 +125,9 @@ public class PreCaptureApp {
 			if (printstream!=null) {
 				JAXBContext jc;
 				try {
-
 					jc = JAXBContext.newInstance( edu.harvard.mcz.precapture.xml.labels.LabelDefinitionListType.class );
 					Unmarshaller u = jc.createUnmarshaller();
-					LabelDefinitionListType printFormatDefintionList = null;
-					printFormatDefintionList = (LabelDefinitionListType)u.unmarshal(printstream);
+					LabelDefinitionListType printFormatDefintionList = (LabelDefinitionListType)u.unmarshal(printstream);
 					PreCaptureSingleton.getInstance().setPrintFormatDefinitionList(printFormatDefintionList);
 
 					List<LabelDefinitionType> printDefs = printFormatDefintionList.getLabelDefinition();
@@ -167,12 +148,12 @@ public class PreCaptureApp {
 					}
 
 				} catch (JAXBException e) {
-					String message = "Unable to load print format definition. JAXBException.  \nYou may be missing @XmlRootElement(name=LabelDefinition) from LabelDefinitionListType.java";
+					String message = "Unable to load print format definition. JAXBException: " + e.getMessage();
 					e.printStackTrace();
 					// You will need to add the annotation: @XmlRootElement(name="LabelDefinition") to LabelDefinitionListType.java
 					// if you have regenerated the imagecapture.xml classes from the schema.
 					log.error(message);
-					log.error(e.getMessage());
+					log.error(e);
 					throw new StartupFailedException(message);
 				}
 			} else { 
@@ -186,7 +167,7 @@ public class PreCaptureApp {
 
 			// Test database 
 			try {
-				log.debug(org.apache.derby.tools.sysinfo.getProductName() + " " + org.apache.derby.tools.sysinfo.getVersionString());
+				//log.debug(org.apache.derby.tools.sysinfo.getProductName() + " " + org.apache.derby.tools.sysinfo.getVersionString());
 				// Database lives in current directory.
 				System.setProperty("derby.system.home", System.getProperty("user.dir"));
 
@@ -292,6 +273,22 @@ public class PreCaptureApp {
 			System.exit(1);
 		}
 
+	}
+
+	public static void loadFieldMappings(InputStream stream, Log log) throws JAXBException {
+		JAXBContext jc;
+		jc = JAXBContext.newInstance( MappingList.class );
+		Unmarshaller u = jc.createUnmarshaller();
+		MappingList mappingList = (MappingList)u.unmarshal(stream);
+		PreCaptureSingleton.getInstance().setMappingList(mappingList);
+
+		StringBuffer projects = new StringBuffer();
+		List<String> lp = mappingList.getSupportedProject();
+		Iterator<String> i = lp.iterator();
+		while (i.hasNext()) {
+			projects.append(i.next()).append(" ");
+		}
+		log.debug("Loaded field mappings: " + projects.toString() + mappingList.getVersion());
 	}
 
 	/**

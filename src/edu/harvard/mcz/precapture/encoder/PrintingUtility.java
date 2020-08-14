@@ -19,6 +19,7 @@
  */
 package edu.harvard.mcz.precapture.encoder;
 
+import java.awt.print.PrinterJob;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
@@ -47,6 +48,7 @@ import edu.harvard.mcz.precapture.PreCaptureProperties;
 import edu.harvard.mcz.precapture.PreCaptureSingleton;
 import edu.harvard.mcz.precapture.exceptions.PrintFailedException;
 import edu.harvard.mcz.precapture.xml.labels.LabelDefinitionType;
+import org.apache.pdfbox.printing.PDFPageable;
 
 /**
  * @author mole
@@ -130,7 +132,9 @@ public class PrintingUtility {
 					
 					// trying pdfbox instead of pdf-renderer
 					PDDocument pdfDocument = PDDocument.load(pdfInputStream);
-					pdfDocument.print();
+					PrinterJob printerJob = PrinterJob.getPrinterJob();
+					printerJob.setPageable(new PDFPageable(pdfDocument));
+					printerJob.print();
 					pdfDocument.close();
 					printed = true;
 				} catch (Exception e) { 
@@ -164,7 +168,9 @@ public class PrintingUtility {
 								
 								// Send PDF to printer using PDFBox PDF printing support.
 								PDDocument pdfDocument = PDDocument.load(pdfInputStream);
-								pdfDocument.print();
+								PrinterJob printerJob = PrinterJob.getPrinterJob();
+								printerJob.setPageable(new PDFPageable(pdfDocument));
+								printerJob.print();
 								pdfDocument.close();
 								printed = true;
 								// Note, can't get pdf-renderer to print without re-scaling and shrinking the document.

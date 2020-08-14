@@ -96,21 +96,9 @@ public class TestLabelEncoder {
 			JAXBContext jc;
 			try {
 
-				jc = JAXBContext.newInstance( edu.harvard.mcz.precapture.xml.MappingList.class );
-				Unmarshaller u = jc.createUnmarshaller();
-				MappingList mappingList = null;
-				mappingList = (MappingList)u.unmarshal(stream);
-				PreCaptureSingleton.getInstance().setMappingList(mappingList);
+                PreCaptureApp.loadFieldMappings(stream, log);
 
-				StringBuffer projects = new StringBuffer();
-				List<String> lp = mappingList.getSupportedProject();
-				Iterator<String> i = lp.iterator();
-				while (i.hasNext()) { 
-					projects.append(i.next()).append(" ");
-				}
-				log.debug("Loaded field mappings: " + projects.toString() + mappingList.getVersion());
-
-			} catch (JAXBException e) {
+            } catch (JAXBException e) {
 				String message = "Unable to load field mappings.  JAXBException. \nYou may be missing @XmlRootElement(name=FieldMapping) from MappingList.java ";
 				// You will need to add the annotation: @XmlRootElement(name="FieldMapping") to MappingList.java
 				// if you have regenerated the imagecapture.xml classes from the schema.
