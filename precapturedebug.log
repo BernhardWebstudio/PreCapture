@@ -771,3 +771,224 @@ org.h2.jdbc.JdbcSQLNonTransientConnectionException: A file path that is implicit
 18:24:56,012 DEBUG PrintingUtility:133 - Canon MG7500 series
 18:25:03,371 DEBUG PrintingUtility:141 - Printing to Brother HL-3150CDW series
 18:25:03,399 DEBUG LabelEncoder:332 - printList Done. Success = true
+18:28:59,676 DEBUG PreCaptureProperties:123 - Opening properties file: /Users/timbernhard/Privat/Programming/OpenSource-Contributions/PreCapture_ETH/PreCapture.properties
+18:28:59,857 DEBUG PreCaptureApp:287 - Loaded field mappings: ETHZ Entomology 1.0
+18:28:59,876 DEBUG PreCaptureApp:131 - Available print format definitions:
+18:28:59,877 DEBUG PreCaptureApp:139 - Full Sheet 8.5x11
+18:28:59,877 DEBUG PreCaptureApp:139 - Two Half Sheets on 8.5x11
+18:28:59,877 DEBUG PreCaptureApp:139 - Half Sheet 4.25x11 Custom
+18:28:59,877 DEBUG PreCaptureApp:139 - Multiple 2.5x4 slips on 8.5x11
+18:28:59,877 DEBUG PreCaptureApp:139 - Multiple 1.5x3 slips on 8.5x11
+18:28:59,877 DEBUG PreCaptureApp:137 - Multiple 1.5x3 slips on 8.5x11 Larger *
+18:28:59,877 DEBUG PreCaptureApp:139 - 2.3x4" Dymo LabelWriter
+18:28:59,877 DEBUG PreCaptureApp:139 - 4x2.3"Label
+18:28:59,914  INFO Environment:543 - Hibernate 3.3.1.GA
+18:28:59,916  INFO Environment:576 - hibernate.properties not found
+18:28:59,917  INFO Environment:709 - Bytecode provider name : javassist
+18:28:59,921  INFO Environment:627 - using JDK 1.4 java.sql.Timestamp handling
+18:28:59,940  INFO Configuration:1460 - configuring from resource: /hibernate.cfg.xml
+18:28:59,941  INFO Configuration:1437 - Configuration resource: /hibernate.cfg.xml
+18:28:59,969  INFO Configuration:586 - Reading mappings from resource : edu/harvard/mcz/precapture/data/Inventory.hbm.xml
+18:28:59,998  INFO HbmBinder:322 - Mapping class: edu.harvard.mcz.precapture.data.Inventory -> INVENTORY
+18:29:00,003  INFO Configuration:586 - Reading mappings from resource : edu/harvard/mcz/precapture/data/UnitTrayLabel.hbm.xml
+18:29:00,014  INFO HbmBinder:322 - Mapping class: edu.harvard.mcz.precapture.data.UnitTrayLabel -> UNIT_TRAY_LABEL
+18:29:00,015  INFO Configuration:1575 - Configured SessionFactory: null
+18:29:00,038  INFO DriverManagerConnectionProvider:64 - Using Hibernate built-in connection pool (not for production use!)
+18:29:00,038  INFO DriverManagerConnectionProvider:65 - Hibernate connection pool size: 1
+18:29:00,038  INFO DriverManagerConnectionProvider:68 - autocommit mode: false
+18:29:00,040  INFO DriverManagerConnectionProvider:103 - using driver: org.h2.Driver at URL: jdbc:h2:./PRECAPTURE2;INIT=create schema IF NOT EXISTS precapture
+18:29:00,040  INFO DriverManagerConnectionProvider:109 - connection properties: {password=****, user=sa}
+18:29:00,202  INFO SettingsFactory:116 - RDBMS: H2, version: 1.4.200 (2019-10-14)
+18:29:00,202  INFO SettingsFactory:117 - JDBC driver: H2 JDBC Driver, version: 1.4.200 (2019-10-14)
+18:29:00,212  INFO Dialect:175 - Using dialect: org.hibernate.dialect.H2Dialect
+18:29:00,215  INFO TransactionFactoryFactory:59 - Using default transaction strategy (direct JDBC transactions)
+18:29:00,216  INFO TransactionManagerLookupFactory:80 - No TransactionManagerLookup configured (in JTA environment, use of read-write or transactional second-level cache is not recommended)
+18:29:00,216  INFO SettingsFactory:170 - Automatic flush during beforeCompletion(): disabled
+18:29:00,216  INFO SettingsFactory:174 - Automatic session close at end of transaction: disabled
+18:29:00,216  INFO SettingsFactory:181 - JDBC batch size: 15
+18:29:00,216  INFO SettingsFactory:184 - JDBC batch updates for versioned data: disabled
+18:29:00,217  INFO SettingsFactory:189 - Scrollable result sets: enabled
+18:29:00,217  INFO SettingsFactory:197 - JDBC3 getGeneratedKeys(): enabled
+18:29:00,217  INFO SettingsFactory:205 - Connection release mode: auto
+18:29:00,217  INFO SettingsFactory:223 - Default schema: PUBLIC
+18:29:00,217  INFO SettingsFactory:232 - Default batch fetch size: 1
+18:29:00,217  INFO SettingsFactory:236 - Generate SQL with comments: disabled
+18:29:00,218  INFO SettingsFactory:240 - Order SQL updates by primary key: disabled
+18:29:00,218  INFO SettingsFactory:244 - Order SQL inserts for batching: disabled
+18:29:00,218  INFO SettingsFactory:420 - Query translator: org.hibernate.hql.ast.ASTQueryTranslatorFactory
+18:29:00,218  INFO ASTQueryTranslatorFactory:47 - Using ASTQueryTranslatorFactory
+18:29:00,219  INFO SettingsFactory:252 - Query language substitutions: {}
+18:29:00,219  INFO SettingsFactory:257 - JPA-QL strict compliance: disabled
+18:29:00,219  INFO SettingsFactory:262 - Second-level cache: enabled
+18:29:00,219  INFO SettingsFactory:266 - Query cache: disabled
+18:29:00,219  INFO SettingsFactory:405 - Cache region factory : org.hibernate.cache.impl.NoCachingRegionFactory
+18:29:00,219  INFO SettingsFactory:276 - Optimize cache for minimal puts: disabled
+18:29:00,219  INFO SettingsFactory:285 - Structured second-level cache entries: disabled
+18:29:00,221  INFO SettingsFactory:305 - Echoing all SQL to stdout
+18:29:00,221  INFO SettingsFactory:314 - Statistics: disabled
+18:29:00,221  INFO SettingsFactory:318 - Deleted entity synthetic identifier rollback: disabled
+18:29:00,221  INFO SettingsFactory:333 - Default entity-mode: pojo
+18:29:00,221  INFO SettingsFactory:337 - Named query checking : enabled
+18:29:05,280  INFO SessionFactoryImpl:187 - building session factory
+18:29:05,333  INFO SessionFactoryObjectFactory:105 - Not binding factory to JNDI, no JNDI name configured
+18:29:05,365 DEBUG InventoryLifeCycle:346 - counting Inventory records
+18:29:05,434 DEBUG InventoryLifeCycle:353 - count successful, count= 0
+18:29:05,434 DEBUG PreCaptureApp:176 - Inventory Records: 0
+18:29:05,435 DEBUG UnitTrayLabelLifeCycle:525 - counting UnitTrayLabel records
+18:29:05,439 DEBUG UnitTrayLabelLifeCycle:532 - find all successful, count= 5
+18:29:05,439 DEBUG PreCaptureApp:179 - Unit Tray Label Records: 5
+18:29:05,474 DEBUG MainMenu:140 - HS ULR: null
+18:29:05,503 DEBUG UnitTrayLabelLifeCycle:559 - finding distinct families in UnitTrayLabel
+18:29:05,508 DEBUG UnitTrayLabelLifeCycle:566 - find distinct families successful, result size: 2
+18:29:05,524 DEBUG UnitTrayLabelLifeCycle:592 - finding distinct genera in UnitTrayLabel
+18:29:05,527 DEBUG UnitTrayLabelLifeCycle:599 - find distinct families successful, result size: 2
+18:29:05,532 DEBUG UnitTrayLabelComboBoxModel:49 - invoked UnitTrayLabelComboBoxModel()
+18:29:05,534 DEBUG ContainerEntryPanel:308 - About to create model for taxon picker
+18:29:05,534 DEBUG UnitTrayLabelLifeCycle:394 - finding all UnitTrayLabel start Fri Aug 14 18:29:05 CEST 2020
+18:29:05,542 DEBUG UnitTrayLabelLifeCycle:402 - find all successful, result size: 5
+18:29:05,542 DEBUG UnitTrayLabelLifeCycle:412 - finding all UnitTrayLabel end Fri Aug 14 18:29:05 CEST 2020
+18:29:05,543 DEBUG UnitTrayLabelComboBoxModel:77 - invoked UnitTrayLabelComboBoxModel(list unit tray label
+18:29:05,543 DEBUG ContainerEntryPanel:310 - Created model for taxon picker
+18:29:05,546 DEBUG ContainerEntryPanel:330 - Iterating through field list
+18:29:05,567 DEBUG InventoryLifeCycle:280 - finding all Inventory records
+18:29:05,570 DEBUG InventoryLifeCycle:288 - find all successful, result size: 0
+18:29:44,128 DEBUG PreCaptureProperties:123 - Opening properties file: /Users/timbernhard/Privat/Programming/OpenSource-Contributions/PreCapture_ETH/PreCapture.properties
+18:29:44,269 DEBUG TestLabelEncoder:103 - Loaded field mappings: Test 1
+18:29:45,471 DEBUG TestLabelEncoder:151 - BYTE_SEGMENTS [[B@3e0e1046]
+18:29:45,472 DEBUG TestLabelEncoder:151 - ERROR_CORRECTION_LEVEL H
+18:29:45,498 DEBUG TestLabelEncoder:185 - {"m1p":"[Test]","m2v":"1","g":"Üäè⾙","s":"Üäè⾙","ir":"Üäè⾙","i":"Üäè⾙","sn":"Üäè⾙","a":"Üäè⾙","st":"Üäè⾙","ct":"Üäè⾙","cl":"Üäè⾙","sr":"Üäè⾙","cc":"Üäè⾙"}
+18:29:45,509 DEBUG TestLabelEncoder:189 - {"m1p":"[Test]","m2v":"1","g":"Üäè?","s":"Üäè?","ir":"Üäè?","i":"Üäè?","sn":"Üäè?","a":"Üäè?","st":"Üäè?","ct":"Üäè?","cl":"Üäè?","sr":"Üäè?","cc":"Üäè?"}
+18:29:45,543 DEBUG TestContainerLabel:64 - "m1p":"[]","m2v":null
+18:29:45,545 DEBUG TestContainerLabel:88 - {"m1p":"[]","m2v":null}
+18:29:45,546 DEBUG TestContainerLabel:104 - {"m1p":"[]","m2v":null,"a":"Agassiz"}
+18:29:45,546 DEBUG TestContainerLabel:109 - {"m1p":"[]","m2v":null,"a":"Test\"Quoted\"Bit"}
+18:29:45,549 DEBUG TestContainerLabel:114 - {"m1p":"[]","m2v":null,"a":"Test\"Quoted\"Bit"}
+18:29:45,550 DEBUG TestContainerLabel:115 - null
+18:29:45,550 DEBUG TestContainerLabel:117 - Test"Quoted"Bit
+18:29:45,552 DEBUG TestContainerLabel:139 - {"m1p":"[]","m2v":null,"a":"Agassiz","g":"Silurus"}
+18:32:01,289 DEBUG PreCaptureProperties:123 - Opening properties file: /Users/timbernhard/Privat/Programming/OpenSource-Contributions/PreCapture_ETH/PreCapture.properties
+18:32:01,476 DEBUG PreCaptureApp:287 - Loaded field mappings: ETHZ Entomology 1.0
+18:32:01,495 DEBUG PreCaptureApp:131 - Available print format definitions:
+18:32:01,495 DEBUG PreCaptureApp:139 - Full Sheet 8.5x11
+18:32:01,496 DEBUG PreCaptureApp:139 - Two Half Sheets on 8.5x11
+18:32:01,496 DEBUG PreCaptureApp:139 - Half Sheet 4.25x11 Custom
+18:32:01,496 DEBUG PreCaptureApp:139 - Multiple 2.5x4 slips on 8.5x11
+18:32:01,496 DEBUG PreCaptureApp:139 - Multiple 1.5x3 slips on 8.5x11
+18:32:01,496 DEBUG PreCaptureApp:137 - Multiple 1.5x3 slips on 8.5x11 Larger *
+18:32:01,496 DEBUG PreCaptureApp:139 - 2.3x4" Dymo LabelWriter
+18:32:01,497 DEBUG PreCaptureApp:139 - 4x2.3"Label
+18:32:01,532  INFO Environment:543 - Hibernate 3.3.1.GA
+18:32:01,534  INFO Environment:576 - hibernate.properties not found
+18:32:01,535  INFO Environment:709 - Bytecode provider name : javassist
+18:32:01,539  INFO Environment:627 - using JDK 1.4 java.sql.Timestamp handling
+18:32:01,557  INFO Configuration:1460 - configuring from resource: /hibernate.cfg.xml
+18:32:01,557  INFO Configuration:1437 - Configuration resource: /hibernate.cfg.xml
+18:32:01,586  INFO Configuration:586 - Reading mappings from resource : edu/harvard/mcz/precapture/data/Inventory.hbm.xml
+18:32:01,616  INFO HbmBinder:322 - Mapping class: edu.harvard.mcz.precapture.data.Inventory -> INVENTORY
+18:32:01,620  INFO Configuration:586 - Reading mappings from resource : edu/harvard/mcz/precapture/data/UnitTrayLabel.hbm.xml
+18:32:01,631  INFO HbmBinder:322 - Mapping class: edu.harvard.mcz.precapture.data.UnitTrayLabel -> UNIT_TRAY_LABEL
+18:32:01,632  INFO Configuration:1575 - Configured SessionFactory: null
+18:32:01,655  INFO DriverManagerConnectionProvider:64 - Using Hibernate built-in connection pool (not for production use!)
+18:32:01,655  INFO DriverManagerConnectionProvider:65 - Hibernate connection pool size: 1
+18:32:01,655  INFO DriverManagerConnectionProvider:68 - autocommit mode: false
+18:32:01,657  INFO DriverManagerConnectionProvider:103 - using driver: org.h2.Driver at URL: jdbc:h2:./PRECAPTURE2;INIT=create schema IF NOT EXISTS precapture
+18:32:01,658  INFO DriverManagerConnectionProvider:109 - connection properties: {password=****, user=sa}
+18:32:01,822  INFO SettingsFactory:116 - RDBMS: H2, version: 1.4.200 (2019-10-14)
+18:32:01,823  INFO SettingsFactory:117 - JDBC driver: H2 JDBC Driver, version: 1.4.200 (2019-10-14)
+18:32:01,830  INFO Dialect:175 - Using dialect: org.hibernate.dialect.H2Dialect
+18:32:01,832  INFO TransactionFactoryFactory:59 - Using default transaction strategy (direct JDBC transactions)
+18:32:01,832  INFO TransactionManagerLookupFactory:80 - No TransactionManagerLookup configured (in JTA environment, use of read-write or transactional second-level cache is not recommended)
+18:32:01,833  INFO SettingsFactory:170 - Automatic flush during beforeCompletion(): disabled
+18:32:01,833  INFO SettingsFactory:174 - Automatic session close at end of transaction: disabled
+18:32:01,833  INFO SettingsFactory:181 - JDBC batch size: 15
+18:32:01,833  INFO SettingsFactory:184 - JDBC batch updates for versioned data: disabled
+18:32:01,833  INFO SettingsFactory:189 - Scrollable result sets: enabled
+18:32:01,833  INFO SettingsFactory:197 - JDBC3 getGeneratedKeys(): enabled
+18:32:01,833  INFO SettingsFactory:205 - Connection release mode: auto
+18:32:01,834  INFO SettingsFactory:223 - Default schema: PUBLIC
+18:32:01,834  INFO SettingsFactory:232 - Default batch fetch size: 1
+18:32:01,834  INFO SettingsFactory:236 - Generate SQL with comments: disabled
+18:32:01,834  INFO SettingsFactory:240 - Order SQL updates by primary key: disabled
+18:32:01,834  INFO SettingsFactory:244 - Order SQL inserts for batching: disabled
+18:32:01,835  INFO SettingsFactory:420 - Query translator: org.hibernate.hql.ast.ASTQueryTranslatorFactory
+18:32:01,835  INFO ASTQueryTranslatorFactory:47 - Using ASTQueryTranslatorFactory
+18:32:01,835  INFO SettingsFactory:252 - Query language substitutions: {}
+18:32:01,835  INFO SettingsFactory:257 - JPA-QL strict compliance: disabled
+18:32:01,836  INFO SettingsFactory:262 - Second-level cache: enabled
+18:32:01,836  INFO SettingsFactory:266 - Query cache: disabled
+18:32:01,836  INFO SettingsFactory:405 - Cache region factory : org.hibernate.cache.impl.NoCachingRegionFactory
+18:32:01,836  INFO SettingsFactory:276 - Optimize cache for minimal puts: disabled
+18:32:01,836  INFO SettingsFactory:285 - Structured second-level cache entries: disabled
+18:32:01,837  INFO SettingsFactory:305 - Echoing all SQL to stdout
+18:32:01,838  INFO SettingsFactory:314 - Statistics: disabled
+18:32:01,838  INFO SettingsFactory:318 - Deleted entity synthetic identifier rollback: disabled
+18:32:01,838  INFO SettingsFactory:333 - Default entity-mode: pojo
+18:32:01,838  INFO SettingsFactory:337 - Named query checking : enabled
+18:32:11,107 DEBUG PreCaptureProperties:123 - Opening properties file: /Users/timbernhard/Privat/Programming/OpenSource-Contributions/PreCapture_ETH/PreCapture.properties
+18:32:11,237 DEBUG TestLabelEncoder:103 - Loaded field mappings: Test 1
+18:32:12,459 DEBUG TestLabelEncoder:151 - BYTE_SEGMENTS [[B@3e0e1046]
+18:32:12,460 DEBUG TestLabelEncoder:151 - ERROR_CORRECTION_LEVEL H
+18:32:12,486 DEBUG TestLabelEncoder:185 - {"m1p":"[Test]","m2v":"1","g":"Üäè⾙","s":"Üäè⾙","ir":"Üäè⾙","i":"Üäè⾙","sn":"Üäè⾙","a":"Üäè⾙","st":"Üäè⾙","ct":"Üäè⾙","cl":"Üäè⾙","sr":"Üäè⾙","cc":"Üäè⾙"}
+18:32:12,496 DEBUG TestLabelEncoder:189 - {"m1p":"[Test]","m2v":"1","g":"Üäè?","s":"Üäè?","ir":"Üäè?","i":"Üäè?","sn":"Üäè?","a":"Üäè?","st":"Üäè?","ct":"Üäè?","cl":"Üäè?","sr":"Üäè?","cc":"Üäè?"}
+18:32:12,522 ERROR TestLabelEncoder:194 - Should: 'Üäè?' is: 'Üäè⾙'
+18:32:12,522 DEBUG TestLabelEncoder:196 - Üäè⾙ = Üäè?
+18:32:12,526 DEBUG TestContainerLabel:64 - "m1p":"[]","m2v":null
+18:32:12,527 DEBUG TestContainerLabel:88 - {"m1p":"[]","m2v":null}
+18:32:12,529 DEBUG TestContainerLabel:104 - {"m1p":"[]","m2v":null,"a":"Agassiz"}
+18:32:12,529 DEBUG TestContainerLabel:109 - {"m1p":"[]","m2v":null,"a":"Test\"Quoted\"Bit"}
+18:32:12,531 DEBUG TestContainerLabel:114 - {"m1p":"[]","m2v":null,"a":"Test\"Quoted\"Bit"}
+18:32:12,532 DEBUG TestContainerLabel:115 - null
+18:32:12,532 DEBUG TestContainerLabel:117 - Test"Quoted"Bit
+18:32:12,534 DEBUG TestContainerLabel:139 - {"m1p":"[]","m2v":null,"a":"Agassiz","g":"Silurus"}
+18:33:41,653 DEBUG PreCaptureProperties:123 - Opening properties file: /Users/timbernhard/Privat/Programming/OpenSource-Contributions/PreCapture_ETH/PreCapture.properties
+18:33:41,791 DEBUG TestLabelEncoder:103 - Loaded field mappings: Test 1
+18:33:43,036 DEBUG TestLabelEncoder:151 - BYTE_SEGMENTS [[B@3e0e1046]
+18:33:43,037 DEBUG TestLabelEncoder:151 - ERROR_CORRECTION_LEVEL H
+18:33:43,062 DEBUG TestLabelEncoder:185 - {"m1p":"[Test]","m2v":"1","g":"Üäè⾙","s":"Üäè⾙","ir":"Üäè⾙","i":"Üäè⾙","sn":"Üäè⾙","a":"Üäè⾙","st":"Üäè⾙","ct":"Üäè⾙","cl":"Üäè⾙","sr":"Üäè⾙","cc":"Üäè⾙"}
+18:33:43,075 DEBUG TestLabelEncoder:189 - {"m1p":"[Test]","m2v":"1","g":"Üäè⾙","s":"Üäè⾙","ir":"Üäè⾙","i":"Üäè⾙","sn":"Üäè⾙","a":"Üäè⾙","st":"Üäè⾙","ct":"Üäè⾙","cl":"Üäè⾙","sr":"Üäè⾙","cc":"Üäè⾙"}
+18:33:43,099 ERROR TestLabelEncoder:194 - Should: 'Üäè⾙' is: 'Üäè⾙'
+18:33:43,099 DEBUG TestLabelEncoder:196 - Üäè⾙ = Üäè⾙
+18:33:43,117 DEBUG TestLabelEncoder:234 - {"m1p":"[Test]","m2v":"1","g":"è0","s":"è1","ir":"è2","i":"è3","sn":"è4","a":"è5","st":"è6","ct":"è7","cl":"è8","sr":"è9","cc":"è10"}
+18:33:43,118 DEBUG TestLabelEncoder:235 - initial bytes=144
+18:33:43,126 DEBUG TestLabelEncoder:241 - decoded bytes=133
+18:33:43,127 DEBUG TestLabelEncoder:234 - {"m1p":"[Test]","m2v":"1","g":"è00","s":"è10","ir":"è20","i":"è30","sn":"è40","a":"è50","st":"è60","ct":"è70","cl":"è80","sr":"è90","cc":"è100"}
+18:33:43,128 DEBUG TestLabelEncoder:235 - initial bytes=155
+18:33:43,136 DEBUG TestLabelEncoder:241 - decoded bytes=144
+18:33:43,137 DEBUG TestLabelEncoder:234 - {"m1p":"[Test]","m2v":"1","g":"è001","s":"è101","ir":"è201","i":"è301","sn":"è401","a":"è501","st":"è601","ct":"è701","cl":"è801","sr":"è901","cc":"è1001"}
+18:33:43,137 DEBUG TestLabelEncoder:235 - initial bytes=166
+18:33:43,143 DEBUG TestLabelEncoder:241 - decoded bytes=155
+18:33:43,145 DEBUG TestLabelEncoder:234 - {"m1p":"[Test]","m2v":"1","g":"è0012","s":"è1012","ir":"è2012","i":"è3012","sn":"è4012","a":"è5012","st":"è6012","ct":"è7012","cl":"è8012","sr":"è9012","cc":"è10012"}
+18:33:43,145 DEBUG TestLabelEncoder:235 - initial bytes=177
+18:33:43,151 DEBUG TestLabelEncoder:241 - decoded bytes=166
+18:33:43,152 DEBUG TestLabelEncoder:234 - {"m1p":"[Test]","m2v":"1","g":"è00123","s":"è10123","ir":"è20123","i":"è30123","sn":"è40123","a":"è50123","st":"è60123","ct":"è70123","cl":"è80123","sr":"è90123","cc":"è100123"}
+18:33:43,152 DEBUG TestLabelEncoder:235 - initial bytes=188
+18:33:43,158 DEBUG TestLabelEncoder:241 - decoded bytes=177
+18:33:43,159 DEBUG TestLabelEncoder:234 - {"m1p":"[Test]","m2v":"1","g":"è001234","s":"è101234","ir":"è201234","i":"è301234","sn":"è401234","a":"è501234","st":"è601234","ct":"è701234","cl":"è801234","sr":"è901234","cc":"è1001234"}
+18:33:43,160 DEBUG TestLabelEncoder:235 - initial bytes=199
+18:33:43,165 DEBUG TestLabelEncoder:241 - decoded bytes=188
+18:33:43,166 DEBUG TestLabelEncoder:234 - {"m1p":"[Test]","m2v":"1","g":"è0012345","s":"è1012345","ir":"è2012345","i":"è3012345","sn":"è4012345","a":"è5012345","st":"è6012345","ct":"è7012345","cl":"è8012345","sr":"è9012345","cc":"è10012345"}
+18:33:43,167 DEBUG TestLabelEncoder:235 - initial bytes=210
+18:33:43,172 DEBUG TestLabelEncoder:241 - decoded bytes=199
+18:33:43,173 DEBUG TestLabelEncoder:234 - {"m1p":"[Test]","m2v":"1","g":"è00123456","s":"è10123456","ir":"è20123456","i":"è30123456","sn":"è40123456","a":"è50123456","st":"è60123456","ct":"è70123456","cl":"è80123456","sr":"è90123456","cc":"è100123456"}
+18:33:43,174 DEBUG TestLabelEncoder:235 - initial bytes=221
+18:33:43,180 DEBUG TestLabelEncoder:241 - decoded bytes=210
+18:33:43,181 DEBUG TestLabelEncoder:234 - {"m1p":"[Test]","m2v":"1","g":"è001234567","s":"è101234567","ir":"è201234567","i":"è301234567","sn":"è401234567","a":"è501234567","st":"è601234567","ct":"è701234567","cl":"è801234567","sr":"è901234567","cc":"è1001234567"}
+18:33:43,181 DEBUG TestLabelEncoder:235 - initial bytes=232
+18:33:43,186 DEBUG TestLabelEncoder:241 - decoded bytes=221
+18:33:43,187 DEBUG TestLabelEncoder:234 - {"m1p":"[Test]","m2v":"1","g":"è0012345678","s":"è1012345678","ir":"è2012345678","i":"è3012345678","sn":"è4012345678","a":"è5012345678","st":"è6012345678","ct":"è7012345678","cl":"è8012345678","sr":"è9012345678","cc":"è10012345678"}
+18:33:43,187 DEBUG TestLabelEncoder:235 - initial bytes=243
+18:33:43,193 DEBUG TestLabelEncoder:241 - decoded bytes=232
+18:33:43,194 DEBUG TestLabelEncoder:234 - {"m1p":"[Test]","m2v":"1","g":"è00123456789","s":"è10123456789","ir":"è20123456789","i":"è30123456789","sn":"è40123456789","a":"è50123456789","st":"è60123456789","ct":"è70123456789","cl":"è80123456789","sr":"è90123456789","cc":"è100123456789"}
+18:33:43,194 DEBUG TestLabelEncoder:235 - initial bytes=254
+18:33:43,200 DEBUG TestLabelEncoder:241 - decoded bytes=243
+18:33:43,201 DEBUG TestLabelEncoder:234 - {"m1p":"[Test]","m2v":"1","g":"è0012345678910","s":"è1012345678910","ir":"è2012345678910","i":"è3012345678910","sn":"è4012345678910","a":"è5012345678910","st":"è6012345678910","ct":"è7012345678910","cl":"è8012345678910","sr":"è9012345678910","cc":"è10012345678910"}
+18:33:43,201 DEBUG TestLabelEncoder:235 - initial bytes=276
+18:33:43,207 DEBUG TestLabelEncoder:241 - decoded bytes=265
+18:33:43,209 DEBUG TestContainerLabel:64 - "m1p":"[]","m2v":null
+18:33:43,211 DEBUG TestContainerLabel:88 - {"m1p":"[]","m2v":null}
+18:33:43,213 DEBUG TestContainerLabel:104 - {"m1p":"[]","m2v":null,"a":"Agassiz"}
+18:33:43,213 DEBUG TestContainerLabel:109 - {"m1p":"[]","m2v":null,"a":"Test\"Quoted\"Bit"}
+18:33:43,216 DEBUG TestContainerLabel:114 - {"m1p":"[]","m2v":null,"a":"Test\"Quoted\"Bit"}
+18:33:43,216 DEBUG TestContainerLabel:115 - null
+18:33:43,216 DEBUG TestContainerLabel:117 - Test"Quoted"Bit
+18:33:43,218 DEBUG TestContainerLabel:139 - {"m1p":"[]","m2v":null,"a":"Agassiz","g":"Silurus"}

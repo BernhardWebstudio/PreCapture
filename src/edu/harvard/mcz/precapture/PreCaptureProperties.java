@@ -213,7 +213,7 @@ public class PreCaptureProperties extends AbstractTableModel {
         if (!properties.containsKey(KEY_FIELDMAPPING)) {
             // xml file containing field mappings
             properties.setProperty(KEY_FIELDMAPPING,
-                    "resources/NEVP_TCN_PrecaptureFields.xml");
+                    "resources/ETHZ_PrecaptureFields.xml");
         }
         if (!properties.containsKey(KEY_DISPLAY_AUTHORITY_FILE)) {
             // is the taxon name authority file shown?
