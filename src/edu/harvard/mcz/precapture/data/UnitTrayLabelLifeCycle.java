@@ -136,7 +136,6 @@ private static final Log log = LogFactory.getLog(UnitTrayLabelLifeCycle.class);
     	}
     	CsvReader reader = new CsvReader(filename,',',Charset.forName("UTF-8"));
 
-
     	log.debug("Reading: " + filename);
     	reader.readHeaders();
     	boolean hasTribe = false;
@@ -196,7 +195,7 @@ private static final Log log = LogFactory.getLog(UnitTrayLabelLifeCycle.class);
     public static int exportToCSV(String filename) throws IOException {
     	int numberWritten = 0;
     	CsvWriter writer = new CsvWriter(filename);
-    	String[] header = {"Family","Genus","SpecificEpithet","SubspecificEpithet","InfraspecificRank","InfraspecificEpithet","Authorship"};
+    	String[] header = {"Family","Genus","SpecificEpithet","SubspecificEpithet","InfraspecificEpithet","InfraspecificRank","Authorship"};
     	writer.writeRecord(header,false);
     	UnitTrayLabelLifeCycle uls = new UnitTrayLabelLifeCycle();
     	List<UnitTrayLabel> list = uls.findAll();
@@ -209,8 +208,8 @@ private static final Log log = LogFactory.getLog(UnitTrayLabelLifeCycle.class);
     		row.add(unitTrayLabel.getGenus());
     		row.add(unitTrayLabel.getSpecificEpithet());
     		row.add(unitTrayLabel.getSubspecificEpithet());
-    		row.add(unitTrayLabel.getInfraspecificRank());
     		row.add(unitTrayLabel.getInfraspecificEpithet());
+    		row.add(unitTrayLabel.getInfraspecificRank());
     		row.add(unitTrayLabel.getAuthorship());
     		writer.writeRecord(row.toArray(new String[row.size()]), true);
     		numberWritten++;

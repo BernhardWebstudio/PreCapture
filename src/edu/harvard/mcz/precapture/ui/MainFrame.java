@@ -14,10 +14,7 @@
  * 
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- * 
- * Author: Paul J. Morris
- * 
- * $Id: MainFrame.java 142 2016-09-16 15:26:27Z chicoreus $
+ *
  */
 package edu.harvard.mcz.precapture.ui;
 

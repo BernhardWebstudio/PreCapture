@@ -83,7 +83,7 @@ public class TestLabelEncoder {
 	/**
 	 * @throws java.lang.Exception
 	 */
-	//@Before
+	@Before
 	public void setUp() throws Exception {
 		// set default herbarium code
 		PreCaptureSingleton.getInstance().setProperties(new PreCaptureProperties());
@@ -96,9 +96,21 @@ public class TestLabelEncoder {
 			JAXBContext jc;
 			try {
 
-                PreCaptureApp.loadFieldMappings(stream, log);
+				jc = JAXBContext.newInstance( edu.harvard.mcz.precapture.xml.MappingList.class );
+				Unmarshaller u = jc.createUnmarshaller();
+				MappingList mappingList = null;
+				mappingList = (MappingList)u.unmarshal(stream);
+				PreCaptureSingleton.getInstance().setMappingList(mappingList);
 
-            } catch (JAXBException e) {
+				StringBuffer projects = new StringBuffer();
+				List<String> lp = mappingList.getSupportedProject();
+				Iterator<String> i = lp.iterator();
+				while (i.hasNext()) { 
+					projects.append(i.next()).append(" ");
+				}
+				log.debug("Loaded field mappings: " + projects.toString() + mappingList.getVersion());
+
+			} catch (JAXBException e) {
 				String message = "Unable to load field mappings.  JAXBException. \nYou may be missing @XmlRootElement(name=FieldMapping) from MappingList.java ";
 				// You will need to add the annotation: @XmlRootElement(name="FieldMapping") to MappingList.java
 				// if you have regenerated the imagecapture.xml classes from the schema.
@@ -116,7 +128,7 @@ public class TestLabelEncoder {
 	/**
 	 * Test method for {@link edu.harvard.mcz.precapture.encoder.LabelEncoder#getBufferedImage()}.
 	 */
-	//@Test
+	@Test
 	public void testGetBufferedImage() {
 		// test round trip JSON read write from image (really testing zxing)
 		ArrayList<FieldPlusText> textFields = new ArrayList<FieldPlusText>(); 

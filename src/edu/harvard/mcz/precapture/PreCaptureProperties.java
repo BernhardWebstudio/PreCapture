@@ -78,6 +78,8 @@ public class PreCaptureProperties extends AbstractTableModel {
 	public static final String KEY_DEBUGLABEL = "debug.labellayout";
 	/** Key for properties file for rank of subspecies in trinomials, 'subspecies' by default.  */
 	public static final String KEY_TRINOMIAL_SUBSP_RANK = "config.trinomialsubsprank";
+	/** When not using quadranomials, put subspecies and subspecies rank in infraspecific name and rank. */
+	public static final String KEY_PUT_SUBSPECIES_IN_INFRA = "config.putsubspeciesininfra";	
 	
 
 	private Properties properties = null;
@@ -248,6 +250,10 @@ public class PreCaptureProperties extends AbstractTableModel {
 			// by default print to labels.pdf in the current directory.
 			properties.setProperty(KEY_TRINOMIAL_SUBSP_RANK, "subspecies");
 		}		
+		if (!properties.containsKey(KEY_PUT_SUBSPECIES_IN_INFRA)) {
+			// by default print to labels.pdf in the current directory.
+			properties.setProperty(KEY_PUT_SUBSPECIES_IN_INFRA, "false");
+		}			
 	}
 
 	/**
