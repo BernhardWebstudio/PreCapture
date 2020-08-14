@@ -992,3 +992,54 @@ org.h2.jdbc.JdbcSQLNonTransientConnectionException: A file path that is implicit
 18:33:43,216 DEBUG TestContainerLabel:115 - null
 18:33:43,216 DEBUG TestContainerLabel:117 - Test"Quoted"Bit
 18:33:43,218 DEBUG TestContainerLabel:139 - {"m1p":"[]","m2v":null,"a":"Agassiz","g":"Silurus"}
+18:37:37,859 DEBUG PreCaptureProperties:123 - Opening properties file: /Users/timbernhard/Privat/Programming/OpenSource-Contributions/PreCapture_ETH/PreCapture.properties
+18:37:38,048 DEBUG TestLabelEncoder:103 - Loaded field mappings: Test 1
+18:37:39,060 DEBUG TestLabelEncoder:151 - BYTE_SEGMENTS [[B@3e0e1046]
+18:37:39,061 DEBUG TestLabelEncoder:151 - ERROR_CORRECTION_LEVEL H
+18:37:39,088 DEBUG TestLabelEncoder:185 - {"m1p":"[Test]","m2v":"1","g":"Üäè⾙","s":"Üäè⾙","ir":"Üäè⾙","i":"Üäè⾙","sn":"Üäè⾙","a":"Üäè⾙","st":"Üäè⾙","ct":"Üäè⾙","cl":"Üäè⾙","sr":"Üäè⾙","cc":"Üäè⾙"}
+18:37:39,102 DEBUG TestLabelEncoder:189 - {"m1p":"[Test]","m2v":"1","g":"Üäè⾙","s":"Üäè⾙","ir":"Üäè⾙","i":"Üäè⾙","sn":"Üäè⾙","a":"Üäè⾙","st":"Üäè⾙","ct":"Üäè⾙","cl":"Üäè⾙","sr":"Üäè⾙","cc":"Üäè⾙"}
+18:37:39,131 DEBUG TestLabelEncoder:193 - Üäè⾙ = Üäè⾙
+18:37:39,147 DEBUG TestLabelEncoder:231 - {"m1p":"[Test]","m2v":"1","g":"è0","s":"è1","ir":"è2","i":"è3","sn":"è4","a":"è5","st":"è6","ct":"è7","cl":"è8","sr":"è9","cc":"è10"}
+18:37:39,147 DEBUG TestLabelEncoder:232 - initial bytes=144
+18:37:39,155 DEBUG TestLabelEncoder:238 - decoded bytes=133
+18:37:39,157 DEBUG TestLabelEncoder:231 - {"m1p":"[Test]","m2v":"1","g":"è00","s":"è10","ir":"è20","i":"è30","sn":"è40","a":"è50","st":"è60","ct":"è70","cl":"è80","sr":"è90","cc":"è100"}
+18:37:39,157 DEBUG TestLabelEncoder:232 - initial bytes=155
+18:37:39,165 DEBUG TestLabelEncoder:238 - decoded bytes=144
+18:37:39,166 DEBUG TestLabelEncoder:231 - {"m1p":"[Test]","m2v":"1","g":"è001","s":"è101","ir":"è201","i":"è301","sn":"è401","a":"è501","st":"è601","ct":"è701","cl":"è801","sr":"è901","cc":"è1001"}
+18:37:39,166 DEBUG TestLabelEncoder:232 - initial bytes=166
+18:37:39,174 DEBUG TestLabelEncoder:238 - decoded bytes=155
+18:37:39,175 DEBUG TestLabelEncoder:231 - {"m1p":"[Test]","m2v":"1","g":"è0012","s":"è1012","ir":"è2012","i":"è3012","sn":"è4012","a":"è5012","st":"è6012","ct":"è7012","cl":"è8012","sr":"è9012","cc":"è10012"}
+18:37:39,175 DEBUG TestLabelEncoder:232 - initial bytes=177
+18:37:39,182 DEBUG TestLabelEncoder:238 - decoded bytes=166
+18:37:39,183 DEBUG TestLabelEncoder:231 - {"m1p":"[Test]","m2v":"1","g":"è00123","s":"è10123","ir":"è20123","i":"è30123","sn":"è40123","a":"è50123","st":"è60123","ct":"è70123","cl":"è80123","sr":"è90123","cc":"è100123"}
+18:37:39,184 DEBUG TestLabelEncoder:232 - initial bytes=188
+18:37:39,189 DEBUG TestLabelEncoder:238 - decoded bytes=177
+18:37:39,190 DEBUG TestLabelEncoder:231 - {"m1p":"[Test]","m2v":"1","g":"è001234","s":"è101234","ir":"è201234","i":"è301234","sn":"è401234","a":"è501234","st":"è601234","ct":"è701234","cl":"è801234","sr":"è901234","cc":"è1001234"}
+18:37:39,190 DEBUG TestLabelEncoder:232 - initial bytes=199
+18:37:39,196 DEBUG TestLabelEncoder:238 - decoded bytes=188
+18:37:39,197 DEBUG TestLabelEncoder:231 - {"m1p":"[Test]","m2v":"1","g":"è0012345","s":"è1012345","ir":"è2012345","i":"è3012345","sn":"è4012345","a":"è5012345","st":"è6012345","ct":"è7012345","cl":"è8012345","sr":"è9012345","cc":"è10012345"}
+18:37:39,197 DEBUG TestLabelEncoder:232 - initial bytes=210
+18:37:39,202 DEBUG TestLabelEncoder:238 - decoded bytes=199
+18:37:39,203 DEBUG TestLabelEncoder:231 - {"m1p":"[Test]","m2v":"1","g":"è00123456","s":"è10123456","ir":"è20123456","i":"è30123456","sn":"è40123456","a":"è50123456","st":"è60123456","ct":"è70123456","cl":"è80123456","sr":"è90123456","cc":"è100123456"}
+18:37:39,203 DEBUG TestLabelEncoder:232 - initial bytes=221
+18:37:39,208 DEBUG TestLabelEncoder:238 - decoded bytes=210
+18:37:39,209 DEBUG TestLabelEncoder:231 - {"m1p":"[Test]","m2v":"1","g":"è001234567","s":"è101234567","ir":"è201234567","i":"è301234567","sn":"è401234567","a":"è501234567","st":"è601234567","ct":"è701234567","cl":"è801234567","sr":"è901234567","cc":"è1001234567"}
+18:37:39,209 DEBUG TestLabelEncoder:232 - initial bytes=232
+18:37:39,214 DEBUG TestLabelEncoder:238 - decoded bytes=221
+18:37:39,215 DEBUG TestLabelEncoder:231 - {"m1p":"[Test]","m2v":"1","g":"è0012345678","s":"è1012345678","ir":"è2012345678","i":"è3012345678","sn":"è4012345678","a":"è5012345678","st":"è6012345678","ct":"è7012345678","cl":"è8012345678","sr":"è9012345678","cc":"è10012345678"}
+18:37:39,215 DEBUG TestLabelEncoder:232 - initial bytes=243
+18:37:39,219 DEBUG TestLabelEncoder:238 - decoded bytes=232
+18:37:39,220 DEBUG TestLabelEncoder:231 - {"m1p":"[Test]","m2v":"1","g":"è00123456789","s":"è10123456789","ir":"è20123456789","i":"è30123456789","sn":"è40123456789","a":"è50123456789","st":"è60123456789","ct":"è70123456789","cl":"è80123456789","sr":"è90123456789","cc":"è100123456789"}
+18:37:39,220 DEBUG TestLabelEncoder:232 - initial bytes=254
+18:37:39,225 DEBUG TestLabelEncoder:238 - decoded bytes=243
+18:37:39,226 DEBUG TestLabelEncoder:231 - {"m1p":"[Test]","m2v":"1","g":"è0012345678910","s":"è1012345678910","ir":"è2012345678910","i":"è3012345678910","sn":"è4012345678910","a":"è5012345678910","st":"è6012345678910","ct":"è7012345678910","cl":"è8012345678910","sr":"è9012345678910","cc":"è10012345678910"}
+18:37:39,226 DEBUG TestLabelEncoder:232 - initial bytes=276
+18:37:39,232 DEBUG TestLabelEncoder:238 - decoded bytes=265
+18:37:39,233 DEBUG TestContainerLabel:64 - "m1p":"[]","m2v":null
+18:37:39,235 DEBUG TestContainerLabel:88 - {"m1p":"[]","m2v":null}
+18:37:39,236 DEBUG TestContainerLabel:104 - {"m1p":"[]","m2v":null,"a":"Agassiz"}
+18:37:39,236 DEBUG TestContainerLabel:109 - {"m1p":"[]","m2v":null,"a":"Test\"Quoted\"Bit"}
+18:37:39,239 DEBUG TestContainerLabel:114 - {"m1p":"[]","m2v":null,"a":"Test\"Quoted\"Bit"}
+18:37:39,239 DEBUG TestContainerLabel:115 - null
+18:37:39,240 DEBUG TestContainerLabel:117 - Test"Quoted"Bit
+18:37:39,241 DEBUG TestContainerLabel:139 - {"m1p":"[]","m2v":null,"a":"Agassiz","g":"Silurus"}
