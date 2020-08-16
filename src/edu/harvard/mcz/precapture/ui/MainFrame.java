@@ -40,7 +40,8 @@ public class MainFrame implements WindowListener {
     private JFrame frame;
     private JTable tablePrintList;
     private boolean closing = false;
-    /** Set to true to use Napkin Look and Feel.
+    /**
+     * Set to true to use Napkin Look and Feel.
      */
     private ContainerEntryPanel folderPanel;
 
@@ -104,7 +105,6 @@ public class MainFrame implements WindowListener {
                 folderPanel.invokeAddToList();
             }
         });
-
 
         JPanel panel_4 = new ContainerListPanel(frame);
         tabbedPane.addTab("Print List", null, panel_4, null);

@@ -73,14 +73,6 @@ public class PreCaptureApp {
      */
     public static void main(String[] args) {
         try {
-            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-//            System.setProperty("apple.laf.useScreenMenuBar", "true");
-        } catch (UnsupportedLookAndFeelException | ClassNotFoundException | InstantiationException | IllegalAccessException e) {
-            log.error(e);
-        }
-
-        try {
-
             SplashScreen splashScreen = new SplashScreen();
             splashScreen.pack();
             splashScreen.setVisible(true);
@@ -205,7 +197,12 @@ public class PreCaptureApp {
                                     UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
                                 }
                             } else {
-                                UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
+                                try {
+                                    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+//                                  System.setProperty("apple.laf.useScreenMenuBar", "true");
+                                } catch (UnsupportedLookAndFeelException | ClassNotFoundException | InstantiationException | IllegalAccessException e) {
+                                    log.error(e);
+                                }
                             }
 
                             // Support Command C/P/X for copy/paste/cut on OSX as well as Control C/P/X on other systems.
