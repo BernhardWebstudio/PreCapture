@@ -162,9 +162,6 @@
 					<include>**/*.xml</include>
 					<include>**/*.properties</include>
 				</includes>
-				<excludes>
-					<exclude>log4j.properties</exclude>
-				</excludes>
 			</resource>
 			<resource>
 				<directory>${project.basedir}</directory>
@@ -173,15 +170,6 @@
 					<include>README.txt</include>
 					<include>LICENCE.txt</include>
 				</includes>
-			</resource>
-			<resource>
-				<directory>${project.basedir}/supporting/</directory>
-				<targetPath>./</targetPath>
-				<includes>
-					<include>log4j.properties</include>
-				</includes>
-				<excludes>
-				</excludes>
 			</resource>
 		</resources>
 		<plugins>

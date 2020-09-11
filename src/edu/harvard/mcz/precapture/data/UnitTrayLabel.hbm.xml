@@ -24,10 +24,10 @@
         </property>        
          -->
         <property name="genus" type="string">
-            <column name="Genus" length="40"/>
+            <column name="Genus" length="40" index="utl_genus_idx" />
         </property>
         <property name="specificEpithet" type="string">
-            <column name="SpecificEpithet" length="40"/>
+            <column name="SpecificEpithet" length="40" index="utl_specEp_idx" />
         </property>
         <property name="subspecificEpithet" type="string">
             <column name="SubspecificEpithet"/>
