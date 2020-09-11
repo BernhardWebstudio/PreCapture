@@ -64,7 +64,7 @@ public class UnitTrayLabelLifeCycle {
 //            String genusString = unitTrayLabel.getGenus();
 //            StandardCharsets.UTF_8.encode(genusString);
 //            result.append(genusString).append(" ");
-            result.append(unitTrayLabel.getGenus());
+            result.append(unitTrayLabel.getGenus()).append(" ");
             result.append(unitTrayLabel.getSpecificEpithet()).append(" ");
             if (unitTrayLabel.getSubspecificEpithet() != null && unitTrayLabel.getSubspecificEpithet().length() > 0) {
                 result.append(unitTrayLabel.getSubspecificEpithet()).append(" ");
@@ -82,7 +82,7 @@ public class UnitTrayLabelLifeCycle {
         }
 
 //        return StringEscapeUtils.unescapeJava(result.toString().trim());
-        return result.toString();
+        return result.toString().trim();
     }
 
     public static int loadFromCSV(String filename) throws IOException {
