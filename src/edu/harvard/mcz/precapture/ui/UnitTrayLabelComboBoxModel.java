@@ -59,7 +59,7 @@ public class UnitTrayLabelComboBoxModel implements ComboBoxModel {
      * @param unitTrayLabelList
      */
     public UnitTrayLabelComboBoxModel(List<UnitTrayLabel> unitTrayLabelList) {
-        log.debug("invoked UnitTrayLabelComboBoxModel(list unit tray label");
+        log.debug("invoked UnitTrayLabelComboBoxModel(list unit tray label)");
         model = (ArrayList<UnitTrayLabel>) unitTrayLabelList;
         if (model == null) {
             model = new ArrayList<UnitTrayLabel>();
@@ -74,7 +74,7 @@ public class UnitTrayLabelComboBoxModel implements ComboBoxModel {
 
     public UnitTrayLabelComboBoxModel(List<UnitTrayLabel> unitTrayLabelList,
                                       boolean selectFirst) {
-        log.debug("invoked UnitTrayLabelComboBoxModel(list unit tray label");
+        log.debug("invoked UnitTrayLabelComboBoxModel(list unit tray label, selectFirst)");
         model = (ArrayList<UnitTrayLabel>) unitTrayLabelList;
         // add a blank row.
         model.add(0, new UnitTrayLabel());
