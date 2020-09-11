@@ -38,8 +38,6 @@ import java.net.URL;
 
 /**
  * UI Display of information about the application.
- *
- *
  */
 public class AboutFrame extends JFrame {
     private static final long serialVersionUID = 6681758841979694874L;

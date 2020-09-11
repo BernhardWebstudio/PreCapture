@@ -35,14 +35,22 @@ import java.util.Properties;
 public class PreCaptureProperties extends AbstractTableModel {
 
     public static final String DEFAULT_FILENAME = "PreCapture.properties";
-    /** Key for properties file for paper size. */
+    /**
+     * Key for properties file for paper size.
+     */
     public static final String KEY_PAPERSIZE = "print.papersize";
-    /** Key for properties file for location of field mapping xml file. */
+    /**
+     * Key for properties file for location of field mapping xml file.
+     */
     public static final String KEY_FIELDMAPPING = "config.fieldmap";
-    /** Key for properties file for whether authority file is shown. */
+    /**
+     * Key for properties file for whether authority file is shown.
+     */
     public static final String KEY_DISPLAY_AUTHORITY_FILE =
             "config.displayauthorityfile";
-    /** Key for properties file for whether authority file is editable. */
+    /**
+     * Key for properties file for whether authority file is editable.
+     */
     public static final String KEY_EDITABLE_AUTHORITY_FILE =
             "config.editableauthorityfile";
     /**
@@ -59,9 +67,13 @@ public class PreCaptureProperties extends AbstractTableModel {
      */
     public static final String KEY_SELECTED_PRINT_DEFINITION =
             "config.selectedprintdefinition";
-    /** Key for properties file for which main frame variant to use. */
+    /**
+     * Key for properties file for which main frame variant to use.
+     */
     public static final String KEY_MAINFRAME = "config.mainuiframe";
-    /** Key for properties file for the dwc:collection code to use by default.  */
+    /**
+     * Key for properties file for the dwc:collection code to use by default.
+     */
     public static final String KEY_MY_COLLECTION_CODE = "config.mycollectioncode";
     /**
      * Key for properties file for the minimum number of characters needed before
@@ -79,14 +91,18 @@ public class PreCaptureProperties extends AbstractTableModel {
      * for unit tray label (authority file records).
      */
     public static final String KEY_EDITVIEWUTL = "config.ediableunittraylabeldb";
-    /** Key for property to handle infraspecific names. */
+    /**
+     * Key for property to handle infraspecific names.
+     */
     public static final String KEY_USEQUADRANOMIALS = "config.usequadranomials";
     /**
      * Key for properties file for extra human readable text to put on all
      * slips/labels by default
      */
     public static final String KEY_EXTRAHUMANTEXT = "config.extrahumantext";
-    /** Key for properties file for file to print labels out to. */
+    /**
+     * Key for properties file for file to print labels out to.
+     */
     public static final String KEY_LABELPRINTFILE = "print.outputfile";
     /**
      * Key for properties file for turning on debugging of label layout by adding

@@ -13,7 +13,7 @@
             <column name="Cabinet" length="40"/>
         </property>
         <property name="taxon" type="string">
-            <column name="Taxon" length="40" index="inv_taxon_idx" />
+            <column name="Taxon" length="40" index="inv_taxon_idx"/>
         </property>
         <property name="thickness" type="float">
             <column name="Thickness"/>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <tns:FieldMapping xmlns:tns="http://mcz.harvard.edu/PreCaptureFieldSchema"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://mcz.harvard.edu/PreCaptureFieldSchema PreCaptureFieldSchema.xsd ">
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://mcz.harvard.edu/PreCaptureFieldSchema PreCaptureFieldSchema.xsd ">
     <tns:SupportedProject>ETHZ Entomology</tns:SupportedProject>
     <tns:Version>1.0</tns:Version>
     <!--

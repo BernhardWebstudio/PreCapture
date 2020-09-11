@@ -67,6 +67,7 @@ public class UnitTrayLabelComboBoxModel implements ComboBoxModel {
             model.add(0, new UnitTrayLabel());
         }
         dataListeners = new ArrayList<ListDataListener>();
+        log.debug("done: UnitTrayLabelComboBoxModel(list unit tray label)");
         // if (model.size()>0) {
         //	selectedItem = model.get(0);
         //}
@@ -97,7 +98,6 @@ public class UnitTrayLabelComboBoxModel implements ComboBoxModel {
     }
 
     /**
-     *
      * @return a copy of the model.
      */
     public List<UnitTrayLabel> getModel() {

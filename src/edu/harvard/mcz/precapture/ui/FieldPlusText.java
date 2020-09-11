@@ -28,8 +28,6 @@ import javax.swing.*;
 /**
  * Structure to hold a field definition along with a text input field that
  * goes with that definition.
- *
- *
  */
 public class FieldPlusText {
     private static final Log log = LogFactory.getLog(FieldPlusText.class);

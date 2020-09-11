@@ -22,7 +22,6 @@ package edu.harvard.mcz.precapture.data;
 import com.csvreader.CsvReader;
 import com.csvreader.CsvWriter;
 import edu.harvard.mcz.precapture.exceptions.SaveFailedException;
-import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.*;
@@ -59,11 +58,13 @@ public class UnitTrayLabelLifeCycle {
      * @see UnitTrayLabel
      */
     public static String getScientificName(UnitTrayLabel unitTrayLabel) {
-        StringBuffer result = new StringBuffer();
+        StringBuilder result = new StringBuilder();
+//        StringBuffer result = new StringBuffer();
         if (unitTrayLabel != null) {
-            String genusString = unitTrayLabel.getGenus();
-            StandardCharsets.UTF_8.encode(genusString);
-            result.append(genusString).append(" ");
+//            String genusString = unitTrayLabel.getGenus();
+//            StandardCharsets.UTF_8.encode(genusString);
+//            result.append(genusString).append(" ");
+            result.append(unitTrayLabel.getGenus());
             result.append(unitTrayLabel.getSpecificEpithet()).append(" ");
             if (unitTrayLabel.getSubspecificEpithet() != null && unitTrayLabel.getSubspecificEpithet().length() > 0) {
                 result.append(unitTrayLabel.getSubspecificEpithet()).append(" ");
@@ -80,7 +81,8 @@ public class UnitTrayLabelLifeCycle {
             result.append(authorship);
         }
 
-        return StringEscapeUtils.unescapeJava(result.toString().trim());
+//        return StringEscapeUtils.unescapeJava(result.toString().trim());
+        return result.toString();
     }
 
     public static int loadFromCSV(String filename) throws IOException {

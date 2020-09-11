@@ -30,8 +30,6 @@ import java.awt.event.*;
 
 /**
  * Main UI Frame for the PreCapture Application.
- *
- *
  */
 public class MainFrame implements WindowListener {
 

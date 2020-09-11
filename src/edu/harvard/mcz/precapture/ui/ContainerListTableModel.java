@@ -32,14 +32,12 @@ import java.util.Iterator;
 
 /**
  * A list of container labels, each of which has a number to print and a list of fields.
- *
- * A ContainerListTableModel is a list of ContainerLabel, each of which has a list of FieldPlusText 
+ * <p>
+ * A ContainerListTableModel is a list of ContainerLabel, each of which has a list of FieldPlusText
  * and a number to print.
- *
+ * <p>
  * A ContainerLabel corresponds with a MappingList, and each Field in the MappingList
- * corresponds with a FieldPlusText.  
- *
- *
+ * corresponds with a FieldPlusText.
  */
 public class ContainerListTableModel extends AbstractTableModel {
 
@@ -107,7 +105,8 @@ public class ContainerListTableModel extends AbstractTableModel {
     }
 
 
-    /** Adds a a container label to the list and fires table data changed.
+    /**
+     * Adds a a container label to the list and fires table data changed.
      *
      * @param label
      */
@@ -116,8 +115,8 @@ public class ContainerListTableModel extends AbstractTableModel {
         this.fireTableDataChanged();
     }
 
-    /** Removes all labels currently on list and fires table data changed.
-     *
+    /**
+     * Removes all labels currently on list and fires table data changed.
      */
     public void clearList() {
         labels = new ArrayList<ContainerLabel>();

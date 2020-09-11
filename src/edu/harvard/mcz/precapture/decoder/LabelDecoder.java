@@ -36,7 +36,6 @@ import org.apache.commons.logging.LogFactory;
 
 import javax.swing.*;
 import java.awt.image.BufferedImage;
-import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 
@@ -58,10 +57,10 @@ public class LabelDecoder {
 
     /**
      * LabelDecoder for a particular container label.
-     *
+     * <p>
      * No supporting functionality implemented yet.
      * Use the static decodeImage and decodeImageToResult methods.
-     *
+     * <p>
      * May be removed.
      *
      * @param containerLabel
@@ -172,7 +171,7 @@ public class LabelDecoder {
      * Given a mapping list and a key, return the vocabulary term for that key
      *
      * @param mappings the mapping definition to check for the code and vocabulary term.
-     * @param key the short code used in the JSON as a key for a field concept.
+     * @param key      the short code used in the JSON as a key for a field concept.
      * @return string value of the vocabulary term that the code translates to.
      */
     public static String getTermForKey(MappingList mappings, String key) {
@@ -194,7 +193,7 @@ public class LabelDecoder {
      * @param image a bufferedimage containing a QRCode barcode
      * @return the text encoded in the QRCode.
      * @throws BarcodeReadException if unable to read the barcode, recasts 4 different
-     * of ZXing exceptions as common BarcodeReadException.
+     *                              of ZXing exceptions as common BarcodeReadException.
      */
     public static String decodeImage(BufferedImage image) throws BarcodeReadException {
         String result = null;

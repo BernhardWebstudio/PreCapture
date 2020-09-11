@@ -48,7 +48,7 @@ public class PreCaptureSingleton {
 
     /**
      * Point of access for the singleton instance.
-     *
+     * <p>
      * Example:
      * PreCaptureSingleton.getInstance().setProperties(new
      * PreCaptureProperties());

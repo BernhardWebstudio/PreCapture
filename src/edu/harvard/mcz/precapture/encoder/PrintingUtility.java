@@ -54,7 +54,7 @@ public class PrintingUtility {
     /**
      * Send the generated PDF file to a printer.  (file to print is from LabelEncoder.getPrintFile().
      *
-     * @param printDefinition Used to find paper size
+     * @param printDefinition   Used to find paper size
      * @param paperWidthPoints
      * @param paperHeightPoints
      * @throws PrintFailedException if printing fails for any reason.

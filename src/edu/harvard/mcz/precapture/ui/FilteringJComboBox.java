@@ -52,8 +52,6 @@ public class FilteringJComboBox extends JComboBox implements FocusListener {
     }
 
     /**
-     *
-     *
      * @param valueList
      */
     public FilteringJComboBox(UnitTrayLabelComboBoxModel model) {
@@ -162,7 +160,7 @@ public class FilteringJComboBox extends JComboBox implements FocusListener {
                 }
             }
         }
-
+        log.debug("Filtering done.");
     }
 
     public void focusGained(FocusEvent e) {
