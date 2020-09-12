@@ -77,11 +77,11 @@ public class UnitTrayLabelComboBoxModel implements ComboBoxModel {
                                       boolean selectFirst) {
         log.debug("invoked UnitTrayLabelComboBoxModel(list unit tray label, selectFirst)");
         model = (ArrayList<UnitTrayLabel>) unitTrayLabelList;
-        // add a blank row.
-        model.add(0, new UnitTrayLabel());
         if (model == null) {
             model = new ArrayList<UnitTrayLabel>();
         }
+        // add a blank row.
+        model.add(0, new UnitTrayLabel());
         dataListeners = new ArrayList<ListDataListener>();
         if (selectFirst && model.size() > 0) {
             selectedItem = model.get(0);

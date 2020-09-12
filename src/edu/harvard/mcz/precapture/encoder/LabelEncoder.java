@@ -390,6 +390,11 @@ public class LabelEncoder {
 //	public static final int REL_WIDTH_TEXT_CELL = 2;
 //	public static final int REL_WIDTH_BARCODE_CELL = 3;
 
+    /**
+     * Get the BitMatrix for the QR Code
+     * @return
+     * @throws WriterException
+     */
     private BitMatrix getQRCodeMatrix() throws WriterException {
         BitMatrix result = null;
         QRCodeWriter writer = new QRCodeWriter();
@@ -399,7 +404,7 @@ public class LabelEncoder {
         //data = new String(dataBytes,"ISO-8859-1");
         data = new String(dataBytes, StandardCharsets.UTF_8);
         Hashtable<EncodeHintType, Object> hints = new Hashtable<EncodeHintType, Object>();  // set ErrorCorrectionLevel here
-        String correctionLevel = PreCaptureSingleton.getInstance().getProperties().getProperties().getProperty(PreCaptureProperties.KEY_QRCODEECLEVEL, "H");
+        String correctionLevel = PreCaptureSingleton.getInstance().getProperties().getProperties().getProperty(PreCaptureProperties.KEY_QRCODEECLEVEL, "M");
         if (correctionLevel.equals("H")) {
             hints.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.H);  //30% loss, 174 char at level 10
         }

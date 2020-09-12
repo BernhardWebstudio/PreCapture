@@ -107,6 +107,9 @@ public class ContainerEntryPanel extends JPanel {
                 if (field.getField().getVocabularyTerm().equalsIgnoreCase("dwc:sex")) {
                     field.getTextField().setText(utl.getSex());
                 }
+                if (field.getField().getVocabularyTerm().equalsIgnoreCase("dwc:identifiedDate")) {
+                    field.getTextField().setText(utl.getIdentifiedDate());
+                }
                 if (field.getField().getVocabularyTerm().equalsIgnoreCase("abcd:PreviousUnit/Owner")) {
                     field.getTextField().setText(utl.getCollection());
                 }

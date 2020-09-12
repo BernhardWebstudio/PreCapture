@@ -43,7 +43,7 @@ public class UnitTrayLabel implements TaxonNameReturner {
     private String family;
     private String subfamily;
     private String tribe;
-    // private String scientificName;
+     private String scientificName;
     private String genus;
     private String specificEpithet;
     private String subspecificEpithet;
@@ -57,6 +57,7 @@ public class UnitTrayLabel implements TaxonNameReturner {
     private Date dateLastUpdated;
     private String collection;  // collection from which the material came
     private String identifiedBy;
+    private String identifiedDate;
     private Integer ordinal;     // order in which to print
     private String sex;
 
@@ -178,7 +179,7 @@ public class UnitTrayLabel implements TaxonNameReturner {
      * @param genus
      * @param specificEpithet
      * @param infraspecificEpithet
-     * @param infraspecifcRank
+     * @param infraspecificRank
      * @param authorship
      * @param collection
      * @param identifiedBy
@@ -234,152 +235,10 @@ public class UnitTrayLabel implements TaxonNameReturner {
     }
 
     /**
-     * Factory method, given a JSON encoded string, as encoded with toJSONString(), extract the values from that
-     * string into a new instance of UnitTrayLabel so that they can be obtained by the appropriate returner
-     * interface (taxonnameReturner, drawernumberReturner, collectionReturner).
-     *
-     * @param jsonEncodedLabel the JSON to decode.
-     * @return a new UnitTrayLabel populated with the values found in the supplied jsonEncodedLabel text.
-     * @see toJSONString
-     */
-    public static UnitTrayLabel createFromJSONString(String jsonEncodedLabel) {
-        UnitTrayLabel result = null;
-        if (jsonEncodedLabel.matches("\\{.*\\}")) {
-            String originalJsonEncodedLabel = jsonEncodedLabel;
-            jsonEncodedLabel = jsonEncodedLabel.replaceFirst("^\\{", "");  // Strip off leading  {
-            jsonEncodedLabel = jsonEncodedLabel.replaceFirst("\\}$", "");  // Strip off trailing }
-            if (jsonEncodedLabel.contains("}")) {
-                // nested json, not expected.
-                log.error("JSON for UnitTrayLabel contains unexpected nesting { { } }.  JSON is: " + originalJsonEncodedLabel);
-            } else {
-                log.debug(jsonEncodedLabel);
-                result = new UnitTrayLabel();
-                // Beginning and end are special case for split on '", "'
-                // remove leading ' "' and trailing '" '
-                jsonEncodedLabel = jsonEncodedLabel.replaceFirst("^ \"", "");  // Strip off leading space quote
-                jsonEncodedLabel = jsonEncodedLabel.replaceFirst("\" $", "");  // Strip off trailing quote space
-                // split into key value parts by '", "'
-                String[] pairs = jsonEncodedLabel.split("\", \"");
-                for (int x = 0; x < pairs.length; x++) {
-                    // split each key value pair
-                    String[] keyValuePair = pairs[x].split("\":\"");
-                    if (keyValuePair.length == 2) {
-                        String key = keyValuePair[0];
-                        String value = keyValuePair[1];
-                        log.debug("key=[" + key + "], value=[" + value + "]");
-                        // Note: Adding values here isn't sufficient to populate specimen records,
-                        // you still need to invoke the relevant returner interface on the parser.
-                        if (key.equals("f")) {
-                            result.setFamily(value);
-                        }
-                        if (key.equals("b")) {
-                            result.setSubfamily(value);
-                        }
-                        if (key.equals("t")) {
-                            result.setTribe(value);
-                        }
-                        if (key.equals("g")) {
-                            result.setGenus(value);
-                        }
-                        if (key.equals("s")) {
-                            result.setSpecificEpithet(value);
-                        }
-                        if (key.equals("u")) {
-                            result.setSubspecificEpithet(value);
-                        }
-                        if (key.equals("r")) {
-                            result.setInfraspecificRank(value);
-                        }
-                        if (key.equals("i")) {
-                            result.setInfraspecificEpithet(value);
-                        }
-                        if (key.equals("a")) {
-                            result.setAuthorship(value);
-                        }
-                        if (key.equals("c")) {
-                            result.setCollection(value);
-                            log.debug(result.getCollection());
-                        }
-                        if (key.equals("id")) {
-                            result.setIdentifiedBy(value);
-                        }
-                    }
-                }
-            }
-        } else {
-            log.debug("JSON not matched to { }");
-        }
-        return result;
-    }
-
-    /** Constructor for subspecies
-     *
-     * @param drawerNumber
-     * @param family
-     * @param subfamily
-     * @param tribe
-     * @param genus
-     * @param specificEpithet
-     * @param subspecificEpithet
-     * @param authorship
-     * @param collection
-     */
-	/*public UnitTrayLabel(String drawerNumber, String family, String subfamily,
-			String tribe, String genus, 
-			String specificEpithet, String subspecificEpithet, String infraspecificEpithet, String infraspecificRank,
-			String authorship, String collection, String identifiedBy) {
-		super();
-		this.drawerNumber = drawerNumber;
-		this.family = family;
-		this.subfamily = subfamily;
-		this.tribe = tribe;
-		this.genus = genus;
-		this.specificEpithet = specificEpithet;
-		this.subspecificEpithet = subspecificEpithet;
-		this.infraspecificEpithet = infraspecificEpithet;
-		this.infraspecificRank = infraspecificRank;
-		this.authorship = authorship;
-		this.collection = collection;
-		this.identifiedBy = identifiedBy;
-	}*/
-
-    /**
      * Returns a string containing the taxon name used in this UnitTrayLabel.
      */
     public String toString() {
-        return UnitTrayLabelLifeCycle.getScientificName(this);
-    }
-
-    /**
-     * Retuns a JSON encoding of the list of fields that can appear on a unit tray label using
-     * key-value pairs where the keys are f,b,t,g,s,u,i,r,a,d, and optionally c, and the values
-     * are respectively for the family, subfamily,tribe, genus, specificepithet, subspecificepithet,
-     * infraspecificepithet, infraspecificrank, authorship, drawernumber and optionally collection.
-     *
-     * @return String containing JSON in the form { "f":"familyname", .... }
-     * @see createFromJSONString
-     */
-    public String toJSONString() {
-        StringBuffer result = new StringBuffer();
-        result.append("{");
-        result.append(" \"f\":\"").append(family).append("\"");
-        result.append(", \"b\":\"").append(subfamily).append("\"");
-        result.append(", \"t\":\"").append(tribe).append("\"");
-        result.append(", \"g\":\"").append(genus).append("\"");
-        result.append(", \"s\":\"").append(specificEpithet).append("\"");
-        result.append(", \"u\":\"").append(subspecificEpithet).append("\"");
-        result.append(", \"r\":\"").append(infraspecificRank).append("\"");
-        result.append(", \"i\":\"").append(infraspecificEpithet).append("\"");
-        result.append(", \"a\":\"").append(authorship).append("\"");
-        result.append(", \"c\":\"").append(collection).append("\"");
-        if (collection != null) {
-            if (!collection.isEmpty()) {
-                result.append(", \"c\":\"").append(collection).append("\"");
-            }
-        }
-        result.append(", \"id\":\"").append(identifiedBy).append("\"");
-        result.append(" }");
-        return result.toString();
+        return this.getScientificName();
     }
 
     /**
@@ -453,19 +312,23 @@ public class UnitTrayLabel implements TaxonNameReturner {
         }
     }
 
-//	/**
-//	 * @return the scientificName
-//	 */
-//	public String getScientificName() {
-//		return scientificName;
-//	}
-//
-//	/**
-//	 * @param scientificName the scientificName to set
-//	 */
-//	public void setScientificName(String scientificName) {
-//		this.scientificName = scientificName;
-//	}
+	/**
+	 * @return the scientificName
+	 */
+	public String getScientificName() {
+	    if (this.scientificName != null && !this.scientificName.equals("")) {
+            return scientificName;
+        }
+	    this.scientificName = UnitTrayLabelLifeCycle.getScientificName(this);
+	    return this.scientificName;
+	}
+
+	/**
+	 * @param scientificName the scientificName to set
+	 */
+	public void setScientificName(String scientificName) {
+		this.scientificName = scientificName;
+	}
 
     /**
      * @return the genus
@@ -587,7 +450,6 @@ public class UnitTrayLabel implements TaxonNameReturner {
         }
     }
 
-
     /**
      * @return the id
      */
@@ -613,7 +475,7 @@ public class UnitTrayLabel implements TaxonNameReturner {
     }
 
     /**
-     * @param unnamedForm the unnamedForm to set
+     * @param unNamedForm the unnamedForm to set
      */
     public void setUnNamedForm(String unNamedForm) {
         this.unNamedForm = unNamedForm;
@@ -667,10 +529,18 @@ public class UnitTrayLabel implements TaxonNameReturner {
     }
 
     /**
-     * @param collection the collection to set
+     * @param identifiedBy the name of the identifier
      */
     public void setIdentifiedBy(String identifiedBy) {
         this.identifiedBy = identifiedBy;
+    }
+
+    public void setIdentifiedDate(String identifiedDate) {
+        this.identifiedDate = identifiedDate;
+    }
+
+    public String getIdentifiedDate() {
+        return identifiedDate;
     }
 
     /**
@@ -696,5 +566,9 @@ public class UnitTrayLabel implements TaxonNameReturner {
 
     public String getSex() {
         return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
     }
 }

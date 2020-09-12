@@ -18,11 +18,9 @@
         <property name="tribe" type="string">
             <column name="Tribe" length="40"/>
         </property>
-        <!-- 
         <property name="scientificName" type="string">
-            <column name="ScientificName" length="255" />
-        </property>        
-         -->
+            <column name="ScientificName" length="512" />
+        </property>
         <property name="genus" type="string">
             <column name="Genus" length="40" index="utl_genus_idx"/>
         </property>
@@ -41,6 +39,12 @@
         <property name="authorship" type="string">
             <column name="Authorship"/>
         </property>
+        <!--<property name="sex" type="string">
+            <column name="Sex"/>
+        </property>
+        <property name="identifiedDate" type="string">
+            <column name="IdentifiedDate"/>
+        </property>-->
         <property name="unNamedForm" type="string">
             <column name="UnNamedForm" length="50"/>
         </property>

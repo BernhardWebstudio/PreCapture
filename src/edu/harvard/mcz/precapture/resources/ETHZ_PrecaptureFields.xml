@@ -164,6 +164,17 @@
         <tns:DefaultValue></tns:DefaultValue>
     </tns:FieldInList>
     <tns:FieldInList>
+        <tns:Label>Identified Date</tns:Label>
+        <tns:Code>idD</tns:Code>
+        <tns:Type>String</tns:Type>
+        <tns:VocabularyTerm>dwc:identifiedDate</tns:VocabularyTerm>
+        <tns:Optional>true</tns:Optional>
+        <tns:UseItalic>false</tns:UseItalic>
+        <tns:NewLine>false</tns:NewLine>
+        <tns:FontSize>12</tns:FontSize>
+        <tns:DefaultValue></tns:DefaultValue>
+    </tns:FieldInList>
+    <tns:FieldInList>
         <tns:Label>Sex</tns:Label>
         <tns:Code>x</tns:Code>
         <tns:Type>String</tns:Type>
