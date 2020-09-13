@@ -316,7 +316,7 @@ public class UnitTrayLabel implements TaxonNameReturner {
 	 * @return the scientificName
 	 */
 	public String getScientificName() {
-	    if (this.scientificName != null && !this.scientificName.equals("")) {
+	    if (this.scientificName != null && !this.scientificName.trim().equals("")) {
             return scientificName;
         }
 	    this.scientificName = UnitTrayLabelLifeCycle.getScientificName(this);

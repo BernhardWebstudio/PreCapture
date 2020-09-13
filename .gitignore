@@ -9,3 +9,5 @@ target/
 precapturedebug.log
 VESPIDAE_EUMENIDAE_MASARIDAE_authority_file.csv
 precapture.log
+PRECAPTURE2.trace.db
+PRECAPTURE2.mv.db

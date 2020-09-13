@@ -109,7 +109,11 @@ public class UnitTrayLabelComboBoxModel implements ComboBoxModel {
     }
 
     public Object getElementAt(int index) {
-        return UnitTrayLabelLifeCycle.getScientificName(model.get(index));
+        if (model.get(index) != null) {
+            return model.get(index).getScientificName();
+        } else {
+            return null;
+        }
     }
 
     /**
@@ -131,7 +135,10 @@ public class UnitTrayLabelComboBoxModel implements ComboBoxModel {
     }
 
     public Object getSelectedItem() {
-        return UnitTrayLabelLifeCycle.getScientificName(selectedItem);
+        if (selectedItem != null) {
+            return selectedItem.getScientificName();
+        }
+        return null;
     }
 
     public void setSelectedItem(Object anItem) {

@@ -42,12 +42,15 @@ public class FilteringJComboBox extends JComboBox implements FocusListener {
 
     private String familyLimit;
     private String genusLimit;
+    private UnitTrayLabelComboBoxModel initialModel;
 
     /**
      * Default no argument constructor, constructs a new FilteringJComboBox instance.
      */
     public FilteringJComboBox() {
-        super.setModel(new UnitTrayLabelComboBoxModel());
+        UnitTrayLabelLifeCycle uls = new UnitTrayLabelLifeCycle();
+        initialModel = new UnitTrayLabelComboBoxModel(uls.findAll());
+        super.setModel(initialModel);
         init();
     }
 
@@ -90,18 +93,17 @@ public class FilteringJComboBox extends JComboBox implements FocusListener {
     protected void filter(String enteredText, boolean changePopupState) {
         if (enteredText == null || enteredText.length() == 0) {
             // If entry is blank, show full list.
-            // TODO: Filter by family/genus.
             UnitTrayLabelLifeCycle uls = new UnitTrayLabelLifeCycle();
-            if (familyLimit == null && genusLimit == null) {
-                super.setModel(new UnitTrayLabelComboBoxModel(uls.findAll()));
+            if ((familyLimit == null || familyLimit.length() == 0) && (genusLimit == null || genusLimit.length() == 0)) {
+                super.setModel(this.initialModel);
             } else {
+                // Filter by family/genus.
                 UnitTrayLabel pattern = new UnitTrayLabel();
                 if (familyLimit != null && familyLimit.length() > 0) {
                     pattern.setFamily(familyLimit);
-                } else {
-                    if (genusLimit != null && genusLimit.length() > 0) {
-                        pattern.setGenus(genusLimit);
-                    }
+                }
+                if (genusLimit != null && genusLimit.length() > 0) {
+                    pattern.setGenus(genusLimit);
                 }
                 super.setModel(new UnitTrayLabelComboBoxModel(uls.findByExample(pattern)));
             }

@@ -417,8 +417,10 @@ public class LabelEncoder {
                 break;
         }
         String data = label.toJSON();
-        byte[] compressedStrBytes = data.getBytes(StandardCharsets.UTF_8);
-        // compress message
+        boolean compress = false;
+        if (compress) {
+            byte[] compressedStrBytes = data.getBytes(StandardCharsets.UTF_8);
+            // compress message
 //        try {
 //            compressedStrBytes = GZipCompressor.compress(data);
 //        } catch (IOException e) {
@@ -426,8 +428,11 @@ public class LabelEncoder {
 //            log.error("Failed to compress: " + e.getMessage());
 //            log.error(e);
 //        }
-        // add the bytes to the QR Code
-        qr_writer.addBytes(compressedStrBytes);
+            // add the bytes to the QR Code
+            qr_writer.addBytes(compressedStrBytes);
+        } else {
+            qr_writer.addAutomatic(data);
+        }
         return qr_writer.fixate();
     }
 
