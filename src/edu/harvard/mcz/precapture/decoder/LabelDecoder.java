@@ -19,14 +19,16 @@
  */
 package edu.harvard.mcz.precapture.decoder;
 
-import com.google.zxing.*;
-import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
-import com.google.zxing.common.HybridBinarizer;
-import com.google.zxing.qrcode.QRCodeReader;
+import boofcv.abst.fiducial.QrCodeDetector;
+import boofcv.alg.fiducial.qrcode.QrCode;
+import boofcv.factory.fiducial.FactoryFiducial;
+import boofcv.io.image.ConvertBufferedImage;
+import boofcv.struct.image.GrayU8;
 import edu.harvard.mcz.precapture.PreCaptureSingleton;
 import edu.harvard.mcz.precapture.exceptions.BarcodeReadException;
 import edu.harvard.mcz.precapture.ui.ContainerLabel;
 import edu.harvard.mcz.precapture.ui.FieldPlusText;
+import edu.harvard.mcz.precapture.utils.GZipCompressor;
 import edu.harvard.mcz.precapture.xml.Field;
 import edu.harvard.mcz.precapture.xml.MappingList;
 import net.sf.json.JSONObject;
@@ -36,7 +38,7 @@ import org.apache.commons.logging.LogFactory;
 
 import javax.swing.*;
 import java.awt.image.BufferedImage;
-import java.nio.charset.StandardCharsets;
+import java.io.IOException;
 import java.util.*;
 
 /**
@@ -197,41 +199,29 @@ public class LabelDecoder {
      */
     public static String decodeImage(BufferedImage image) throws BarcodeReadException {
         String result = null;
-        try {
-            LuminanceSource source = new BufferedImageLuminanceSource(image);
-            BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
-            Map<DecodeHintType, Boolean> hints = new HashMap<DecodeHintType, Boolean>();
-            hints.put(DecodeHintType.TRY_HARDER, Boolean.TRUE);
-            QRCodeReader reader = new QRCodeReader();
-            Result readValue = reader.decode(bitmap, hints);
-            result = readValue.getText();
-            byte[] dataBytes = result.getBytes(StandardCharsets.UTF_8);
-            result = new String(dataBytes, StandardCharsets.UTF_8);
-        } catch (NotFoundException e) {
-            throw new BarcodeReadException("Error reading barcode. NotFoundException. " + e.getMessage());
-        } catch (ChecksumException e) {
-            throw new BarcodeReadException("Error reading barcode. ChecksumException. " + e.getMessage());
-        } catch (FormatException e) {
-            throw new BarcodeReadException("Error reading barcode. FormatException. " + e.getMessage());
-        }
-        return result;
-    }
+        GrayU8 gray = ConvertBufferedImage.convertFrom(image, (GrayU8) null);
 
-    /**
-     * Given an image containing a QRCode, returns a ZXing result object that
-     * wraps the text of the QRCode in metadata about the read.
-     *
-     * @param image a buffered image in which to look for a barcode.
-     * @return a Result object, from which Result.getText() will return the text
-     * of the barcode. @see com.google.zxing.Result
-     * @throws Exception if there is a problem with the image or barcode.
-     */
-    public static Result decodeImageToResult(BufferedImage image) throws Exception {
-        Result result = null;
-        LuminanceSource source = new BufferedImageLuminanceSource(image);
-        BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
-        QRCodeReader reader = new QRCodeReader();
-        result = reader.decode(bitmap);
+        QrCodeDetector<GrayU8> detector = FactoryFiducial.qrcode(null, GrayU8.class);
+
+        detector.process(gray);
+
+        // Get's a list of all the qr codes it could successfully detect and decode
+        List<QrCode> detections = detector.getDetections();
+        log.debug("BoofCV QRScanner found " + detections.size() + " barcodes. Failures: " + detector.getFailures().size());
+        if (detections.size() != 1) {
+            throw new BarcodeReadException("Error reading barcode: found " + detections.size() + " instead of 1 barcode.");
+        }
+        byte[] dataBytes = detections.get(0).corrected;
+        if (GZipCompressor.isCompressed(dataBytes)) {
+            try {
+                // try decompress
+                result = GZipCompressor.decompress(dataBytes);
+            } catch (IOException e) {
+                throw new BarcodeReadException("Error reading barcode. IOException. " + e.getMessage());
+            }
+        } else {
+            result = detections.get(0).message;
+        }
         return result;
     }
 

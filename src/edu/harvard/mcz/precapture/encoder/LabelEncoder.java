@@ -19,6 +19,10 @@
  */
 package edu.harvard.mcz.precapture.encoder;
 
+import boofcv.alg.fiducial.qrcode.QrCode;
+import boofcv.alg.fiducial.qrcode.QrCodeEncoder;
+import boofcv.alg.fiducial.qrcode.QrCodeGeneratorImage;
+import boofcv.io.image.ConvertBufferedImage;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.EncodeHintType;
 import com.google.zxing.WriterException;
@@ -37,6 +41,7 @@ import edu.harvard.mcz.precapture.PreCaptureSingleton;
 import edu.harvard.mcz.precapture.exceptions.BarcodeCreationException;
 import edu.harvard.mcz.precapture.exceptions.PrintFailedException;
 import edu.harvard.mcz.precapture.ui.ContainerLabel;
+import edu.harvard.mcz.precapture.utils.GZipCompressor;
 import edu.harvard.mcz.precapture.xml.labels.LabelDefinitionListType;
 import edu.harvard.mcz.precapture.xml.labels.LabelDefinitionType;
 import org.apache.commons.logging.Log;
@@ -45,14 +50,14 @@ import org.apache.commons.logging.LogFactory;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.List;
+import java.util.zip.DeflaterOutputStream;
+import java.util.zip.GZIPOutputStream;
 
 /**
  * LabelEncoder
@@ -386,62 +391,59 @@ public class LabelEncoder {
         return scaledImage2;
     }
 
-    // TODO: Move to print definition configuration;
-//	public static final int REL_WIDTH_TEXT_CELL = 2;
-//	public static final int REL_WIDTH_BARCODE_CELL = 3;
-
     /**
      * Get the BitMatrix for the QR Code
+     *
      * @return
      * @throws WriterException
      */
-    private BitMatrix getQRCodeMatrix() throws WriterException {
-        BitMatrix result = null;
-        QRCodeWriter writer = new QRCodeWriter();
-        String data = label.toJSON();
-        //data = StringEscapeUtils.unescapeJava(data); //allie added
-        byte[] dataBytes = label.toJSON().getBytes(StandardCharsets.UTF_8);
-        //data = new String(dataBytes,"ISO-8859-1");
-        data = new String(dataBytes, StandardCharsets.UTF_8);
-        Hashtable<EncodeHintType, Object> hints = new Hashtable<EncodeHintType, Object>();  // set ErrorCorrectionLevel here
+    private QrCode getQRCodeMatrix() throws WriterException {
+        // turn into qr code
+        QrCodeEncoder qr_writer = new QrCodeEncoder();
         String correctionLevel = PreCaptureSingleton.getInstance().getProperties().getProperties().getProperty(PreCaptureProperties.KEY_QRCODEECLEVEL, "M");
-        if (correctionLevel.equals("H")) {
-            hints.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.H);  //30% loss, 174 char at level 10
+        switch (correctionLevel) {
+            case "H":
+                qr_writer.setError(QrCode.ErrorLevel.H); //30% loss, 174 char at level 10
+                break;
+            case "Q":
+                qr_writer.setError(QrCode.ErrorLevel.Q); //25% loss, 221 char at level 10
+                break;
+            case "L":
+                qr_writer.setError(QrCode.ErrorLevel.L); //15% loss, 311 char at level 10
+                break;
+            case "M":
+            default:
+                qr_writer.setError(QrCode.ErrorLevel.M); //7% loss, 395 char at level 10
+                break;
         }
-        if (correctionLevel.equals("Q")) {
-            hints.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.Q);  //25% loss, 221 char at level 10
-        }
-        if (correctionLevel.equals("M")) {
-            hints.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.M);  //15% loss, 311 char at level 10
-        }
-        if (correctionLevel.equals("L")) {
-            hints.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);  //7% loss, 395 char at level 10
-        }
-        // Encode hint of UTF-8 appears to force a Kanji encoding in the barcode
-        // which forces every character to be a multi byte character, dramatically
-        // limiting the amount of information that can be encoded.
-        hints.put(EncodeHintType.CHARACTER_SET, "UTF-8");
-        //hints.put(EncodeHintType.CHARACTER_SET, "ISO-8859-1");
-        // Providing a large preferred height and width results in some barcodes
-        // having a white margin larger than 4 units, thus specifying small numbers.
-        // This is documented in a comment within QRCodeWriter: "Padding includes
-        // both the quiet zone and the extra white pixels to accommodate the requested
-        // dimensions."
-        result = writer.encode(data, BarcodeFormat.QR_CODE, 10, 10, hints);
-        return result;
+        String data = label.toJSON();
+        byte[] compressedStrBytes = data.getBytes(StandardCharsets.UTF_8);
+        // compress message
+//        try {
+//            compressedStrBytes = GZipCompressor.compress(data);
+//        } catch (IOException e) {
+//            // fallback to uncompressed
+//            log.error("Failed to compress: " + e.getMessage());
+//            log.error(e);
+//        }
+        // add the bytes to the QR Code
+        qr_writer.addBytes(compressedStrBytes);
+        return qr_writer.fixate();
     }
 
     public BufferedImage getBufferedImage() throws WriterException {
-        BitMatrix barcode = getQRCodeMatrix();
-        return MatrixToImageWriter.toBufferedImage(barcode);
+        QrCodeGeneratorImage render = new QrCodeGeneratorImage(20);
+
+        render.render(getQRCodeMatrix());
+
+        // Convert it to a BufferedImage for display purposes
+        return ConvertBufferedImage.convertTo(render.getGray(),null);
     }
 
     public Image getImage() throws BarcodeCreationException {
         Image image = null;
-        BitMatrix barcode;
         try {
-            barcode = getQRCodeMatrix();
-            BufferedImage bufferedImage = MatrixToImageWriter.toBufferedImage(barcode);
+            BufferedImage bufferedImage = getBufferedImage();
             image = Image.getInstance(bufferedImage, null);
             //image.setDpi(300, 300);
         } catch (WriterException e) {
