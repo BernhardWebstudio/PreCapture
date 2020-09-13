@@ -19,19 +19,13 @@
  */
 package edu.harvard.mcz.precapture.test;
 
-import com.google.zxing.Result;
 import com.google.zxing.ResultMetadataType;
-import com.google.zxing.common.BitMatrix;
-import com.itextpdf.text.pdf.qrcode.ByteMatrix;
-import edu.harvard.mcz.precapture.PreCaptureApp;
 import edu.harvard.mcz.precapture.PreCaptureProperties;
 import edu.harvard.mcz.precapture.PreCaptureSingleton;
 import edu.harvard.mcz.precapture.decoder.LabelDecoder;
 import edu.harvard.mcz.precapture.encoder.LabelEncoder;
 import edu.harvard.mcz.precapture.ui.ContainerLabel;
 import edu.harvard.mcz.precapture.ui.FieldPlusText;
-import edu.harvard.mcz.precapture.utils.GZipCompressor;
-import edu.harvard.mcz.precapture.xml.Field;
 import edu.harvard.mcz.precapture.xml.MappingList;
 import net.sf.json.JSONObject;
 import org.apache.commons.logging.Log;
@@ -45,14 +39,12 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
-import java.util.*;
-import java.util.zip.DeflaterOutputStream;
+import java.util.Map;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;

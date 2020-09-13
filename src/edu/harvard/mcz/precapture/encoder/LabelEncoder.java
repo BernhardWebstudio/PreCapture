@@ -23,13 +23,7 @@ import boofcv.alg.fiducial.qrcode.QrCode;
 import boofcv.alg.fiducial.qrcode.QrCodeEncoder;
 import boofcv.alg.fiducial.qrcode.QrCodeGeneratorImage;
 import boofcv.io.image.ConvertBufferedImage;
-import com.google.zxing.BarcodeFormat;
-import com.google.zxing.EncodeHintType;
 import com.google.zxing.WriterException;
-import com.google.zxing.client.j2se.MatrixToImageWriter;
-import com.google.zxing.common.BitMatrix;
-import com.google.zxing.qrcode.QRCodeWriter;
-import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 import com.itextpdf.text.Image;
 import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.*;
@@ -41,7 +35,6 @@ import edu.harvard.mcz.precapture.PreCaptureSingleton;
 import edu.harvard.mcz.precapture.exceptions.BarcodeCreationException;
 import edu.harvard.mcz.precapture.exceptions.PrintFailedException;
 import edu.harvard.mcz.precapture.ui.ContainerLabel;
-import edu.harvard.mcz.precapture.utils.GZipCompressor;
 import edu.harvard.mcz.precapture.xml.labels.LabelDefinitionListType;
 import edu.harvard.mcz.precapture.xml.labels.LabelDefinitionType;
 import org.apache.commons.logging.Log;
@@ -50,14 +43,13 @@ import org.apache.commons.logging.LogFactory;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.*;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
-import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.List;
-import java.util.zip.DeflaterOutputStream;
-import java.util.zip.GZIPOutputStream;
 
 /**
  * LabelEncoder
@@ -417,10 +409,9 @@ public class LabelEncoder {
                 break;
         }
         String data = label.toJSON();
-        boolean compress = false;
-        if (compress) {
-            byte[] compressedStrBytes = data.getBytes(StandardCharsets.UTF_8);
-            // compress message
+
+        byte[] compressedStrBytes = data.getBytes(StandardCharsets.UTF_8);
+        // compress message
 //        try {
 //            compressedStrBytes = GZipCompressor.compress(data);
 //        } catch (IOException e) {
@@ -428,11 +419,9 @@ public class LabelEncoder {
 //            log.error("Failed to compress: " + e.getMessage());
 //            log.error(e);
 //        }
-            // add the bytes to the QR Code
-            qr_writer.addBytes(compressedStrBytes);
-        } else {
-            qr_writer.addAutomatic(data);
-        }
+        // add the bytes to the QR Code
+        qr_writer.addBytes(compressedStrBytes);
+
         return qr_writer.fixate();
     }
 
@@ -442,7 +431,7 @@ public class LabelEncoder {
         render.render(getQRCodeMatrix());
 
         // Convert it to a BufferedImage for display purposes
-        return ConvertBufferedImage.convertTo(render.getGray(),null);
+        return ConvertBufferedImage.convertTo(render.getGray(), null);
     }
 
     public Image getImage() throws BarcodeCreationException {

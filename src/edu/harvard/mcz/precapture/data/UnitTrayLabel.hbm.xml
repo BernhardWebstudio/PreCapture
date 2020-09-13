@@ -19,7 +19,7 @@
             <column name="Tribe" length="40"/>
         </property>
         <property name="scientificName" type="string">
-            <column name="ScientificName" length="512" />
+            <column name="ScientificName" length="512"/>
         </property>
         <property name="genus" type="string">
             <column name="Genus" length="40" index="utl_genus_idx"/>

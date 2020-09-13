@@ -43,7 +43,7 @@ public class UnitTrayLabel implements TaxonNameReturner {
     private String family;
     private String subfamily;
     private String tribe;
-     private String scientificName;
+    private String scientificName;
     private String genus;
     private String specificEpithet;
     private String subspecificEpithet;
@@ -312,23 +312,23 @@ public class UnitTrayLabel implements TaxonNameReturner {
         }
     }
 
-	/**
-	 * @return the scientificName
-	 */
-	public String getScientificName() {
-	    if (this.scientificName != null && !this.scientificName.trim().equals("")) {
+    /**
+     * @return the scientificName
+     */
+    public String getScientificName() {
+        if (this.scientificName != null && !this.scientificName.trim().equals("")) {
             return scientificName;
         }
-	    this.scientificName = UnitTrayLabelLifeCycle.getScientificName(this);
-	    return this.scientificName;
-	}
+        this.scientificName = UnitTrayLabelLifeCycle.getScientificName(this);
+        return this.scientificName;
+    }
 
-	/**
-	 * @param scientificName the scientificName to set
-	 */
-	public void setScientificName(String scientificName) {
-		this.scientificName = scientificName;
-	}
+    /**
+     * @param scientificName the scientificName to set
+     */
+    public void setScientificName(String scientificName) {
+        this.scientificName = scientificName;
+    }
 
     /**
      * @return the genus
@@ -535,12 +535,12 @@ public class UnitTrayLabel implements TaxonNameReturner {
         this.identifiedBy = identifiedBy;
     }
 
-    public void setIdentifiedDate(String identifiedDate) {
-        this.identifiedDate = identifiedDate;
-    }
-
     public String getIdentifiedDate() {
         return identifiedDate;
+    }
+
+    public void setIdentifiedDate(String identifiedDate) {
+        this.identifiedDate = identifiedDate;
     }
 
     /**
