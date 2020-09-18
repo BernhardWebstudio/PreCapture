@@ -268,6 +268,7 @@ public class ContainerLabel {
             if ((fields.get(i).getField().getVocabularyTerm().equals("dwc:family") || fields.get(i).getField().getVocabularyTerm().equals("dwc:subfamily"))
                     && i < fields.size()
                     && !text.equals("")
+                    && !text.trim().endsWith(":")
                     && !fields.get(i + 1).getTextField().getText().trim().equals("")) {
                 text = text + ":";
             }

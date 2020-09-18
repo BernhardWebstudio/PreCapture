@@ -31,7 +31,9 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.util.Iterator;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.IntStream;
 
 /**
  *
@@ -50,12 +52,12 @@ public class FilteringJComboBox extends JComboBox implements FocusListener {
     public FilteringJComboBox() {
         UnitTrayLabelLifeCycle uls = new UnitTrayLabelLifeCycle();
         initialModel = new UnitTrayLabelComboBoxModel(uls.findAll());
-        super.setModel(initialModel);
+        this.setModel(initialModel);
         init();
     }
 
     /**
-     * @param valueList
+     * @param model
      */
     public FilteringJComboBox(UnitTrayLabelComboBoxModel model) {
         super(model);
@@ -72,11 +74,21 @@ public class FilteringJComboBox extends JComboBox implements FocusListener {
         textfield.addKeyListener(new KeyAdapter() {
             public void keyReleased(KeyEvent keyEvent) {
                 log.debug(keyEvent);
-                SwingUtilities.invokeLater(new Runnable() {
-                    public void run() {
-                        filter(textfield.getText(), true);
-                    }
-                });
+                // some keys for which we do not want to filter anew
+                int[] excludedKeys = new int[]{KeyEvent.VK_CONTEXT_MENU,
+                        KeyEvent.VK_KP_DOWN, KeyEvent.VK_KP_UP, KeyEvent.VK_KP_RIGHT, KeyEvent.VK_KP_LEFT,
+                        KeyEvent.VK_PAGE_DOWN, KeyEvent.VK_PAGE_UP,
+                        KeyEvent.VK_UP, KeyEvent.VK_DOWN, KeyEvent.VK_RIGHT, KeyEvent.VK_LEFT,
+                        KeyEvent.VK_ESCAPE};
+                if (IntStream.of(excludedKeys).anyMatch(x -> keyEvent.getKeyCode() == x)) {
+                    log.debug("Not filtering due to key: " + keyEvent.getKeyCode());
+                } else {
+                    SwingUtilities.invokeLater(new Runnable() {
+                        public void run() {
+                            filter(textfield.getText(), true);
+                        }
+                    });
+                }
             }
         });
 
@@ -87,15 +99,25 @@ public class FilteringJComboBox extends JComboBox implements FocusListener {
     }
 
     public void resetFilter(boolean changePopupState) {
-        filter(null, changePopupState);
+        log.debug("Resetting filter...");
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                filter(null, changePopupState);
+                log.debug("Filter reset.");
+            }
+        });
     }
 
     protected void filter(String enteredText, boolean changePopupState) {
+        // first, setup the list to filter from
+        UnitTrayLabelComboBoxModel nextModel = this.initialModel;
         if (enteredText == null || enteredText.length() == 0) {
             // If entry is blank, show full list.
+            // otherwise, fetch the list via example
+            // performance improvement: memoize family & genus -> no db access if still same
             UnitTrayLabelLifeCycle uls = new UnitTrayLabelLifeCycle();
             if ((familyLimit == null || familyLimit.length() == 0) && (genusLimit == null || genusLimit.length() == 0)) {
-                super.setModel(this.initialModel);
+                log.debug("No need to filter initial model");
             } else {
                 // Filter by family/genus.
                 UnitTrayLabel pattern = new UnitTrayLabel();
@@ -105,7 +127,7 @@ public class FilteringJComboBox extends JComboBox implements FocusListener {
                 if (genusLimit != null && genusLimit.length() > 0) {
                     pattern.setGenus(genusLimit);
                 }
-                super.setModel(new UnitTrayLabelComboBoxModel(uls.findByExample(pattern)));
+                nextModel = new UnitTrayLabelComboBoxModel(uls.findByExample(pattern));
             }
         }
         if (!changePopupState) {
@@ -115,44 +137,33 @@ public class FilteringJComboBox extends JComboBox implements FocusListener {
             this.showPopup();
         }
 
+        // then, actually do filter
         int lengthThreshold = Integer.valueOf(PreCaptureSingleton.getInstance().getProperties().getProperties().getProperty(PreCaptureProperties.KEY_FILTER_LENGTH_THRESHOLD));
         if (enteredText != null && enteredText.length() >= lengthThreshold) {
-
-            log.debug("Filtering on " + enteredText);
+            log.debug("Filtering on '" + enteredText + "'");
 
             boolean isExactMatch = false;
-            UnitTrayLabelComboBoxModel filterArray = new UnitTrayLabelComboBoxModel();
-            filterArray.removeAllElements();
-            log.debug("Model size: " + super.getModel().getSize());
-            for (int i = 0; i < super.getModel().getSize(); i++) {
-                if (((UnitTrayLabelComboBoxModel) super.getModel())
-                        .getDataElementAt(i).toString().toLowerCase()
+            List<UnitTrayLabel> arrayWithFilter = new ArrayList<>();
+            // filter
+            for (int i = 0; i < nextModel.getSize(); i++) {
+                if (nextModel.getDataElementAt(i).toString().toLowerCase()
                         .contains(enteredText.toLowerCase())) {
-                    filterArray.addElement(((UnitTrayLabelComboBoxModel) super
-                            .getModel()).getDataElementAt(i));
+                    arrayWithFilter.add(nextModel.getDataElementAt(i));
                 }
-                if (((UnitTrayLabelComboBoxModel) super.getModel())
-                        .getDataElementAt(i).toString()
-                        .equalsIgnoreCase(enteredText)) {
+            }
+            log.debug("Filtered down to " + arrayWithFilter.size() + " entities.");
+            UnitTrayLabelComboBoxModel oldModel = (UnitTrayLabelComboBoxModel) this.getModel();
+            oldModel.removeAllElements();
+            for (UnitTrayLabel label : arrayWithFilter) {
+                oldModel.addElement(label);
+                if (label.toString().equalsIgnoreCase(enteredText)) {
                     isExactMatch = true;
-                    super.getModel().setSelectedItem(
-                            ((UnitTrayLabelComboBoxModel) super.getModel())
-                                    .getDataElementAt(i));
+                    this.getModel().setSelectedItem(label);
                 }
             }
-            if (filterArray.getSize() > 0) {
-                UnitTrayLabelComboBoxModel model = (UnitTrayLabelComboBoxModel) this
-                        .getModel();
-                model.removeAllElements();
-                Iterator<UnitTrayLabel> i = filterArray.getModel().iterator();
-                while (i.hasNext()) {
-                    model.addElement(i.next());
-                }
-                JTextField textfield = (JTextField) this.getEditor()
-                        .getEditorComponent();
-                textfield.setText(enteredText);
-                super.setModel(model);
-            }
+            final JTextField textField = (JTextField) this.getEditor().getEditorComponent();
+            textField.setText(enteredText);
+
             if (changePopupState) {
                 this.hidePopup();
                 if (isExactMatch) {
@@ -184,7 +195,7 @@ public class FilteringJComboBox extends JComboBox implements FocusListener {
     /**
      * Sets the familial filter limit criterion on the picklist.
      *
-     * @param selectedItem the family to limit the picklist to.
+     * @param selectedFamily the family to limit the picklist to.
      */
     public void setFamilyLimit(Object selectedFamily) {
         if (selectedFamily != null && selectedFamily.toString().length() > 0) {
