@@ -36,6 +36,7 @@ import java.util.List;
  *         &lt;element name="FontSize" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="DefaultValue" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded"/>
  *         &lt;element name="Suffix" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="SuffixIf" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -53,7 +54,8 @@ import java.util.List;
         "newLine",
         "fontSize",
         "defaultValue",
-        "suffix"
+        "suffix",
+        "suffixCondition"
 })
 public class Field {
 
@@ -77,6 +79,8 @@ public class Field {
     protected List<String> defaultValue;
     @XmlElement(name = "Suffix")
     protected String suffix;
+    @XmlElement(name = "SuffixIf")
+    protected String suffixCondition;
 
     /**
      * Gets the value of the label property.
@@ -255,4 +259,11 @@ public class Field {
         this.suffix = suffix;
     }
 
+    public String getSuffixCondition() {
+        return this.suffixCondition;
+    }
+
+    public void setSuffixCondition(String suffixCondition) {
+        this.suffixCondition = suffixCondition;
+    }
 }

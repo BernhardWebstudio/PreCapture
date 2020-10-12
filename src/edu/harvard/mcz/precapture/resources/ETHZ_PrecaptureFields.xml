@@ -50,7 +50,8 @@
         <tns:NewLine>false</tns:NewLine>
         <tns:FontSize>12</tns:FontSize>
         <tns:DefaultValue></tns:DefaultValue>
-<!--        <tns:Suffix>:</tns:Suffix>-->
+        <tns:Suffix>:</tns:Suffix>
+        <tns:SuffixIf>hTaxon:subfamily</tns:SuffixIf>
     </tns:FieldInList>
     <tns:FieldInList>
         <tns:Label>Subfamily</tns:Label>
@@ -62,7 +63,8 @@
         <tns:NewLine>false</tns:NewLine>
         <tns:FontSize>12</tns:FontSize>
         <tns:DefaultValue></tns:DefaultValue>
-<!--        <tns:Suffix>:</tns:Suffix>-->
+        <tns:Suffix>:</tns:Suffix>
+        <tns:SuffixIf>hTaxon:tribe</tns:SuffixIf>
     </tns:FieldInList>
     <tns:FieldInList>
         <tns:Label>Tribe</tns:Label>

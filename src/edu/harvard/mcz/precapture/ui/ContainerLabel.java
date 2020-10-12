@@ -27,6 +27,7 @@ import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfPCell;
 import edu.harvard.mcz.precapture.PreCaptureProperties;
 import edu.harvard.mcz.precapture.PreCaptureSingleton;
+import edu.harvard.mcz.precapture.xml.Field;
 import edu.harvard.mcz.precapture.xml.labels.LabelDefinitionType;
 import edu.harvard.mcz.precapture.xml.labels.TextOrentationType;
 import org.apache.commons.lang.StringUtils;
@@ -214,6 +215,16 @@ public class ContainerLabel {
         return data.toString();
     }
 
+    private boolean hasTextWithFieldVocabularyTerm(String vocabTerm) {
+        for (int i = 0; i < fields.size(); i++) {
+            Field tmpField = fields.get(i).getField();
+            if (tmpField.getVocabularyTerm().equals(vocabTerm)) {
+                return !fields.get(i).getTextField().getText().trim().equalsIgnoreCase("");
+            }
+        }
+        return false;
+    }
+
     /**
      * @return a PDF paragraph cell containing a text encoding of the fields in this set.
      */
@@ -266,14 +277,6 @@ public class ContainerLabel {
                     && !fields.get(i).getField().getVocabularyTerm().equals("dwc:infraspecificEpithet")) {
                 text = StringUtils.capitalise(text);
             }
-            if ((fields.get(i).getField().getVocabularyTerm().equals("dwc:family") || fields.get(i).getField().getVocabularyTerm().equals("dwc:subfamily"))
-                    && i < fields.size()
-                    && !text.equals("")
-                    && !text.trim().endsWith(":")
-                    && !fields.get(i + 1).getTextField().getText().trim().equals("")) {
-                log.debug("Adding : for field: " + fields.get(i).getField().getVocabularyTerm() + " with text: " + text);
-                text = text + ":";
-            }
 
             Chunk chunk = new Chunk(text);
             if ((fields.get(i).getField().getVocabularyTerm().equals("dwc:specificEpithet") && text.equals("sp."))) {
@@ -295,8 +298,9 @@ public class ContainerLabel {
                 higher.setSpacingAfter(lineSpacing);
                 higher.add(chunk);
                 String suffix = fields.get(i).getField().getSuffix();
+                String suffixCondition = fields.get(i).getField().getSuffixCondition();
                 log.debug("Field " + i + " has suffix: " + suffix);
-                if (suffix != null && suffix.length() > 0) {
+                if (suffix != null && suffix.length() > 0 && (suffixCondition == null || this.hasTextWithFieldVocabularyTerm(suffixCondition))) {
                     higher.add(new Chunk(fields.get(i).getField().getSuffix()));
                 }
                 if (fields.get(i).getTextField().getText().trim().length() > 0) {
