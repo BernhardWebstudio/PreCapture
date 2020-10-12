@@ -152,10 +152,10 @@ public class FilteringJComboBox extends JComboBox implements FocusListener {
                 }
             }
             log.debug("Filtered down to " + arrayWithFilter.size() + " entities.");
-            UnitTrayLabelComboBoxModel oldModel = (UnitTrayLabelComboBoxModel) this.getModel();
-            oldModel.removeAllElements();
+            UnitTrayLabelComboBoxModel currentModel = (UnitTrayLabelComboBoxModel) this.getModel();
+            currentModel.removeAllElements();
             for (UnitTrayLabel label : arrayWithFilter) {
-                oldModel.addElement(label);
+                currentModel.addElement(label);
                 if (label.toString().equalsIgnoreCase(enteredText)) {
                     isExactMatch = true;
                     this.getModel().setSelectedItem(label);

@@ -240,10 +240,10 @@ public class ContainerLabel {
         boolean added = false;
         boolean hasContent = false;
         for (int i = 0; i < fields.size(); i++) {
-            log.debug(i);
+            log.debug("Handling field #" + i);
             if (fields.get(i).getField().isNewLine() || (i == fields.size() - 1)) {
                 if (!higher.isEmpty()) {
-                    log.debug(higher.getContent());
+                    log.debug("Higher has content: " + higher.getContent());
                     cell.addElement(higher);
                 }
                 leading = (int) (fields.get(i).getField().getFontSize() + printDefinition.getFontDelta() + fontIncrement) - 1;
@@ -255,9 +255,10 @@ public class ContainerLabel {
                 added = false;
                 hasContent = false;
             }
-            log.debug(fields.get(i).getTextField().getText().trim());
 
             String text = fields.get(i).getTextField().getText().trim();
+            log.debug("Text of field #" + i + ": " + text);
+
             if (!text.equals("")
                     && !fields.get(i).getField().getVocabularyTerm().equals("dwc:specificEpithet")
                     && !fields.get(i).getField().getVocabularyTerm().equals("dwc:subspecificEpithet")
@@ -270,6 +271,7 @@ public class ContainerLabel {
                     && !text.equals("")
                     && !text.trim().endsWith(":")
                     && !fields.get(i + 1).getTextField().getText().trim().equals("")) {
+                log.debug("Adding : for field: " + fields.get(i).getField().getVocabularyTerm() + " with text: " + text);
                 text = text + ":";
             }
 
@@ -292,8 +294,9 @@ public class ContainerLabel {
                 higher.setSpacingBefore(lineSpacing);
                 higher.setSpacingAfter(lineSpacing);
                 higher.add(chunk);
-                log.debug(fields.get(i).getField().getSuffix());
-                if (fields.get(i).getField().getSuffix() != null && fields.get(i).getField().getSuffix().length() > 0) {
+                String suffix = fields.get(i).getField().getSuffix();
+                log.debug("Field " + i + " has suffix: " + suffix);
+                if (suffix != null && suffix.length() > 0) {
                     higher.add(new Chunk(fields.get(i).getField().getSuffix()));
                 }
                 if (fields.get(i).getTextField().getText().trim().length() > 0) {
@@ -303,9 +306,10 @@ public class ContainerLabel {
             }
         }
         if (!added) {
-            log.debug(higher.getContent());
+            log.debug("Not added. Higher content: " + higher.getContent());
             cell.addElement(higher);
         }
+        log.debug("Assembled text: " + higher.toString());
 		/*String extraText = PreCaptureSingleton.getInstance().getProperties().getProperties().getProperty(PreCaptureProperties.KEY_EXTRAHUMANTEXT);
 		if (extraText!=null && extraText.length()>0) { 
 			log.debug(extraText);
