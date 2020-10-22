@@ -26,6 +26,7 @@ import org.apache.commons.logging.LogFactory;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.net.URL;
 
 
 /**
@@ -57,7 +58,32 @@ public class MainFrame implements WindowListener {
     private void initialize() {
         frame = new JFrame();
         frame.setTitle(PreCaptureApp.NAME);
-        frame.setIconImage(Toolkit.getDefaultToolkit().getImage(MainFrame.class.getResource("/edu/harvard/mcz/precapture/resources/icon.png")));
+        URL iconFile = MainFrame.class.getResource("/edu/harvard/mcz/precapture/resources/icon.png");
+        final Image iconImage = Toolkit.getDefaultToolkit().getImage(iconFile);
+
+        //this is new since JDK 9
+        final Taskbar taskbar = Taskbar.getTaskbar();
+
+        try {
+            //set icon for mac os (and other systems which do support this method)
+            taskbar.setIconImage(iconImage);
+        } catch (final UnsupportedOperationException e) {
+            System.out.println("The os does not support: 'taskbar.setIconImage'");
+        } catch (final SecurityException e) {
+            System.out.println("There was a security exception for: 'taskbar.setIconImage'");
+        }
+
+        //set icon for windows os (and other systems which do support this method)
+        frame.setIconImage(iconImage);
+
+        try {
+            frame.setIconImage(new ImageIcon(iconFile).getImage());
+        } catch (Exception e) {
+            log.error("Can't open icon file: " + iconFile);
+            log.error(e);
+        }
+
+        frame.setTitle(PreCaptureApp.NAME);
         frame.setBounds(100, 100, 640, 640);
         frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);   // handled by window listener
         frame.addWindowListener(this);
@@ -108,6 +134,11 @@ public class MainFrame implements WindowListener {
         tabbedPane.addTab("Print List", null, panel_4, null);
         tabbedPane.setMnemonicAt(1, KeyEvent.VK_L);
 
+        setupTabbedPane(tabbedPane, frame);
+
+    }
+
+    static void setupTabbedPane(JTabbedPane tabbedPane, JFrame frame) {
         if (PreCaptureSingleton.getInstance().getProperties().getProperties().getProperty(PreCaptureProperties.KEY_SHOW_INVENTORY).equals("true")) {
             tabbedPane.addTab("Inventory", null, new InventoryPanel(frame), null);
             tabbedPane.setMnemonicAt(1, KeyEvent.VK_I);
@@ -119,7 +150,6 @@ public class MainFrame implements WindowListener {
             tabbedPane.addTab("Taxon Authority File", null, new UnitTrayLabelEditPanel(frame), null);
             tabbedPane.setMnemonicAt(1, KeyEvent.VK_T);
         }
-
     }
 
     public void windowOpened(WindowEvent e) {
