@@ -270,13 +270,13 @@ public class ContainerLabel {
             String text = fields.get(i).getTextField().getText().trim();
             log.debug("Text of field #" + i + ": " + text);
 
-            if (!text.equals("")
-                    && !fields.get(i).getField().getVocabularyTerm().equals("dwc:specificEpithet")
-                    && !fields.get(i).getField().getVocabularyTerm().equals("dwc:subspecificEpithet")
-                    && !fields.get(i).getField().getVocabularyTerm().equals("dwc:infraspecificRank")
-                    && !fields.get(i).getField().getVocabularyTerm().equals("dwc:infraspecificEpithet")) {
-                text = StringUtils.capitalise(text);
-            }
+//            if (!text.equals("")
+//                    && !fields.get(i).getField().getVocabularyTerm().equals("dwc:specificEpithet")
+//                    && !fields.get(i).getField().getVocabularyTerm().equals("dwc:subspecificEpithet")
+//                    && !fields.get(i).getField().getVocabularyTerm().equals("dwc:infraspecificRank")
+//                    && !fields.get(i).getField().getVocabularyTerm().equals("dwc:infraspecificEpithet")) {
+//                text = StringUtils.capitalise(text);
+//            }
 
             Chunk chunk = new Chunk(text);
             if ((fields.get(i).getField().getVocabularyTerm().equals("dwc:specificEpithet") && text.equals("sp."))) {
