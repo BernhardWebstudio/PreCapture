@@ -1,5 +1,17 @@
 # Changelog
 
+## v1.2.0
+* [[`65bc82094d`](https://github.com/BernhardWebstudio/PreCapture/commit/65bc82094d)] - Add Windows & MacOs Builds to releases (Tim Bernhard)
+* [[`32199a9545`](https://github.com/BernhardWebstudio/PreCapture/commit/32199a9545)] - Disable auto-capitalization (Tim Bernhard)
+* [[`66dc25e329`](https://github.com/BernhardWebstudio/PreCapture/commit/66dc25e329)] - Fix Icon on Mac (Tim Bernhard)
+* [[`9997ae72e0`](https://github.com/BernhardWebstudio/PreCapture/commit/9997ae72e0)] - Fix placement of ':' also for tribes (Tim Bernhard)
+* [[`59abb01918`](https://github.com/BernhardWebstudio/PreCapture/commit/59abb01918)] - Possibly fix the nr. of ':' being too big in labels (Tim Bernhard)
+* [[`592d4044b9`](https://github.com/BernhardWebstudio/PreCapture/commit/592d4044b9)] - Refactor search, hoping to fix issue where it stopped working (Tim Bernhard)
+* [[`368beada12`](https://github.com/BernhardWebstudio/PreCapture/commit/368beada12)] - Reset java target version to 8 (Tim Bernhard)
+* [[`cc501f1d13`](https://github.com/BernhardWebstudio/PreCapture/commit/cc501f1d13)] - Clean pom file up (Tim Bernhard)
+* [[`a738640b8b`](https://github.com/BernhardWebstudio/PreCapture/commit/a738640b8b)] - Update changelog to publish Version v1.1.4 (Tim Bernhard)
+
+
 ## v1.1.4
 * [[`ff5dcc17dd`](https://github.com/BernhardWebstudio/PreCapture/commit/ff5dcc17dd)] - Use memoization to speed up generation of scientific names on long taxon list (Tim Bernhard)
 * [[`17e47b515f`](https://github.com/BernhardWebstudio/PreCapture/commit/17e47b515f)] - Use BoofCV for QR Codes in attempt to compress them (Tim Bernhard)
