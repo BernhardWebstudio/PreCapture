@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>MCZDataShot</groupId>
 	<artifactId>PreCaptureApp</artifactId>
-	<version>1.2.0</version>
+	<version>1.2.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<name>precapture</name>
 	<description>MCZ DataShot Collection Precapture Label Application</description>
@@ -52,11 +52,10 @@
 			<artifactId>jta</artifactId>
 			<version>1.1</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.glassfish.jaxb/jaxb-runtime -->
 		<dependency>
-			<groupId>org.glassfish.jaxb</groupId>
-			<artifactId>jaxb-runtime</artifactId>
-			<version>3.0.0-M4</version>
+			<groupId>javax.annotation</groupId>
+			<artifactId>jsr250-api</artifactId>
+			<version>1.0</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api -->
 		<dependency>
@@ -146,22 +145,6 @@
 			<artifactId>javahelp</artifactId>
 			<version>2.0.05</version>
 		</dependency>
-		<!-- <dependency>
-			<groupId>com.sun.xml.bind</groupId>
-			<artifactId>jaxb-core</artifactId>
-			<version>2.3.0.1</version>
-		</dependency> -->
-		<!-- <dependency>
-			<groupId>com.sun.xml.bind</groupId>
-			<artifactId>jaxb-impl</artifactId>
-			<version>2.3.1</version>
-		</dependency> -->
-		<!-- https://mvnrepository.com/artifact/com.sun.activation/javax.activation -->
-		<dependency>
-			<groupId>com.sun.activation</groupId>
-			<artifactId>javax.activation</artifactId>
-			<version>1.2.0</version>
-		</dependency>
 		<dependency>
 			<groupId>org.javassist</groupId>
 			<artifactId>javassist</artifactId>
@@ -178,6 +161,26 @@
 			<groupId>org.glassfish.jaxb</groupId>
 			<artifactId>jaxb-runtime</artifactId>
 			<version>2.3.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>jcl-over-slf4j</artifactId>
+			<version>1.5.6</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.5.6</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.geronimo.specs</groupId>
+			<artifactId>geronimo-jta_1.0.1B_spec</artifactId>
+			<version>1.1.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.github.jai-imageio</groupId>
+			<artifactId>jai-imageio-core</artifactId>
+			<version>1.4.0</version>
 		</dependency>
 	</dependencies>
 	<build>

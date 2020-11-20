@@ -96,6 +96,7 @@
     <orderEntry type="library" name="Maven: javax.activation:javax.activation-api:1.2.0" level="project" />
     <orderEntry type="library" name="Maven: jakarta.xml.bind:jakarta.xml.bind-api:2.3.2" level="project" />
     <orderEntry type="library" name="Maven: com.sun.activation:jakarta.activation:2.0.0-RC3" level="project" />
+    <orderEntry type="library" name="Maven: com.sun.activation:javax.activation:1.2.0" level="project" />
     <orderEntry type="library" name="Maven: javassist:javassist:3.12.1.GA" level="project" />
     <orderEntry type="library" name="Maven: javax.activation:activation:1.1.1" level="project" />
     <orderEntry type="library" name="Maven: junit:junit:4.13" level="project" />
@@ -118,9 +119,6 @@
     <orderEntry type="library" name="Maven: org.swinglabs:pdf-renderer:1.0.5" level="project" />
     <orderEntry type="library" name="Maven: com.h2database:h2:1.4.200" level="project" />
     <orderEntry type="library" name="Maven: javax.help:javahelp:2.0.05" level="project" />
-    <orderEntry type="library" name="Maven: com.sun.xml.bind:jaxb-core:2.3.0.1" level="project" />
-    <orderEntry type="library" name="Maven: com.sun.xml.bind:jaxb-impl:2.3.1" level="project" />
-    <orderEntry type="library" name="Maven: com.sun.activation:javax.activation:1.2.0" level="project" />
     <orderEntry type="library" name="Maven: org.javassist:javassist:3.25.0-GA" level="project" />
     <orderEntry type="library" name="Maven: org.apache.pdfbox:pdfbox:2.0.20" level="project" />
     <orderEntry type="library" name="Maven: org.apache.pdfbox:fontbox:2.0.20" level="project" />
