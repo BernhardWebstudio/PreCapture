@@ -1,17 +1,16 @@
 # This workflow will build a Java project with Maven
 # For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-maven
 
-name: Release Publisher
+name: Release Windows
 
 on:
-  create:
-    tags:
-      - 'v*' # run only on all tags
+  repository_dispatch:
+    types: [new-version-event]
 
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
     - uses: actions/checkout@v2
@@ -23,24 +22,6 @@ jobs:
       # without -DskipTests, we also run tests, which should prevent 
       # the package from being packaged if tests fail
       run: mvn -B package --file pom.xml -P dist
-    - name: Get the version
-      id: get_version
-      run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
-    - name: Determine Changelog
-      id: changelog_determiner
-      run: echo "##[set-output name=changelog;]$(./bin/extract-changelog.sh CHANGELOG.md ${{ steps.get_version.outputs.VERSION }})"
-    - name: Create Release
-      id: create_release
-      if: success()
-      uses: actions/create-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        tag_name: ${{ github.ref }}
-        release_name: Release ${{ github.ref }}
-        body: ${{ steps.changelog_determiner.outputs.changelog }}
-        draft: false
-        prerelease: false
     - name: Upload Release
       id: upload_release
       if: success()
@@ -54,14 +35,6 @@ jobs:
       #  asset_content_type: application/zip
       uses: csexton/release-asset-action@v2
       with:
-        pattern: "target/PreCapture*.jar"
+        pattern: "target/PreCapture*.exe"
         github-token: ${{ secrets.GITHUB_TOKEN }}
-        release-url: ${{ steps.create_release.outputs.upload_url }}
-
-    - name: Start Build on Mac & Windows
-      uses: peter-evans/repository-dispatch@v1
-      with:
-        token: ${{ secrets.PERSONAL_REPO_ACCESS_TOKEN }}
-        repository: BernhardWebstudio/PreCapture
-        event-type: new-version-event
-        client-payload: '{ "release_url": "${{ steps.create_release.outputs.upload_url }}" }'
+        release-url: ${{ github.event.client_payload.release_url }}
