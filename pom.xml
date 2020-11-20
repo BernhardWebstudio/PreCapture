@@ -1,13 +1,13 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>MCZDataShot</groupId>
 	<artifactId>PreCaptureApp</artifactId>
-	<version>1.2.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<version>1.2.0-SNAPSHOT</version>
 	<name>precapture</name>
 	<description>MCZ DataShot Collection Precapture Label Application</description>
+	<packaging>jar</packaging>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
@@ -52,10 +52,11 @@
 			<artifactId>jta</artifactId>
 			<version>1.1</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.glassfish.jaxb/jaxb-runtime -->
 		<dependency>
-			<groupId>javax.annotation</groupId>
-			<artifactId>jsr250-api</artifactId>
-			<version>1.0</version>
+			<groupId>org.glassfish.jaxb</groupId>
+			<artifactId>jaxb-runtime</artifactId>
+			<version>3.0.0-M4</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api -->
 		<dependency>
@@ -63,31 +64,10 @@
 			<artifactId>jaxb-api</artifactId>
 			<version>2.3.1</version>
 		</dependency>
-		<!-- API, java.xml.bind module -->
-		<dependency>
-			<groupId>jakarta.xml.bind</groupId>
-			<artifactId>jakarta.xml.bind-api</artifactId>
-			<version>2.3.2</version>
-		</dependency>
-		<dependency>
-			<groupId>com.sun.activation</groupId>
-			<artifactId>jakarta.activation</artifactId>
-			<version>2.0.0-RC3</version>
-		</dependency>
-		<dependency>
-			<groupId>com.sun.activation</groupId>
-			<artifactId>javax.activation</artifactId>
-			<version>1.2.0</version>
-		</dependency>
 		<dependency>
 			<groupId>javassist</groupId>
 			<artifactId>javassist</artifactId>
 			<version>3.12.1.GA</version>
-		</dependency>
-		<dependency>
-			<groupId>javax.activation</groupId>
-			<artifactId>activation</artifactId>
-			<version>1.1.1</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
@@ -146,6 +126,16 @@
 			<version>2.0.05</version>
 		</dependency>
 		<dependency>
+			<groupId>com.sun.xml.bind</groupId>
+			<artifactId>jaxb-core</artifactId>
+			<version>2.3.0.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.xml.bind</groupId>
+			<artifactId>jaxb-impl</artifactId>
+			<version>2.3.1</version>
+		</dependency>
+		<dependency>
 			<groupId>org.javassist</groupId>
 			<artifactId>javassist</artifactId>
 			<version>3.25.0-GA</version>
@@ -156,40 +146,23 @@
 			<artifactId>pdfbox</artifactId>
 			<version>2.0.20</version>
 		</dependency>
-		<!-- Runtime, com.sun.xml.bind module -->
-		<dependency>
-			<groupId>org.glassfish.jaxb</groupId>
-			<artifactId>jaxb-runtime</artifactId>
-			<version>2.3.2</version>
-		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>jcl-over-slf4j</artifactId>
-			<version>1.5.6</version>
-		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-log4j12</artifactId>
-			<version>1.5.6</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.geronimo.specs</groupId>
-			<artifactId>geronimo-jta_1.0.1B_spec</artifactId>
-			<version>1.1.1</version>
-		</dependency>
-		<dependency>
-			<groupId>com.github.jai-imageio</groupId>
-			<artifactId>jai-imageio-core</artifactId>
-			<version>1.4.0</version>
-		</dependency>
 	</dependencies>
 	<build>
 		<sourceDirectory>${project.basedir}/src</sourceDirectory>
 		<testSourceDirectory>${project.basedir}/src</testSourceDirectory>
+		<testResources>
+			<testResource>
+				<directory>${project.basedir}/src</directory>
+				<includes>
+					<include>**/*.xml</include>
+				</includes>
+			</testResource>
+		</testResources>
 		<resources>
 			<resource>
+				<directory
+        >${project.basedir}/src/edu/harvard/mcz/precapture/resources</directory>
 				<targetPath>edu/harvard/mcz/precapture/resources</targetPath>
-				<directory>${project.basedir}/src/edu/harvard/mcz/precapture/resources</directory>
 				<includes>
 					<include>**/**</include>
 				</includes>
@@ -210,28 +183,7 @@
 				</includes>
 			</resource>
 		</resources>
-		<testResources>
-			<testResource>
-				<directory>${project.basedir}/src</directory>
-				<includes>
-					<include>**/*.xml</include>
-				</includes>
-			</testResource>
-		</testResources>
 		<plugins>
-			<plugin>
-				<groupId>com.github.ekryd.sortpom</groupId>
-				<artifactId>sortpom-maven-plugin</artifactId>
-				<version>2.11.0</version>
-				<executions>
-					<execution>
-						<goals>
-							<goal>sort</goal>
-						</goals>
-						<phase>verify</phase>
-					</execution>
-				</executions>
-			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -257,32 +209,10 @@
 				<executions>
 					<execution>
 						<id>make-assembly</id>
+						<phase>package</phase>
 						<goals>
 							<goal>single</goal>
 						</goals>
-						<phase>package</phase>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>io.github.fvarrui</groupId>
-				<artifactId>javapackager</artifactId>
-				<version>1.4.1</version>
-				<executions>
-					<execution>
-						<goals>
-							<goal>package</goal>
-						</goals>
-						<phase>package</phase>
-						<configuration>
-							<!-- mandatory -->
-							<mainClass>edu.harvard.mcz.precapture.PreCaptureApp</mainClass>
-							<!-- optional -->
-							<bundleJre>true</bundleJre>
-							<generateInstaller>true</generateInstaller>
-							<administratorRequired>false</administratorRequired>
-							<platform>auto</platform>
-						</configuration>
 					</execution>
 				</executions>
 			</plugin>

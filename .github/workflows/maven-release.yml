@@ -58,10 +58,10 @@ jobs:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         release-url: ${{ steps.create_release.outputs.upload_url }}
 
-    - name: Start Build on Mac & Windows
-      uses: peter-evans/repository-dispatch@v1
-      with:
-        token: ${{ secrets.PERSONAL_REPO_ACCESS_TOKEN }}
-        repository: BernhardWebstudio/PreCapture
-        event-type: new-version-event
-        client-payload: '{ "release_url": "${{ steps.create_release.outputs.upload_url }}" }'
+#    - name: Start Build on Mac & Windows
+#      uses: peter-evans/repository-dispatch@v1
+#      with:
+#        token: ${{ secrets.PERSONAL_REPO_ACCESS_TOKEN }}
+#        repository: BernhardWebstudio/PreCapture
+#        event-type: new-version-event
+#        client-payload: '{ "release_url": "${{ steps.create_release.outputs.upload_url }}" }'
