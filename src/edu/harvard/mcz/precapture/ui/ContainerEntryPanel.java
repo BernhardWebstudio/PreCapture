@@ -80,76 +80,123 @@ public class ContainerEntryPanel extends JPanel {
             FieldPlusText f = new FieldPlusText(PreCaptureSingleton.getInstance().getMappingList().getFieldInList().get(j), new JTextField());
             textFieldsOut.add(f);
         }
-        boolean useQuadranomials = false;
-        boolean putSubspeciesInInfra = false;
-        if (PreCaptureSingleton.getInstance().getProperties().getProperties().getProperty(PreCaptureProperties.KEY_USEQUADRANOMIALS).equals("true")) {
-            useQuadranomials = true;
-        }
-        if (PreCaptureSingleton.getInstance().getProperties().getProperties().getProperty(PreCaptureProperties.KEY_PUT_SUBSPECIES_IN_INFRA).equals("true")) {
-            putSubspeciesInInfra = true;
-        }
         if (utl != null) {
+            log.debug(utl.toString());
             Iterator<FieldPlusText> i = textFieldsOut.iterator();
-            while (i.hasNext()) {
-                FieldPlusText field = i.next();
-                log.debug(field.getField().getVocabularyTerm());
-                if (field.getField().getVocabularyTerm().equalsIgnoreCase("dwc:family")) {
-                    field.getTextField().setText(utl.getFamily());
-                    log.debug(field.getField().getVocabularyTerm());
-                    log.debug(utl.getFamily());
+            setValueForFieldsInIterator(i, utl);
+        }
+        return textFieldsOut;
+    }
+
+    protected static void setValueForField(FieldPlusText field, UnitTrayLabel utl, boolean useQuadranomials, boolean putSubspeciesInInfra) {
+        if (field.getField().getVocabularyTerm().equalsIgnoreCase("dwc:family")) {
+            field.getTextField().setText(utl.getFamily());
+            log.debug(field.getField().getVocabularyTerm());
+            log.debug(utl.getFamily());
+        }
+        if (field.getField().getVocabularyTerm().equalsIgnoreCase("hTaxon:subfamily")) {
+            field.getTextField().setText(utl.getSubfamily());
+        }
+        if (field.getField().getVocabularyTerm().equalsIgnoreCase("dwc:subfamily")) {
+            field.getTextField().setText(utl.getSubfamily());
+        }
+        if (field.getField().getVocabularyTerm().equalsIgnoreCase("hTaxon:tribe")) {
+            field.getTextField().setText(utl.getTribe());
+        }
+        if (field.getField().getVocabularyTerm().equalsIgnoreCase("dwc:sex")) {
+            field.getTextField().setText(utl.getSex());
+        }
+        if (field.getField().getVocabularyTerm().equalsIgnoreCase("dwc:identifiedDate")) {
+            field.getTextField().setText(utl.getIdentifiedDate());
+        }
+        if (field.getField().getVocabularyTerm().equalsIgnoreCase("abcd:PreviousUnit/Owner")) {
+            field.getTextField().setText(utl.getCollection());
+        }
+        if (field.getField().getVocabularyTerm().equalsIgnoreCase("obo:OBI_0000967")) {
+            field.getTextField().setText(utl.getDrawerNumber());
+        }
+        if (field.getField().getVocabularyTerm().equalsIgnoreCase("dwc:genus")) {
+            field.getTextField().setText(utl.getGenus());
+        }
+        if (field.getField().getVocabularyTerm().equalsIgnoreCase("dwc:specificEpithet")) {
+            field.getTextField().setText(utl.getSpecificEpithet());
+        }
+        if (field.getField().getVocabularyTerm().equalsIgnoreCase("dwc:collectionName")) {
+            field.getTextField().setText(utl.getCollection());
+        }
+        if (field.getField().getVocabularyTerm().equalsIgnoreCase("dwc:identifiedBy")) {
+            field.getTextField().setText(utl.getIdentifiedBy());
+        }
+        if (field.getField().getVocabularyTerm().equalsIgnoreCase("dwc:authorship")) {
+            String authorship = utl.getAuthorship();
+            authorship = StringEscapeUtils.unescapeJava(authorship);
+            field.getTextField().setText(authorship);
+        }
+        if (useQuadranomials) {
+            // put subspecies into subspecies concept, put infraspecific name and rank into infra fields.
+            if (field.getField().getVocabularyTerm().equalsIgnoreCase("abcd:SubspeciesEpithet")) {
+                field.getTextField().setText(utl.getSubspecificEpithet());
+            }
+            if (field.getField().getVocabularyTerm().equalsIgnoreCase("hispid:isprk")) {
+                field.getTextField().setText(utl.getInfraspecificRank());
+            }
+            if (field.getField().getVocabularyTerm().equalsIgnoreCase("dwc:infraspecificEpithet")) {
+                field.getTextField().setText(utl.getInfraspecificEpithet());
+            }
+        } else if (putSubspeciesInInfra) {
+            // Assemble a trinomial.
+            // if there is an infraspecific name, don't include the subspecies.
+            // if there isnt't an infraspecific name, put subspecies into the infra fields.
+            String rank = utl.getInfraspecificRank();
+            String epithet = utl.getInfraspecificEpithet();
+            if (utl.getSubspecificEpithet() != null && utl.getSubspecificEpithet().length() > 0 && (utl.getInfraspecificEpithet() == null || utl.getInfraspecificEpithet().length() == 0)) {
+                rank = PreCaptureSingleton.getInstance().getProperties().getProperties().getProperty(PreCaptureProperties.KEY_TRINOMIAL_SUBSP_RANK);
+                //rank = "subspecies";
+                epithet = utl.getSubspecificEpithet();
+            }
+            if (rank == null) {
+                rank = "";
+            }
+            if (epithet == null) {
+                epithet = "";
+            }
+            if (field.getField().getVocabularyTerm().equalsIgnoreCase("hispid:isprk")) {
+                field.getTextField().setText(rank);
+            }
+            if (field.getField().getVocabularyTerm().equalsIgnoreCase("dwc:infraspecificEpithet")) {
+                field.getTextField().setText(epithet);
+            }
+            if (field.getField().getVocabularyTerm().equalsIgnoreCase("dwc:infraspecificRank")) {
+                field.getTextField().setText(rank);
+            }
+        } else {
+            // Assemble a trinomial.
+            // if there is an infraspecific name, don't include the subspecies.
+            // if there isnt't an infraspecific name, put subspecies into the infra fields.
+            String rank = utl.getInfraspecificRank();
+            String epithet = utl.getInfraspecificEpithet();
+            if (utl.getSubspecificEpithet() != null && utl.getSubspecificEpithet().length() > 0 && (utl.getInfraspecificEpithet() == null || utl.getInfraspecificEpithet().length() == 0)) {
+                // subspecies has a value, infraspecific name does not, put subspecies into subspecies, leave out rank.
+                if (field.getField().getVocabularyTerm().equalsIgnoreCase("abcd:SubspeciesEpithet")) {
+                    field.getTextField().setText(utl.getSubspecificEpithet());
                 }
-                if (field.getField().getVocabularyTerm().equalsIgnoreCase("hTaxon:subfamily")) {
-                    field.getTextField().setText(utl.getSubfamily());
+            } else {
+                // there is a value in infraspecific name and rank, leave out subspecies if quadranomial,
+                // but if rank is subspecies, put subspecies in infraspecific into subspecies field.
+                if (rank == null) {
+                    rank = "";
                 }
-                if (field.getField().getVocabularyTerm().equalsIgnoreCase("hTaxon:tribe")) {
-                    field.getTextField().setText(utl.getTribe());
+                if (epithet == null) {
+                    epithet = "";
                 }
-                if (field.getField().getVocabularyTerm().equalsIgnoreCase("dwc:sex")) {
-                    field.getTextField().setText(utl.getSex());
-                }
-                if (field.getField().getVocabularyTerm().equalsIgnoreCase("dwc:identifiedDate")) {
-                    field.getTextField().setText(utl.getIdentifiedDate());
-                }
-                if (field.getField().getVocabularyTerm().equalsIgnoreCase("abcd:PreviousUnit/Owner")) {
-                    field.getTextField().setText(utl.getCollection());
-                }
-                if (field.getField().getVocabularyTerm().equalsIgnoreCase("obo:OBI_0000967")) {
-                    field.getTextField().setText(utl.getDrawerNumber());
-                }
-                if (field.getField().getVocabularyTerm().equalsIgnoreCase("dwc:genus")) {
-                    field.getTextField().setText(utl.getGenus());
-                }
-                if (field.getField().getVocabularyTerm().equalsIgnoreCase("dwc:specificEpithet")) {
-                    field.getTextField().setText(utl.getSpecificEpithet());
-                }
-                if (useQuadranomials) {
-                    // put subspecies into subspecies concept, put infraspecific name and rank into infra fields.
+                String subspeciesRank = PreCaptureSingleton.getInstance().getProperties().getProperties().getProperty(PreCaptureProperties.KEY_TRINOMIAL_SUBSP_RANK);
+                if (rank.equals(subspeciesRank)) {
+                    // if rank is subspecies, put infra name into subspecies
                     if (field.getField().getVocabularyTerm().equalsIgnoreCase("abcd:SubspeciesEpithet")) {
-                        field.getTextField().setText(utl.getSubspecificEpithet());
+                        field.getTextField().setText(epithet);
                     }
-                    if (field.getField().getVocabularyTerm().equalsIgnoreCase("hispid:isprk")) {
-                        field.getTextField().setText(utl.getInfraspecificRank());
-                    }
-                    if (field.getField().getVocabularyTerm().equalsIgnoreCase("dwc:infraspecificEpithet")) {
-                        field.getTextField().setText(utl.getInfraspecificEpithet());
-                    }
-                } else if (putSubspeciesInInfra) {
-                    // Assemble a trinomial.
-                    // if there is an infraspecific name, don't include the subspecies.
-                    // if there isnt't an infraspecific name, put subspecies into the infra fields.
-                    String rank = utl.getInfraspecificRank();
-                    String epithet = utl.getInfraspecificEpithet();
-                    if (utl.getSubspecificEpithet() != null && utl.getSubspecificEpithet().length() > 0 && (utl.getInfraspecificEpithet() == null || utl.getInfraspecificEpithet().length() == 0)) {
-                        rank = PreCaptureSingleton.getInstance().getProperties().getProperties().getProperty(PreCaptureProperties.KEY_TRINOMIAL_SUBSP_RANK);
-                        //rank = "subspecies";
-                        epithet = utl.getSubspecificEpithet();
-                    }
-                    if (rank == null) {
-                        rank = "";
-                    }
-                    if (epithet == null) {
-                        epithet = "";
-                    }
+                } else {
+                    // put infra name and rank into infra name and rank fields.
                     if (field.getField().getVocabularyTerm().equalsIgnoreCase("hispid:isprk")) {
                         field.getTextField().setText(rank);
                     }
@@ -159,68 +206,47 @@ public class ContainerEntryPanel extends JPanel {
                     if (field.getField().getVocabularyTerm().equalsIgnoreCase("dwc:infraspecificRank")) {
                         field.getTextField().setText(rank);
                     }
-                } else {
-                    // Assemble a trinomial.
-                    // if there is an infraspecific name, don't include the subspecies.
-                    // if there isnt't an infraspecific name, put subspecies into the infra fields.
-                    String rank = utl.getInfraspecificRank();
-                    String epithet = utl.getInfraspecificEpithet();
-                    if (utl.getSubspecificEpithet() != null && utl.getSubspecificEpithet().length() > 0 && (utl.getInfraspecificEpithet() == null || utl.getInfraspecificEpithet().length() == 0)) {
-                        // subspecies has a value, infraspecific name does not, put subspecies into subspecies, leave out rank.
-                        if (field.getField().getVocabularyTerm().equalsIgnoreCase("abcd:SubspeciesEpithet")) {
-                            field.getTextField().setText(utl.getSubspecificEpithet());
-                        }
-                    } else {
-                        // there is a value in infraspecific name and rank, leave out subspecies if quadranomial,
-                        // but if rank is subspecies, put subspecies in infraspecific into subspecies field.
-                        if (rank == null) {
-                            rank = "";
-                        }
-                        if (epithet == null) {
-                            epithet = "";
-                        }
-                        String subspeciesRank = PreCaptureSingleton.getInstance().getProperties().getProperties().getProperty(PreCaptureProperties.KEY_TRINOMIAL_SUBSP_RANK);
-                        if (rank.equals(subspeciesRank)) {
-                            // if rank is subspecies, put infra name into subspecies
-                            if (field.getField().getVocabularyTerm().equalsIgnoreCase("abcd:SubspeciesEpithet")) {
-                                field.getTextField().setText(epithet);
-                            }
-                        } else {
-                            // put infra name and rank into infra name and rank fields.
-                            if (field.getField().getVocabularyTerm().equalsIgnoreCase("hispid:isprk")) {
-                                field.getTextField().setText(rank);
-                            }
-                            if (field.getField().getVocabularyTerm().equalsIgnoreCase("dwc:infraspecificEpithet")) {
-                                field.getTextField().setText(epithet);
-                            }
-                            if (field.getField().getVocabularyTerm().equalsIgnoreCase("dwc:infraspecificRank")) {
-                                field.getTextField().setText(rank);
-                            }
-                        }
-                    }
-                }
-                if (field.getField().getVocabularyTerm().equalsIgnoreCase("dwc:scientificNameAuthorship")) {
-                    field.getTextField().setText(utl.getAuthorship());
-                }
-
-                if (field.getField().getVocabularyTerm().equalsIgnoreCase("dwc:scientificName")) {
-                    // Support for assembly of full name into dwc:scientificName, if used.
-                    StringBuffer assembledName = new StringBuffer();
-                    assembledName.append(utl.getGenus()).append(" ");
-                    assembledName.append(utl.getSpecificEpithet()).append(" ");
-                    if (utl.getInfraspecificEpithet().isEmpty() || PreCaptureSingleton.getInstance().getProperties().getProperties().getProperty(PreCaptureProperties.KEY_USEQUADRANOMIALS).equals("true")) {
-                        assembledName.append(utl.getSubspecificEpithet()).append(" ");
-                    }
-                    assembledName.append(utl.getInfraspecificRank()).append(" ");
-                    assembledName.append(utl.getInfraspecificEpithet()).append(" ");
-                    String aName = assembledName.toString().trim();
-                    // TODO: This regex isn't removing duplicated spaces.
-                    aName = aName.replaceAll("/ +/", " ");
-                    field.getTextField().setText(aName);
                 }
             }
         }
-        return textFieldsOut;
+        if (field.getField().getVocabularyTerm().equalsIgnoreCase("dwc:scientificNameAuthorship")) {
+            field.getTextField().setText(utl.getAuthorship());
+        }
+
+        if (field.getField().getVocabularyTerm().equalsIgnoreCase("dwc:scientificName")) {
+            // Support for assembly of full name into dwc:scientificName, if used.
+            StringBuilder assembledName = new StringBuilder();
+            assembledName.append(utl.getGenus()).append(" ");
+            assembledName.append(utl.getSpecificEpithet()).append(" ");
+            if (utl.getInfraspecificEpithet().isEmpty() || PreCaptureSingleton.getInstance().getProperties().getProperties().getProperty(PreCaptureProperties.KEY_USEQUADRANOMIALS).equals("true")) {
+                assembledName.append(utl.getSubspecificEpithet()).append(" ");
+            }
+            assembledName.append(utl.getInfraspecificRank()).append(" ");
+            assembledName.append(utl.getInfraspecificEpithet()).append(" ");
+            String aName = assembledName.toString().trim();
+            // TODO: This regex isn't removing duplicated spaces.
+            aName = aName.replaceAll("/ +/", " ");
+            field.getTextField().setText(aName);
+        }
+    }
+
+    public static void setValueForFieldsInIterator(Iterator<FieldPlusText> iterator, UnitTrayLabel unitTrayLabel) {
+        boolean useQuadranomials = false;
+        boolean putSubspeciesInInfra = false;
+        if (PreCaptureSingleton.getInstance().getProperties().getProperties().getProperty(PreCaptureProperties.KEY_USEQUADRANOMIALS).equals("true")) {
+            useQuadranomials = true;
+        }
+        if (PreCaptureSingleton.getInstance().getProperties().getProperties().getProperty(PreCaptureProperties.KEY_PUT_SUBSPECIES_IN_INFRA).equals("true")) {
+            putSubspeciesInInfra = true;
+        }
+        log.debug("Using: Quadranomials = " + useQuadranomials + ", putSubspeciesInInfra = " + putSubspeciesInInfra);
+        if (unitTrayLabel != null) {
+            while (iterator.hasNext()) {
+                FieldPlusText field = iterator.next();
+                log.debug("Handling field with vocab: " + field.getField().getVocabularyTerm());
+                setValueForField(field, unitTrayLabel, useQuadranomials, putSubspeciesInInfra);
+            }
+        }
     }
 
     private void init() {
@@ -360,7 +386,6 @@ public class ContainerEntryPanel extends JPanel {
                 // Probably means that FieldsPlusText needs to include a combobox as well as a textfield.
             }
 
-
             textFields.get(i).getTextField().setColumns(10);
             panel_3.add(label, "2, " + col + ", right, default");
             panel_3.add(textFields.get(i).getTextField(), "4, " + col + " , 3, 1, fill, default");
@@ -437,7 +462,6 @@ public class ContainerEntryPanel extends JPanel {
                 log.debug(containerLabel.getFields().get(i).getField().getDefaultValue().get(0));
             }
         }
-
     }
 
     /**
@@ -450,138 +474,7 @@ public class ContainerEntryPanel extends JPanel {
      * @param utl
      */
     private void extractData(UnitTrayLabel utl) {
-        boolean useQuadranomials = false;
-        boolean putSubspeciesInInfra = false;
-        if (PreCaptureSingleton.getInstance().getProperties().getProperties().getProperty(PreCaptureProperties.KEY_USEQUADRANOMIALS).equals("true")) {
-            useQuadranomials = true;
-        }
-        if (PreCaptureSingleton.getInstance().getProperties().getProperties().getProperty(PreCaptureProperties.KEY_PUT_SUBSPECIES_IN_INFRA).equals("true")) {
-            putSubspeciesInInfra = true;
-        }
-        if (utl != null) {
-            Iterator<FieldPlusText> i = textFields.iterator();
-            while (i.hasNext()) {
-                FieldPlusText field = i.next();
-                log.debug(field.getField().getVocabularyTerm());
-                if (field.getField().getVocabularyTerm().equalsIgnoreCase("dwc:family")) {
-                    field.getTextField().setText(utl.getFamily());
-                }
-                if (field.getField().getVocabularyTerm().equalsIgnoreCase("hTaxon:subfamily")) {
-                    field.getTextField().setText(utl.getSubfamily());
-                }
-                if (field.getField().getVocabularyTerm().equalsIgnoreCase("hTaxon:tribe")) {
-                    field.getTextField().setText(utl.getTribe());
-                }
-                if (field.getField().getVocabularyTerm().equalsIgnoreCase("dwc:tribe")) {
-                    field.getTextField().setText(utl.getTribe());
-                }
-                if (field.getField().getVocabularyTerm().equalsIgnoreCase("dwc:genus")) {
-                    field.getTextField().setText(utl.getGenus());
-                }
-                if (field.getField().getVocabularyTerm().equalsIgnoreCase("dwc:subfamily")) {
-                    field.getTextField().setText(utl.getSubfamily());
-                }
-                if (field.getField().getVocabularyTerm().equalsIgnoreCase("dwc:specificEpithet")) {
-                    field.getTextField().setText(utl.getSpecificEpithet());
-                }
-                if (field.getField().getVocabularyTerm().equalsIgnoreCase("dwc:subspecificEpithet")) {
-                    field.getTextField().setText(utl.getSubspecificEpithet());
-                }
-                if (field.getField().getVocabularyTerm().equalsIgnoreCase("dwc:infraspecificRank")) {
-                    field.getTextField().setText(utl.getInfraspecificRank());
-                }
-                if (field.getField().getVocabularyTerm().equalsIgnoreCase("dwc:infraspecificEpithet")) {
-                    field.getTextField().setText(utl.getInfraspecificEpithet());
-                }
-				/*if (field.getField().getVocabularyTerm().equalsIgnoreCase("dwc:collectionName")) {
-					field.getTextField().setText(utl.getCollection());
-				}
-				if (field.getField().getVocabularyTerm().equalsIgnoreCase("dwc:identifiedBy")) {
-					field.getTextField().setText(utl.getIdentifiedBy());
-				}*/
-
-                if (field.getField().getVocabularyTerm().equalsIgnoreCase("dwc:authorship")) {
-                    String authorship = utl.getAuthorship();
-                    authorship = StringEscapeUtils.unescapeJava(authorship);
-                    field.getTextField().setText(authorship);
-                }
-				/*if (useQuadranomials) {
-					// put subspecies into subspecies concept, put infraspecific name and rank into infra fields.
-					if (field.getField().getVocabularyTerm().equalsIgnoreCase("abcd:SubspeciesEpithet")) {
-						field.getTextField().setText(utl.getSubspecificEpithet());
-					}
-					if (field.getField().getVocabularyTerm().equalsIgnoreCase("hispid:isprk")) {
-						field.getTextField().setText(utl.getInfraspecificRank());
-					}
-					if (field.getField().getVocabularyTerm().equalsIgnoreCase("dwc:infraspecificEpithet")) {
-						field.getTextField().setText(utl.getInfraspecificEpithet());
-					}
-				} else {
-					//allie - the below code does not seem to work and does not make sense. I replaced it with the code below that.
-					// Assemble a trinomial.
-					// if there is an infraspecific name, don't include the subspecies.
-					// if there isnt't an infraspecific name, put subspecies into the infra fields.
-					String rank = utl.getInfraspecificRank();
-					String epithet = utl.getInfraspecificEpithet();
-					if (utl.getSubspecificEpithet()!=null && utl.getSubspecificEpithet().length()>0 && (utl.getInfraspecificEpithet()==null || utl.getInfraspecificEpithet().length()==0)) {
-						rank = PreCaptureSingleton.getInstance().getProperties().getProperties().getProperty(PreCaptureProperties.KEY_TRINOMIAL_SUBSP_RANK);
-						// rank = "subspecies";
-						epithet = utl.getSubspecificEpithet();
-					}
-					if (rank==null) { rank = ""; }
-					if (epithet==null) { epithet = ""; }
-					if (field.getField().getVocabularyTerm().equalsIgnoreCase("hispid:isprk")) {
-						field.getTextField().setText(rank);
-					}
-					if (field.getField().getVocabularyTerm().equalsIgnoreCase("dwc:infraspecificEpithet")) {
-						field.getTextField().setText(epithet);
-					}
-					if (field.getField().getVocabularyTerm().equalsIgnoreCase("dwc:infraspecificRank")) {
-						field.getTextField().setText(rank);
-					}
-				}*/
-
-                //allie - replaced the above if/else statement with this code
-                if (field.getField().getVocabularyTerm().equalsIgnoreCase("dwc:infraspecificEpithet")) {
-                    field.getTextField().setText(utl.getInfraspecificEpithet());
-                }
-                if (field.getField().getVocabularyTerm().equalsIgnoreCase("dwc:infraspecificRank")) {
-                    field.getTextField().setText(utl.getInfraspecificRank());
-                }
-
-                if (field.getField().getVocabularyTerm().equalsIgnoreCase("dwc:scientificNameAuthorship")) {
-                    field.getTextField().setText(utl.getAuthorship());
-                }
-
-                // PJM: 2012Sept12: preventing this block from running for now.
-                if (0 == 1 && field.getField().getVocabularyTerm().equalsIgnoreCase("dwc:scientificName")) {
-                    // PJM 2012 Sept 12
-                    // Was a todo item: Handle putting hybrids into the scientific name field
-                    // Discussion with Patrick suggests that the NEVP data set will only contain
-                    // nothotaxa (named hybrids), and it will be up to individual institutions
-                    // to capture hybrids between taxa.
-                    // Hybrids need more refinement downstream as well in Symbiota, so posponing work
-                    // on them for now.
-
-                    // TODO: Add logic to include either atomic concepts or full scientific name,
-                    // but not both.
-
-                    // Support for assembly of full name into dwc:scientificName, if used.
-                    StringBuffer assembledName = new StringBuffer();
-                    assembledName.append(utl.getGenus()).append(" ");
-                    assembledName.append(utl.getSpecificEpithet()).append(" ");
-                    if (utl.getInfraspecificEpithet().isEmpty() || PreCaptureSingleton.getInstance().getProperties().getProperties().getProperty(PreCaptureProperties.KEY_USEQUADRANOMIALS).equals("true")) {
-                        assembledName.append(utl.getSubspecificEpithet()).append(" ");
-                    }
-                    assembledName.append(utl.getInfraspecificRank()).append(" ");
-                    assembledName.append(utl.getInfraspecificEpithet()).append(" ");
-                    String aName = assembledName.toString().trim();
-                    // TODO: This regex isn't removing duplicated spaces.
-                    aName = aName.replaceAll("/ +/", " ");
-                    field.getTextField().setText(aName);
-                }
-            }
-        }
+        setValueForFieldsInIterator(textFields.iterator(), utl);
     }
 
 }
