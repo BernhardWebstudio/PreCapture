@@ -264,7 +264,7 @@ public class PreCaptureProperties extends AbstractTableModel {
         if (!properties.containsKey(
                 PreCaptureProperties.KEY_FILTER_LENGTH_THRESHOLD)) {
             // default filtering threshold for filtering combobox
-            properties.setProperty(KEY_FILTER_LENGTH_THRESHOLD, "4");
+            properties.setProperty(KEY_FILTER_LENGTH_THRESHOLD, "3");
         }
         if (!properties.containsKey(KEY_QRCODEECLEVEL)) {
             // name of selected UI main frame

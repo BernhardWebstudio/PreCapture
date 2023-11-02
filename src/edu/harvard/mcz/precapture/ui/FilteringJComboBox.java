@@ -118,6 +118,7 @@ public class FilteringJComboBox extends JComboBox implements FocusListener {
             UnitTrayLabelLifeCycle uls = new UnitTrayLabelLifeCycle();
             if ((familyLimit == null || familyLimit.length() == 0) && (genusLimit == null || genusLimit.length() == 0)) {
                 log.debug("No need to filter initial model");
+                nextModel = new UnitTrayLabelComboBoxModel(uls.findAll());
             } else {
                 // Filter by family/genus.
                 UnitTrayLabel pattern = new UnitTrayLabel();
@@ -129,6 +130,7 @@ public class FilteringJComboBox extends JComboBox implements FocusListener {
                 }
                 nextModel = new UnitTrayLabelComboBoxModel(uls.findByExample(pattern));
             }
+            this.setUTLModel(nextModel);
         }
         if (!changePopupState) {
             this.firePopupMenuCanceled();
@@ -138,7 +140,7 @@ public class FilteringJComboBox extends JComboBox implements FocusListener {
         }
 
         // then, actually do filter
-        int lengthThreshold = Integer.valueOf(PreCaptureSingleton.getInstance().getProperties().getProperties().getProperty(PreCaptureProperties.KEY_FILTER_LENGTH_THRESHOLD));
+        int lengthThreshold = Integer.parseInt(PreCaptureSingleton.getInstance().getProperties().getProperties().getProperty(PreCaptureProperties.KEY_FILTER_LENGTH_THRESHOLD, "1"));
         if (enteredText != null && enteredText.length() >= lengthThreshold) {
             log.debug("Filtering on '" + enteredText + "'");
 
